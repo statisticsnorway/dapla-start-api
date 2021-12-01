@@ -1,4 +1,4 @@
-FROM python:3.10-bullseye
+FROM python:3.9-bullseye
 
 ENV PIP_DISABLE_PIP_VERSION_CHECK=on
 RUN pip install poetry

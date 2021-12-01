@@ -9,7 +9,7 @@ python-versions = "*"
 [[package]]
 name = "arrow"
 version = "1.2.1"
-description = "Better dates & times for Python"
+description = "Better dates & times for poet"
 category = "main"
 optional = false
 python-versions = ">=3.6"
