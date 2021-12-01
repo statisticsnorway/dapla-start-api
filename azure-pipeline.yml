@@ -45,7 +45,7 @@ resources:
       type: github
       name: statisticsnorway/azure-pipelines-templates
       # The version of the repo on GitHub. Change to needed version
-      ref: refs/tags/1.1.18
+      ref: refs/tags/1.1.25
       # Service connection in the Stratus project on Pipelines
       # with access to the template repository. Change to correct
       # endpoint
@@ -60,12 +60,6 @@ jobs:
     condition: not(startsWith(variables['Build.SourceBranch'], 'refs/tags/'))
     # Steps in this Job
     steps:
-      - task: SonarCloudPrepare@1
-        inputs:
-          SonarCloud: 'bipSonarCloud'
-          organization: 'statisticsnorway'
-          scannerMode: 'Other'
-
       - task: DownloadSecureFile@1
         name: gcrJsonKey
         displayName: 'Download gcr creds'
@@ -78,10 +72,6 @@ jobs:
           echo "Setting env variable GOOGLE_APPLICATION_CREDENTIALS"
           echo "##vso[task.setvariable variable=GOOGLE_APPLICATION_CREDENTIALS]$(gcrJsonKey.secureFilePath)"
         displayName: 'Setting GOOGLE_APPLICATION_CREDENTIALS env variable'
-
-      - task: SonarCloudPublish@1
-        inputs:
-          pollingTimeoutSec: '300'
 
       # Test Python code
       - task: UsePythonVersion@0
