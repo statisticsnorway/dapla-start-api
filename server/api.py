@@ -108,8 +108,27 @@ def get_current_user(token):
     return client.get_user(name)
 
 
-## Initial user input gathering stage ##
+@app.get("/health/liveness")
+def health_liveness():
+    """Can be used to poll for API liveness
+    """
+    return {
+        "name":"dapla-start-api",
+        "status":"UP"
+    }
 
+
+@app.get("/health/readiness")
+def health_readiness():
+    """Can be used to poll for API readiness
+    """
+    return {
+        "name":"dapla-start-api",
+        "status":"UP"
+    }
+
+
+## Initial user input gathering stage ##
 
 @app.get("/cookicutters")
 def get_cookicutters():
