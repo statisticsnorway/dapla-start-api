@@ -77,10 +77,11 @@ jobs:
       - task: UsePythonVersion@0
         inputs:
           versionSpec: '3.9'
-      - script: |
+      - displayName: 'Run tests'
+        script: |
           pip install poetry
           poetry install --no-interaction
-          pip run pytest -v
+          poetry run pytest -v
 
       # Build Docker image
       - task: Docker@2
