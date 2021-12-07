@@ -111,24 +111,24 @@ jobs:
             $(imageTagBeforeVulnerabilityScan)
       # Wait for scan on image in GCR to complete and check for any vulnerabilities
       # with effective severity HIGH or CRITICAL
-      - task: gcr-vulneralbility-check@1
-        displayName: 'Image vulnerability check'
-        inputs:
-          projectId: 'prod-bip'
-          imageHost: $(imageHost)
-          image: $(repoName)
-          imageTag: $(imageTagBeforeVulnerabilityScan)
-          timeBetweenRetries: '10000'
+      #- task: gcr-vulneralbility-check@1
+      #  displayName: 'Image vulnerability check'
+      #  inputs:
+      #    projectId: 'prod-bip'
+      #    imageHost: $(imageHost)
+      #    image: $(repoName)
+      #    imageTag: $(imageTagBeforeVulnerabilityScan)
+      #    timeBetweenRetries: '10000'
 
-      - script: |
-          TAG=`git describe --tags`
-          echo $TAG
-          cat $(gcrJsonKey.secureFilePath) | docker login -u _json_key --password-stdin $(imageHost)
-          docker pull $(imageName):$(imageTagBeforeVulnerabilityScan)
-          docker tag $(imageName):$(imageTagBeforeVulnerabilityScan) $(imageName):$(imageTagAfterVulnerabilityScan)
-          docker push $(imageName):$(imageTagAfterVulnerabilityScan)
-        displayName: "Retagging docker image if successful vulnerability scan"
-        condition: succeeded()
+      #- script: |
+      #    TAG=`git describe --tags`
+      #    echo $TAG
+      #    cat $(gcrJsonKey.secureFilePath) | docker login -u _json_key --password-stdin $(imageHost)
+      #    docker pull $(imageName):$(imageTagBeforeVulnerabilityScan)
+      #    docker tag $(imageName):$(imageTagBeforeVulnerabilityScan) $(imageName):$(imageTagAfterVulnerabilityScan)
+      #    docker push $(imageName):$(imageTagAfterVulnerabilityScan)
+      #  displayName: "Retagging docker image if successful vulnerability scan"
+      #  condition: succeeded()
 
   # Pull and retag docker image. Will only run if it is a tag-operation on the repo.
   # See https://github.com/statisticsnorway/azure-pipelines-templates/blob/master/docker/docker-tag-for-production.yml
