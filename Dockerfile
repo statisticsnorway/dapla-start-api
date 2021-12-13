@@ -6,9 +6,12 @@ ENV LC_ALL C.UTF-8
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONFAULTHANDLER 1
 ENV PIP_DISABLE_PIP_VERSION_CHECK=on
-RUN pip install GitPython
+
+
 RUN pip install poetry
 RUN apt-get update && apt-get install -y --no-install-recommends gcc
+
+RUN apt-get update && apt-get install -y --no-install-recommends git
 
 WORKDIR /app
 COPY . ./
