@@ -150,7 +150,7 @@ def get_oauth():
     """REST end point to get the Github OAuth endpoint."""
     return {
         "url": f"https://{BASE_URL}/login/oauth/authorize"
-        f"?client_id={CLIENT_ID}&scope=public_repo,read:org"
+        f"?client_id={CLIENT_ID}&scope=repo,read:org"
     }
 
 
@@ -357,11 +357,13 @@ def validate_and_create(details: FormDetails):
     with tempfile.TemporaryDirectory(prefix="cookiecutter") as temp_dir:
         client = get_git_client(details.token)
         user = client.get_user()
+        repo_name = details.user_inputs.get("team_name")
+
         try:
             if user.login == details.org:
-                user.create_repo(details.repo)
+                user.create_repo(repo_name)
             else:
-                client.get_organization(details.org).create_repo(details.repo)
+                client.get_organization(details.org).create_repo(repo_name)
         except GithubException:
             pass
 
@@ -391,7 +393,7 @@ def validate_and_create(details: FormDetails):
         shell_command(f"git config --local user.email {user.email}")
         url = (
             f"https://{user.login}:{decrypt_token(details.token)}@"
-            f"{BASE_URL}/{shlex.quote(details.org)}/{shlex.quote(details.repo)}"
+            f"{BASE_URL}/{shlex.quote(details.org)}/{shlex.quote(repo_name)}"
         )
         shell_command(f"git remote add {CC_ORIGIN} {url}")
         shell_command("git add .")
@@ -400,6 +402,6 @@ def validate_and_create(details: FormDetails):
         )
         shell_command(f"git push {CC_ORIGIN} master")
         return {
-            "url": f"https://{BASE_URL}/{shlex.quote(details.org)}/{shlex.quote(details.repo)}",
+            "url": f"https://{BASE_URL}/{shlex.quote(details.org)}/{shlex.quote(repo_name)}",
             "output": output.getvalue(),
         }
