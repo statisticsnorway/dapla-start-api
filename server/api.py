@@ -140,7 +140,7 @@ def get_cookicutters():
     """
     return {
         "cookiecutters": {
-            "audreyr/cookiecutter-pypackage": []
+            "statisticsnorway/cookiecutter-dapla-team-default": []
         }
     }
 
