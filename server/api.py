@@ -363,7 +363,7 @@ def validate_and_create(details: FormDetails):
             if user.login == details.org:
                 user.create_repo(repo_name)
             else:
-                client.get_organization(details.org).create_repo(repo_name)
+                client.get_organization(details.org).create_repo(repo_name, private=True)
         except GithubException:
             pass
 
