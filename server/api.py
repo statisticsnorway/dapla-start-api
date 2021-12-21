@@ -361,7 +361,7 @@ def validate_and_create(details: FormDetails):
 
         try:
             if user.login == details.org:
-                user.create_repo(repo_name)
+                user.create_repo(repo_name, private=True)
             else:
                 client.get_organization(details.org).create_repo(repo_name, private=True)
         except GithubException:
