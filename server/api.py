@@ -22,6 +22,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from github import Github, GithubException
 from pydantic import BaseModel
+from requests.structures import CaseInsensitiveDict
 
 app = FastAPI()
 
@@ -34,7 +35,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 # APPLICATION CONSTANTS
 # Remote name for the Github repository to be create.
@@ -85,6 +85,7 @@ from server.patched_run_script import run_script as patched_run_script
 
 hooks.run_script = patched_run_script
 
+
 ## Common Github utilities ##
 
 
@@ -113,8 +114,8 @@ def health_liveness():
     """Can be used to poll for API liveness
     """
     return {
-        "name":"dapla-start-api",
-        "status":"UP"
+        "name": "dapla-start-api",
+        "status": "UP"
     }
 
 
@@ -123,8 +124,8 @@ def health_readiness():
     """Can be used to poll for API readiness
     """
     return {
-        "name":"dapla-start-api",
-        "status":"UP"
+        "name": "dapla-start-api",
+        "status": "UP"
     }
 
 
@@ -150,7 +151,7 @@ def get_oauth():
     """REST end point to get the Github OAuth endpoint."""
     return {
         "url": f"https://{BASE_URL}/login/oauth/authorize"
-        f"?client_id={CLIENT_ID}&scope=repo,read:org"
+               f"?client_id={CLIENT_ID}&scope=repo,read:org"
     }
 
 
@@ -244,6 +245,7 @@ class FormDetails(BaseModel):
     has_defaults = False
     base_url = BASE_URL
 
+
 ### Interactive form endpoint ###
 
 
@@ -321,9 +323,7 @@ def get_next_option(cc_context, user_inputs):
     return None, None, True
 
 
-### Creationg end point ###
-
-
+# Creating end point
 @app.post("/create")
 def create(details: FormDetails):
     """The actual end point for cookiecutter creation.
@@ -359,13 +359,9 @@ def validate_and_create(details: FormDetails):
         user = client.get_user()
         repo_name = details.user_inputs.get("team_name")
 
-        try:
-            if user.login == details.org:
-                user.create_repo(repo_name, private=True)
-            else:
-                client.get_organization(details.org).create_repo(repo_name, private=True)
-        except GithubException:
-            pass
+        create_repo(details, repo_name)
+
+        create_topics(details, repo_name)
 
         output = StringIO()
         with redirect_stdout(output):
@@ -405,3 +401,36 @@ def validate_and_create(details: FormDetails):
             "url": f"https://{BASE_URL}/{shlex.quote(details.org)}/{shlex.quote(repo_name)}",
             "output": output.getvalue(),
         }
+
+
+def create_topics(details, repo_name):
+    # add topics
+    headers = CaseInsensitiveDict()
+    headers["Accept"] = "application/vnd.github.v3+json"
+    headers["Authorization"] = "Bearer " + decrypt_token(details.token)
+
+    topic_endpoint = f"{GITHUB_API_URL}/repos/statisticsnorway/" + repo_name + "/topics"
+    data = {"names": ["terraform", "dapla-team"]}
+    try:
+        response_json = requests.put(topic_endpoint, data=json.dumps(data), headers=headers)
+        if response_json.status_code == 200:
+            print("Topics added")
+    except requests.RequestException as e:
+        print("Exception::", str(e))
+
+
+def create_repo(details, repo_name):
+    headers = CaseInsensitiveDict()
+    headers["Accept"] = "application/vnd.github.v3+json"
+    headers["Authorization"] = "Bearer " + decrypt_token(details.token)
+
+    repo_endpoint = f"{GITHUB_API_URL}/orgs/statisticsnorway/repos"
+    data = {'name': repo_name, 'visibility': 'internal'}
+
+    # create github repo
+    try:
+        response_json = requests.post(repo_endpoint, data=json.dumps(data), headers=headers)
+        if response_json.status_code == 201:
+            print("Repository created")
+    except requests.RequestException as e:
+        print("Exception::", str(e))
