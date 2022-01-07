@@ -357,7 +357,7 @@ def validate_and_create(details: FormDetails):
     with tempfile.TemporaryDirectory(prefix="cookiecutter") as temp_dir:
         client = get_git_client(details.token)
         user = client.get_user()
-        repo_name = details.user_inputs.get("team_name")
+        repo_name = details.user_inputs.get("project_name")
 
         create_repo(details, repo_name)
 
