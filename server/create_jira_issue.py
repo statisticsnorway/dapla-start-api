@@ -26,8 +26,6 @@ def create_issue(issue_summary, description_text):
     if basic is None or len(basic) == 0:
         print('ABORTING! The env variable JIRA_API_BASIC must be set to be your base64 encoded "email:APIkey" string.')
         exit(1)
-    else:
-        print('Basic authentication string was retrieved from the JIRA_API_BASIC environment variable')
 
     # Prepare the request
     content_type = "application/json"
@@ -154,7 +152,7 @@ def get_issue_description(details: ProjectDetails):
     Teamets leder(e): {details.manager_email_list}
         AD-gruppe: {mgm_group}
         
-    Teamets dataadministratorer: {details.dpo_email_list}
+    Teamets dataadministrator(er): {details.dpo_email_list}
         AD-gruppe: {mgm_group}
     
     Fint om dere kan ordne det!
