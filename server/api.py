@@ -237,7 +237,7 @@ class FormDetails(BaseModel):
     org: str
     repo: str
     cc_context: Dict[str, Any] = {}
-    token: str
+    #token: str
     user_inputs: Dict[str, Any] = {}
     next_key: Optional[str] = None
     next_value: Optional[Union[str, List[str]]] = None
@@ -263,7 +263,7 @@ def form(details: FormDetails):
             details.template.repo,
             details.template.directory,
             details.org,
-            details.token,
+            #details.token,
         )
     details.next_key, details.next_value, details.done = get_next_option(
         details.cc_context, details.user_inputs
@@ -271,9 +271,10 @@ def form(details: FormDetails):
     return details
 
 
-def get_config(repo_name, directory, user_org, token):
+def get_config(repo_name, directory, user_org):
     """Fetches the cookiecutter input template and the user defaults stored in Github."""
-    client = get_git_client(token)
+    #client = get_git_client(token)
+    client = Github()
     cc_repo = client.get_repo(repo_name)
     config_file_path = "cookiecutter.json"
     if directory:
