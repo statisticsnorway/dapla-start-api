@@ -237,7 +237,8 @@ class FormDetails(BaseModel):
     org: str
     repo: str
     cc_context: Dict[str, Any] = {}
-    token: str
+    form_schema: Dict[str, Any] = {}
+    #token: str
     user_inputs: Dict[str, Any] = {}
     next_key: Optional[str] = None
     next_value: Optional[Union[str, List[str]]] = None
@@ -259,11 +260,11 @@ def form(details: FormDetails):
     The end point iteratively asks for the next set of inputs via `next_key` and `next_value`.
     """
     if not details.cc_context:
-        details.cc_context, details.has_defaults = get_config(
+        details.cc_context, details.has_defaults, details.form_schema = get_config(
             details.template.repo,
             details.template.directory,
             details.org,
-            details.token,
+            #details.token,
         )
     details.next_key, details.next_value, details.done = get_next_option(
         details.cc_context, details.user_inputs
@@ -271,28 +272,35 @@ def form(details: FormDetails):
     return details
 
 
-def get_config(repo_name, directory, user_org, token):
+def get_config(repo_name, directory, user_org):
     """Fetches the cookiecutter input template and the user defaults stored in Github."""
-    client = get_git_client(token)
+    #client = get_git_client(token)
+    client = Github()
     cc_repo = client.get_repo(repo_name)
     config_file_path = "cookiecutter.json"
     if directory:
         config_file_path = os.path.join(directory, config_file_path)
+
     context = json.loads(cc_repo.get_contents(config_file_path).decoded_content)
+    context_value = json.loads(cc_repo.get_contents("cookiecutter-data.json").decoded_content)
+
     try:
         config_repo = client.get_repo(f"{user_org}/.github")
     except GithubException:
-        return context, False
+        return context, False, context_value
+
     user_config = os.path.join("cookiecutter", repo_name, config_file_path)
+
     try:
         user_defaults = json.loads(
             config_repo.get_contents(user_config).decoded_content
         )
     except Exception:
-        return context, False
+        return context, False, context_value
     else:
         apply_overwrites_to_context(context, user_defaults)
-    return context, True
+
+    return context, True, context_value
 
 
 def get_next_option(cc_context, user_inputs):
