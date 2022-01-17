@@ -434,3 +434,19 @@ def create_repo(details, repo_name):
             print("Repository created")
     except requests.RequestException as e:
         print("Exception::", str(e))
+
+
+from create_jira_issue import ProjectDetails, create_issue
+
+
+# Creating end point
+@app.post("/create_jira")
+def create(details: ProjectDetails):
+    """
+    Endpoint for Jira issue creation
+    """
+    try:
+        return create_issue(details)
+    except (CalledProcessError, Exception) as error:
+        logger.exception("Error occurred: %s", error)
+        raise HTTPException(status_code=500, detail=f"Error occurred:\n\n{error.stdout.decode()}")
