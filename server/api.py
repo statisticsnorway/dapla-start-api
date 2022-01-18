@@ -444,7 +444,7 @@ def create_repo(details, repo_name):
         print("Exception::", str(e))
 
 
-from create_jira_issue import ProjectDetails, create_issue
+from .create_jira_issue import ProjectDetails, create_issue
 
 
 # Creating end point
