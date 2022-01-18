@@ -3,7 +3,6 @@ import logging
 import os
 import shlex
 import subprocess
-import sys
 import tempfile
 from contextlib import redirect_stdout
 from functools import lru_cache, partial
@@ -448,13 +447,17 @@ from .create_jira_issue import ProjectDetails, create_dapla_start_issue
 
 
 # Creating end point
-@app.post("/create_jira")
+@app.post("/create_jira", status_code=201)
 def create(details: ProjectDetails):
     """
     Endpoint for Jira issue creation
     """
     try:
-        return create_dapla_start_issue(details)
+        print("Got a jira issue creation request.")
+        print("Details:")
+        print(details)
+        response_from_jira = create_dapla_start_issue(details)
+        return json.loads(response_from_jira.text)
     except (CalledProcessError, Exception) as error:
         logger.exception("Error occurred: %s", error)
         raise HTTPException(status_code=500, detail=f"Error occurred:\n\n{error.stdout.decode()}")

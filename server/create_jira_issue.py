@@ -34,9 +34,7 @@ def create_issue(issue_summary, description_text):
     issue_json = get_issue_json(issue_summary=issue_summary, description_text=description_text)
 
     # Send the issue creation request to Jira
-    print("POST new issue")
     r = requests.post(url, headers=headers, data=issue_json)
-    print(f"status code {r.status_code} text {r.text}")
     return r
 
 
