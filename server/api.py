@@ -444,7 +444,7 @@ def create_repo(details, repo_name):
         print("Exception::", str(e))
 
 
-from .create_jira_issue import ProjectDetails, create_issue
+from .create_jira_issue import ProjectDetails, create_dapla_start_issue
 
 
 # Creating end point
@@ -454,7 +454,7 @@ def create(details: ProjectDetails):
     Endpoint for Jira issue creation
     """
     try:
-        return create_issue(details)
+        return create_dapla_start_issue(details)
     except (CalledProcessError, Exception) as error:
         logger.exception("Error occurred: %s", error)
         raise HTTPException(status_code=500, detail=f"Error occurred:\n\n{error.stdout.decode()}")

@@ -1,6 +1,6 @@
 import json
 import os
-from typing import List
+from typing import List, Optional
 import requests
 from pydantic import BaseModel
 
@@ -9,10 +9,10 @@ class ProjectDetails(BaseModel):
     display_team_name: str
     uniform_team_name: str
     manager_email_list: List[str]
-    dpo_email_list: List[str]
-    dev_email_list: List[str]
-    consumer_email_list: List[str]
-    service_list: List[str]
+    dpo_email_list: Optional[List[str]]
+    dev_email_list: Optional[List[str]]
+    consumer_email_list: Optional[List[str]]
+    service_list: Optional[List[str]]
 
 
 def create_dapla_start_issue(details: ProjectDetails):
@@ -221,5 +221,12 @@ if __name__ == "__main__":
     }
     project_details = ProjectDetails.parse_obj(det_dict)
 
+    minimal_det_dict = {
+        "display_team_name": "Team Minimal",
+        "uniform_team_name": "minimal",
+        "manager_email_list": ["min@ssb.no"]
+    }
+    min_project_details = ProjectDetails.parse_obj(minimal_det_dict)
+
     # Creation
-    create_dapla_start_issue(project_details)
+    create_dapla_start_issue(min_project_details)
