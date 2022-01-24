@@ -6,6 +6,7 @@ from pydantic import BaseModel
 
 
 class ProjectDetails(BaseModel):
+    authorization_code: str
     display_team_name: str
     uniform_team_name: str
     manager_email_list: List[str]
@@ -16,11 +17,11 @@ class ProjectDetails(BaseModel):
 
 
 def create_dapla_start_issue(details: ProjectDetails):
+    return create_jira_issue_3lo(details)
+
+
+def create_issue_basic(details: ProjectDetails):
     issue_summary, description_text = get_issue_description(details)
-    return create_issue(issue_summary, description_text)
-
-
-def create_issue(issue_summary, description_text):
     # Retrieve the API key secret from the environment
     basic = os.environ.get('JIRA_API_BASIC')
     if basic is None or len(basic) == 0:
@@ -189,7 +190,7 @@ def generic_issue_creation_test():
             print(f'The env variable {authentication_env_var} must be set to be a base64 encoded "email:key" string')
             exit(1)
 
-    create_issue(issue_summary, issue_description)
+    create_issue_basic(issue_summary, issue_description)
 
 
 def get_authorization_url(client_id="3mvYlLJX466VodaubZTD0WcpOSHOnAqa", user_bound_value=""):
@@ -227,7 +228,17 @@ def get_cloud_id(access_token):
     cloud_id = data[0]["id"]
     return cloud_id
 
-def make_3lo_request(api="/rest/api/3/issue", )
+
+def create_jira_issue_3lo(details, client_id="3mvYlLJX466VodaubZTD0WcpOSHOnAqa", callback_url="https://start.dapla.ssb.no/", api="/rest/api/3/issue"):
+    issue_summary, description_text = get_issue_description(details)
+    access_token = get_access_token(details.authorization_code, client_id, callback_url)
+    cloud_id = get_cloud_id(access_token)
+    final_url = f"https://api.atlassian.com/ex/jira/{cloud_id}{api}"
+    headers = {"Authorization": f"Bearer {access_token}", "Content-Type": "application/json"}
+    issue_json = get_issue_json(issue_summary=issue_summary, description_text=description_text)
+    response = requests.post(url=final_url, headers=headers, data=issue_json)
+    return response
+
 
 if __name__ == "__main__":
     """
