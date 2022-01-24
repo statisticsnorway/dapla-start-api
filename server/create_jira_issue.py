@@ -192,6 +192,43 @@ def generic_issue_creation_test():
     create_issue(issue_summary, issue_description)
 
 
+def get_authorization_url(client_id="3mvYlLJX466VodaubZTD0WcpOSHOnAqa", user_bound_value=""):
+    url_string = (f"https://auth.atlassian.com/authorize"
+                  f"?audience=api.atlassian.com"
+                  f"&client_id={client_id}"
+                  f"&scope=read%3Ajira-user%20write%3Ajira-work%20read%3Ajira-work"
+                  f"&redirect_uri=https%3A%2F%2Fstart.dapla.ssb.no%2F"
+                  f"&state={user_bound_value}"  # (required for security) Set this to a value that is associated with the user you are directing to the authorization URL, for example, a hash of the user's session ID.
+                  f"&response_type=code&prompt=consent")
+    # If successful, the user will be redirected to the app's callback URL,
+    # with an authorization code provided as a query parameter called code.
+    # This code can be exchanged for an access token, as described in step 2.
+    return url_string
+
+
+def get_access_token(authorization_code, client_id="3mvYlLJX466VodaubZTD0WcpOSHOnAqa", callback_url="https://start.dapla.ssb.no/"):
+    atlassian_oauth_token_url = "https://auth.atlassian.com/oauth/token"
+    client_secret = os.getenv("OAUTH_2_CLIENT_SECRET")
+    headers = {"Content-Type": "application/json"}
+    data = {"grant_type": "authorization_code",
+            "client_id": client_id,
+            "client_secret": client_secret,
+            "code": authorization_code,
+            "redirect_uri": callback_url}
+    r = requests.get(atlassian_oauth_token_url, headers=headers, data=json.dumps(data))
+    return r
+
+
+def get_cloud_id(access_token):
+    accessible_resources_url = "https://api.atlassian.com/oauth/token/accessible-resources"
+    headers = {"Authorization": f"Bearer {access_token}"}
+    accessible_resources_response = requests.get(url=accessible_resources_url, headers=headers)
+    data = json.loads(accessible_resources_response.text)
+    cloud_id = data[0]["id"]
+    return cloud_id
+
+def make_3lo_request(api="/rest/api/3/issue", )
+
 if __name__ == "__main__":
     """
     This main is for the purposes of testing the jira issue creation functionality.
