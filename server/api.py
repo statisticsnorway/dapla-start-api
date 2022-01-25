@@ -22,8 +22,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from github import Github, GithubException
 from pydantic import BaseModel
 from requests.structures import CaseInsensitiveDict
+from prometheus_fastapi_instrumentator import Instrumentator
 
 app = FastAPI()
+Instrumentator().instrument(app).expose(app)
 
 origins = ["*"]
 
