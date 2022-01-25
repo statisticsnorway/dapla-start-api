@@ -193,7 +193,7 @@ def generic_issue_creation_test():
     create_issue_basic(issue_summary, issue_description)
 
 
-def get_authorization_url(client_id="3mvYlLJX466VodaubZTD0WcpOSHOnAqa", user_bound_value=""):
+def get_authorization_url(user_bound_value, client_id="3mvYlLJX466VodaubZTD0WcpOSHOnAqa"):
     url_string = (f"https://auth.atlassian.com/authorize"
                   f"?audience=api.atlassian.com"
                   f"&client_id={client_id}"
