@@ -443,12 +443,12 @@ def create_repo(details, repo_name):
         print("Exception::", str(e))
 
 
-from .create_jira_issue import ProjectDetails, create_dapla_start_issue
+from .create_jira_issue import ProjectDetails, create_dapla_start_issue, get_authorization_url
 
 
-# Creating end point
+# Jira issue creation end point
 @app.post("/create_jira", status_code=201)
-def create(details: ProjectDetails):
+def create_issue(details: ProjectDetails):
     """
     Endpoint for Jira issue creation
     """
@@ -461,3 +461,19 @@ def create(details: ProjectDetails):
     except (CalledProcessError, Exception) as error:
         logger.exception("Error occurred: %s", error)
         raise HTTPException(status_code=500, detail=f"Error occurred:\n\n{error.stdout.decode()}")
+
+
+@app.get("/auth_url", status_code=200)
+def auth_url(user_bound_value: str):
+    """
+    Endpoint for authorization url creation
+    """
+    try:
+        print(f"Got an auth_url request. Details: {user_bound_value}")
+        user_auth_url = get_authorization_url(user_bound_value)
+        response_data = {"auth_url": user_auth_url, "user_bound_value": user_bound_value}
+        return response_data
+    except Exception as error:
+        logger.exception("Error occurred: %s", error)
+        raise HTTPException(status_code=500, detail=f"Error occurred:\n\n{error.stdout.decode()}")
+
