@@ -32,14 +32,14 @@ def create_issue_basic(details: ProjectDetails):
     content_type = "application/json"
     url = "https://statistics-norway.atlassian.net/rest/api/3/issue"
     headers = {"Content-Type": content_type, "Authorization": f"Basic {basic}"}
-    issue_json = get_issue_json(issue_summary=issue_summary, description_text=description_text)
+    issue_dict = get_issue_dict(issue_summary=issue_summary, description_text=description_text)
 
     # Send the issue creation request to Jira
-    r = requests.post(url, headers=headers, data=issue_json)
+    r = requests.post(url, headers=headers, data=json.dumps(issue_dict))
     return r
 
 
-def get_issue_json(issue_summary="Default issue summary, created from python", description_text="default description"):
+def get_issue_dict(issue_summary="Default issue summary, created from python", description_text="default description"):
     issue_dict = {
         "fields": {
             "project": {
@@ -66,7 +66,7 @@ def get_issue_json(issue_summary="Default issue summary, created from python", d
             }
         }
     }
-    return json.dumps(issue_dict)
+    return issue_dict
 
 
 def get_issue_description(details: ProjectDetails):
@@ -195,48 +195,74 @@ def generic_issue_creation_test():
 
 def get_authorization_url(user_bound_value, client_id="3mvYlLJX466VodaubZTD0WcpOSHOnAqa"):
     url_string = (f"https://auth.atlassian.com/authorize"
-                  f"?audience=api.atlassian.com"
-                  f"&client_id={client_id}"
-                  f"&scope=read%3Ajira-user%20write%3Ajira-work%20read%3Ajira-work"
-                  f"&redirect_uri=https%3A%2F%2Fstart.dapla.ssb.no%2F"
-                  f"&state={user_bound_value}"  # (required for security) Set this to a value that is associated with the user you are directing to the authorization URL, for example, a hash of the user's session ID.
-                  f"&response_type=code&prompt=consent")
+                 f"?audience=api.atlassian.com"
+                 f"&client_id={client_id}"
+                 f"&scope=write%3Aissue%3Ajira%20read%3Aproject%3Ajira%20write%3Acomment.property%3Ajira%20write%3Acomment%3Ajira%20write%3Aattachment%3Ajira%20read%3Aissue%3Ajira"
+                 f"&redirect_uri=https%3A%2F%2Fstart.dapla.ssb.no%2F2"
+                 f"&response_type=code"
+                 f"&prompt=consent"
+                 f"&state=${user_bound_value}") # (required for security) Set this to a value that is associated with the user you are directing to the authorization URL, for example, a hash of the user's session ID.
     # If successful, the user will be redirected to the app's callback URL,
     # with an authorization code provided as a query parameter called code.
     # This code can be exchanged for an access token, as described in step 2.
+    # State (user bound value) will be preserved.
     return url_string
 
 
-def get_access_token(authorization_code, client_id="3mvYlLJX466VodaubZTD0WcpOSHOnAqa", callback_url="https://start.dapla.ssb.no/"):
+def get_access_token(authorization_code, client_id="3mvYlLJX466VodaubZTD0WcpOSHOnAqa", callback_url="https://start.dapla.ssb.no/2"):
     atlassian_oauth_token_url = "https://auth.atlassian.com/oauth/token"
     client_secret = os.getenv("OAUTH_2_CLIENT_SECRET")
+    if client_secret is None or client_secret == "":
+        raise EnvironmentError("OAUTH_2_CLIENT_SECRET was not present in environment!")
+    else:
+        print("[INFO] oauth2 client secret variable was present in env")
     headers = {"Content-Type": "application/json"}
     data = {"grant_type": "authorization_code",
             "client_id": client_id,
             "client_secret": client_secret,
             "code": authorization_code,
             "redirect_uri": callback_url}
-    r = requests.get(atlassian_oauth_token_url, headers=headers, data=json.dumps(data))
+    r = requests.post(atlassian_oauth_token_url, headers=headers, data=json.dumps(data))
     return r
 
 
 def get_cloud_id(access_token):
+    """
+    The cloud id is an identifier for the jira cloud project that you are trying to hit with the api.
+    """
     accessible_resources_url = "https://api.atlassian.com/oauth/token/accessible-resources"
     headers = {"Authorization": f"Bearer {access_token}"}
     accessible_resources_response = requests.get(url=accessible_resources_url, headers=headers)
-    data = json.loads(accessible_resources_response.text)
-    cloud_id = data[0]["id"]
+    data_dict = json.loads(accessible_resources_response.text)
+    print("[INFO] accessible_resources_response as data dictionary")
+    print(data_dict)
+    cloud_id = data_dict[0]["id"]
     return cloud_id
 
 
-def create_jira_issue_3lo(details, client_id="3mvYlLJX466VodaubZTD0WcpOSHOnAqa", callback_url="https://start.dapla.ssb.no/", api="/rest/api/3/issue"):
+def create_jira_issue_3lo(details, client_id="3mvYlLJX466VodaubZTD0WcpOSHOnAqa", callback_url="https://start.dapla.ssb.no/2", api="/rest/api/3/issue"):
+    print(f"[DEBUG] jira issue creation 3LO method started...")
     issue_summary, description_text = get_issue_description(details)
-    access_token = get_access_token(details.authorization_code, client_id, callback_url)
-    cloud_id = get_cloud_id(access_token)
-    final_url = f"https://api.atlassian.com/ex/jira/{cloud_id}{api}"
+    get_access_token_response = get_access_token(details.authorization_code, client_id, callback_url)
+    if get_access_token_response.status_code != 200:
+        raise Exception(f"Access token request returned non-200 status code. Response: {get_access_token_response}")
+    print("[DEBUG] access token retrieved with status 200")
+    response_dict = json.loads(get_access_token_response.text)
+    access_token = response_dict["access_token"]
+    response_dict["access_token"] = "REDACTED"
+    print(f"[DEBUG] access token response dict: {response_dict}")
+    cloud_id = get_cloud_id(access_token)  # id for statistics-norway should be bdafa676-276d-441e-a450-26547c4959cf
+    print(f"[DEBUG] organization cloud id: {cloud_id}")
+    final_jira_api_post_url = f"https://api.atlassian.com/ex/jira/{cloud_id}{api}"
+    print(f"[DEBUG] final jira cloud oauth2 api post url: {final_jira_api_post_url}")
     headers = {"Authorization": f"Bearer {access_token}", "Content-Type": "application/json"}
-    issue_json = get_issue_json(issue_summary=issue_summary, description_text=description_text)
-    response = requests.post(url=final_url, headers=headers, data=issue_json)
+    issue_dict = get_issue_dict(issue_summary=issue_summary, description_text=description_text)
+    print(f"[DEBUG] issue dictionary: {issue_dict}")
+    print(f"[DEBUG] posting issue json to jira")
+    response = requests.post(url=final_jira_api_post_url, headers=headers, data=json.dumps(issue_dict))
+    if response.status_code != 201:
+        raise Exception(f"[ERROR] Jira issue was not created by post request to jira! "
+                        f"Response: {response} Text: {response.text}")
     return response
 
 
@@ -244,7 +270,6 @@ if __name__ == "__main__":
     """
     This main is for the purposes of testing the jira issue creation functionality.
     """
-
     # Basic auth
     authentication_env_var = 'JIRA_API_BASIC'
     basic = os.environ.get(authentication_env_var)
@@ -252,7 +277,7 @@ if __name__ == "__main__":
         os.environ[authentication_env_var] = ""  # insert base64 encoded "email:key" here
         basic = os.environ.get(authentication_env_var)
         if basic is None or len(basic) == 0:
-            print(f'The env variable {authentication_env_var} must be set to be a base64 encoded "email:key" string')
+            print(f'[ERROR] The env variable {authentication_env_var} must be set to be a base64 encoded "email:key" string')
             exit(1)
 
     # Team info
