@@ -464,14 +464,14 @@ def create_issue(details: ProjectDetails):
 
 
 @app.get("/auth_url", status_code=200)
-def auth_url(user_bound_value: str):
+def auth_url(state: str):
     """
     Endpoint for authorization url creation
     """
     try:
-        print(f"Got an auth_url request. Details: {user_bound_value}")
-        user_auth_url = get_authorization_url(user_bound_value)
-        response_data = {"auth_url": user_auth_url, "user_bound_value": user_bound_value}
+        print(f"Got an auth_url request. Details: {state}")
+        user_auth_url = get_authorization_url(state)
+        response_data = {"auth_url": user_auth_url, "state": state}
         return response_data
     except Exception as error:
         logger.exception("Error occurred: %s", error)

@@ -193,7 +193,7 @@ def generic_issue_creation_test():
     create_issue_basic(issue_summary, issue_description)
 
 
-def get_authorization_url(user_bound_value, client_id="3mvYlLJX466VodaubZTD0WcpOSHOnAqa"):
+def get_authorization_url(state, client_id="3mvYlLJX466VodaubZTD0WcpOSHOnAqa"):
     url_string = (f"https://auth.atlassian.com/authorize"
                  f"?audience=api.atlassian.com"
                  f"&client_id={client_id}"
@@ -201,7 +201,7 @@ def get_authorization_url(user_bound_value, client_id="3mvYlLJX466VodaubZTD0WcpO
                  f"&redirect_uri=https%3A%2F%2Fstart.dapla.ssb.no%2F2"
                  f"&response_type=code"
                  f"&prompt=consent"
-                 f"&state=${user_bound_value}") # (required for security) Set this to a value that is associated with the user you are directing to the authorization URL, for example, a hash of the user's session ID.
+                 f"&state=${state}") # (required for security) Set this to a value that is associated with the user you are directing to the authorization URL, for example, a hash of the user's session ID.
     # If successful, the user will be redirected to the app's callback URL,
     # with an authorization code provided as a query parameter called code.
     # This code can be exchanged for an access token, as described in step 2.
