@@ -91,8 +91,9 @@ def get_issue_description(details: ProjectDetails):
     con_group = f"{uniform_team_name}-consumers{domain}"
 
     services_dict = {"display_team_name": details.display_team_name}
-    for service in details.enabled_services:
-        services_dict[f"enable_{service}"] = "yes"
+    if details.enabled_services and isinstance(details.enabled_services, list):
+        for service in details.enabled_services:
+            services_dict[f"enable_{service}"] = "yes"
 
     # The body of the jira issue
     description = f"""
