@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dapla-start-api"
-version = "0.1.4"
+version = "0.2.0"
 description = ""
 authors = ["Team Argus"]
 
@@ -8,12 +8,7 @@ authors = ["Team Argus"]
 python = "^3.9"
 fastapi = "^0.70.1"
 uvicorn = "^0.16.0"
-PyGithub = "^1.55"
-black = "^21.12b0"
-isort = "^5.10.1"
-cookiecutter = "^1.7.3"
 requests = "^2.26.0"
-cryptography = "^3.2"
 PyYAML = "^6.0"
 prometheus-fastapi-instrumentator = "^5.7.1"
 
