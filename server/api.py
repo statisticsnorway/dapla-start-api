@@ -2,14 +2,15 @@ import json
 import logging
 from subprocess import CalledProcessError
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware
 from prometheus_fastapi_instrumentator import Instrumentator
 
 from .create_jira_issue import ProjectDetails, create_issue_basic
 
 app = FastAPI()
-Instrumentator().instrument(app).expose(app)
+instrumentator = Instrumentator(excluded_handlers=["/health/.*", "/metrics"])
+instrumentator.instrument(app).expose(app)
 
 origins = ["*"]
 
@@ -48,15 +49,11 @@ def create_issue(details: ProjectDetails):
     Endpoint for Jira issue creation using basic auth
     """
     try:
-        logging.info("Got a jira issue creation request, using Basic auth.")
-        logging.debug("Details:")
-        logging.debug(details)
+        logging.info(f"Got a jira issue creation request. Details:\n{details.json()}")
         response_from_jira = create_issue_basic(details)
         logging.debug(response_from_jira)
-
         return json.loads(response_from_jira.text)
     except (CalledProcessError, Exception) as error:
         logging.exception("Error occurred: %s", error)
-
         raise HTTPException(status_code=500, detail=f"Error occurred:\n\n{error.stdout.decode()}")
 
