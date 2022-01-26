@@ -59,3 +59,4 @@ def create_issue(details: ProjectDetails):
         logging.exception("Error occurred: %s", error)
 
         raise HTTPException(status_code=500, detail=f"Error occurred:\n\n{error.stdout.decode()}")
+
