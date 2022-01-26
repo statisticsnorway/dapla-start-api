@@ -447,9 +447,8 @@ from .create_jira_issue import ProjectDetails, create_dapla_start_issue, get_aut
     create_issue_basic
 
 
-# Jira issue creation end point
 @app.post("/create_jira_basic", status_code=201)
-def create_issue(details: ProjectDetails):
+def create_issue_basic(details: ProjectDetails):
     """
     Endpoint for Jira issue creation using basic auth
     """
@@ -464,9 +463,8 @@ def create_issue(details: ProjectDetails):
         raise HTTPException(status_code=500, detail=f"Error occurred:\n\n{error.stdout.decode()}")
 
 
-# Jira issue creation end point
 @app.post("/create_jira_3LO", status_code=201)
-def create_issue(details: ProjectDetails):
+def create_issue_3lo(details: ProjectDetails):
     """
     Endpoint for Jira issue creation using 3LO
     """
