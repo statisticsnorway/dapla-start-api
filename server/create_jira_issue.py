@@ -110,19 +110,19 @@ def get_issue_description(details: ProjectDetails):
     
     Managers:
         AD group: {mgm_group}
-        members: {details.manager_email_list}
+        members: {details.manager}
         
     Data Protection Officers:
         AD group: {dpo_group}
-        members: {details.dpo_email_list}
+        members: {details.data_protection_officers}
         
     Developers:
         AD group: {dev_group}
-        members: {details.dev_email_list}
+        members: {details.developers}
         
     Consumers:
         AD group: {con_group}
-        members: {details.consumer_email_list}
+        members: {details.consumers}
         
     
     ** 2. bip-gcp-base-config **
@@ -153,7 +153,7 @@ def get_issue_description(details: ProjectDetails):
  
  
     ** 6. Additional Services **
-    Requested services: {details.service_list}
+    Requested services: {details.enabled_services}
     
     If transfer service is requested, send a request to Kundeservice. 
     Kundeservice needs to set up the transfer service agent and directory in linuxstammen.
@@ -163,10 +163,10 @@ def get_issue_description(details: ProjectDetails):
     
     Det nye dapla teamet '{details.display_team_name}' ({uniform_team_name}) trenger transfer service satt opp for seg.
     
-    Teamets leder(e): {details.manager_email_list}
+    Teamets leder(e): {details.manager}
         AD-gruppe: {mgm_group}
         
-    Teamets dataadministrator(er): {details.dpo_email_list}
+    Teamets dataadministrator(er): {details.data_protection_officers}
         AD-gruppe: {mgm_group}
     
     Fint om dere kan ordne det!
@@ -175,7 +175,7 @@ def get_issue_description(details: ProjectDetails):
     '''
     
     After kundeservice has activated the agent and created the directory structure in linuxstammen, 
-    you can refer the managers ({details.manager_email_list}) and/or DPOs ({details.dpo_email_list}) to the docs
+    you can refer the managers ({details.manager}) and/or DPOs ({details.data_protection_officers}) to the docs
     for activating the transfer service on the GCP side:
     
     https://docs.dapla.ssb.no/dapla-user/transfer/
