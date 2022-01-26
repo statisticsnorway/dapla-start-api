@@ -449,7 +449,7 @@ from .create_jira_issue import ProjectDetails, create_issue_basic
 
 
 @app.post("/create_jira", status_code=201)
-def create_issue_basic(details: ProjectDetails):
+def create_issue(details: ProjectDetails):
     """
     Endpoint for Jira issue creation using basic auth
     """
@@ -458,6 +458,7 @@ def create_issue_basic(details: ProjectDetails):
         print("Details:")
         print(details)
         response_from_jira = create_issue_basic(details)
+        print(response_from_jira)
         return json.loads(response_from_jira.text)
     except (CalledProcessError, Exception) as error:
         logger.exception("Error occurred: %s", error)
