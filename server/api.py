@@ -445,20 +445,38 @@ def create_repo(details, repo_name):
         print("Exception::", str(e))
 
 
-from .create_jira_issue import ProjectDetails, create_dapla_start_issue, get_authorization_url
+from .create_jira_issue import ProjectDetails, create_dapla_start_issue, get_authorization_url, create_jira_issue_3lo, \
+    create_issue_basic
 
 
 # Jira issue creation end point
-@app.post("/create_jira", status_code=201)
+@app.post("/create_jira_basic", status_code=201)
 def create_issue(details: ProjectDetails):
     """
-    Endpoint for Jira issue creation
+    Endpoint for Jira issue creation using basic auth
     """
     try:
-        print("Got a jira issue creation request.")
+        print("Got a jira issue creation request, using Basic auth.")
         print("Details:")
         print(details)
-        response_from_jira = create_dapla_start_issue(details)
+        response_from_jira = create_issue_basic(details)
+        return json.loads(response_from_jira.text)
+    except (CalledProcessError, Exception) as error:
+        logger.exception("Error occurred: %s", error)
+        raise HTTPException(status_code=500, detail=f"Error occurred:\n\n{error.stdout.decode()}")
+
+
+# Jira issue creation end point
+@app.post("/create_jira_3LO", status_code=201)
+def create_issue(details: ProjectDetails):
+    """
+    Endpoint for Jira issue creation using 3LO
+    """
+    try:
+        print("Got a jira issue creation request, using 3LO auth.")
+        print("Details:")
+        print(details)
+        response_from_jira = create_jira_issue_3lo(details)
         return json.loads(response_from_jira.text)
     except (CalledProcessError, Exception) as error:
         logger.exception("Error occurred: %s", error)

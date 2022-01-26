@@ -6,7 +6,6 @@ from pydantic import BaseModel
 
 
 class ProjectDetails(BaseModel):
-    authorization_code: str
     display_team_name: str
     uniform_team_name: str
     manager_email_list: List[str]
@@ -14,6 +13,7 @@ class ProjectDetails(BaseModel):
     dev_email_list: Optional[List[str]]
     consumer_email_list: Optional[List[str]]
     service_list: Optional[List[str]]
+    authorization_code: Optional[str]
 
 
 def create_dapla_start_issue(details: ProjectDetails):
@@ -241,6 +241,14 @@ def get_cloud_id(access_token):
 
 
 def create_jira_issue_3lo(details, client_id="3mvYlLJX466VodaubZTD0WcpOSHOnAqa", callback_url="https://start.dapla.ssb.no/2", api="/rest/api/3/issue"):
+    """
+
+    :param details: Must contain the authorization_code optional field! This can be retrieved from the auth step.
+    :param client_id:
+    :param callback_url:
+    :param api:
+    :return:
+    """
     print(f"[DEBUG] jira issue creation 3LO method started...")
     issue_summary, description_text = get_issue_description(details)
     get_access_token_response = get_access_token(details.authorization_code, client_id, callback_url)
