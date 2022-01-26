@@ -445,11 +445,10 @@ def create_repo(details, repo_name):
         print("Exception::", str(e))
 
 
-from .create_jira_issue import ProjectDetails, create_dapla_start_issue, get_authorization_url, create_jira_issue_3lo, \
-    create_issue_basic
+from .create_jira_issue import ProjectDetails, create_issue_basic
 
 
-@app.post("/create_jira_basic", status_code=201)
+@app.post("/create_jira", status_code=201)
 def create_issue_basic(details: ProjectDetails):
     """
     Endpoint for Jira issue creation using basic auth
@@ -461,37 +460,6 @@ def create_issue_basic(details: ProjectDetails):
         response_from_jira = create_issue_basic(details)
         return json.loads(response_from_jira.text)
     except (CalledProcessError, Exception) as error:
-        logger.exception("Error occurred: %s", error)
-        raise HTTPException(status_code=500, detail=f"Error occurred:\n\n{error.stdout.decode()}")
-
-
-@app.post("/create_jira_3LO", status_code=201)
-def create_issue_3lo(details: ProjectDetails):
-    """
-    Endpoint for Jira issue creation using 3LO
-    """
-    try:
-        print("Got a jira issue creation request, using 3LO auth.")
-        print("Details:")
-        print(details)
-        response_from_jira = create_jira_issue_3lo(details)
-        return json.loads(response_from_jira.text)
-    except (CalledProcessError, Exception) as error:
-        logger.exception("Error occurred: %s", error)
-        raise HTTPException(status_code=500, detail=f"Error occurred:\n\n{error.stdout.decode()}")
-
-
-@app.get("/auth_url", status_code=200)
-def auth_url(state: str):
-    """
-    Endpoint for authorization url creation
-    """
-    try:
-        print(f"Got an auth_url request. Details: {state}")
-        user_auth_url = get_authorization_url(state)
-        response_data = {"auth_url": user_auth_url, "state": state}
-        return response_data
-    except Exception as error:
         logger.exception("Error occurred: %s", error)
         raise HTTPException(status_code=500, detail=f"Error occurred:\n\n{error.stdout.decode()}")
 

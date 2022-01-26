@@ -2,18 +2,17 @@ import json
 import os
 from typing import List, Optional
 import requests
+import yaml
 from pydantic import BaseModel
 
 
 class ProjectDetails(BaseModel):
     display_team_name: str
-    uniform_team_name: str
-    manager_email_list: List[str]
-    dpo_email_list: Optional[List[str]]
-    dev_email_list: Optional[List[str]]
-    consumer_email_list: Optional[List[str]]
-    service_list: Optional[List[str]]
-    authorization_code: Optional[str]
+    manager: str
+    data_protection_officers: Optional[List[str]]
+    developers: Optional[List[str]]
+    consumers: Optional[List[str]]
+    enabled_services: Optional[List[str]]
 
 
 def create_dapla_start_issue(details: ProjectDetails):
@@ -69,6 +68,12 @@ def get_issue_dict(issue_summary="Default issue summary, created from python", d
     return issue_dict
 
 
+# TODO: Verify this
+def convert_display_name_to_uniform_team_name(display_team_name):
+    uniform_team_name = display_team_name.lower().replace(" ", "-").replace("team", "").replace("æ", "ae").replace("ø", "oe").replace("å", "aa")
+    return uniform_team_name
+
+
 def get_issue_description(details: ProjectDetails):
     """
     This function generates the issue description which contains all the information needed in order to complete
@@ -77,16 +82,26 @@ def get_issue_description(details: ProjectDetails):
     :return: The summary and complete issue description containing all information needed to create a Dapla team
     """
     summary = f"On-boarding: {details.display_team_name}"  # This is the "header" of the Jira issue
-    iac_git_project_name = f"dapla-team-{details.uniform_team_name}"
+    uniform_team_name = convert_display_name_to_uniform_team_name(details.display_team_name)
+    iac_git_project_name = f"dapla-team-{uniform_team_name}"
     domain = "@groups.ssb.no"
-    mgm_group = f"{details.uniform_team_name}-managers{domain}"
-    dpo_group = f"{details.uniform_team_name}-data-protection-officers{domain}"
-    dev_group = f"{details.uniform_team_name}-developers{domain}"
-    con_group = f"{details.uniform_team_name}-consumers{domain}"
+    mgm_group = f"{uniform_team_name}-managers{domain}"
+    dpo_group = f"{uniform_team_name}-data-protection-officers{domain}"
+    dev_group = f"{uniform_team_name}-developers{domain}"
+    con_group = f"{uniform_team_name}-consumers{domain}"
+
+    services_dict = {"display_team_name": details.display_team_name}
+    for service in details.enabled_services:
+        services_dict[f"enable_{service}"] = "yes"
 
     # The body of the jira issue
-    description = f"""Display team name: '{details.display_team_name}'
-    Team name: '{details.uniform_team_name}'
+    description = f"""
+    YAML:
+    ```
+    {yaml.dump(services_dict)}
+    ```
+    
+    Uniform team name: '{uniform_team_name}'
     IAC GIT project name: '{iac_git_project_name}'
     
     ** 1. AD group creation  **
@@ -112,7 +127,7 @@ def get_issue_description(details: ProjectDetails):
     
     ** 2. bip-gcp-base-config **
     AFTER AD groups have been created, add the following line:
-    "{details.uniform_team_name}" : "{mgm_group}
+    "{uniform_team_name}" : "{mgm_group}
     
     ...to the dictionary in this file: 
     https://github.com/statisticsnorway/bip-gcp-base-config/blob/main/terraform.tfvars
@@ -146,7 +161,7 @@ def get_issue_description(details: ProjectDetails):
     '''
     Hei Kundeservice,
     
-    Det nye dapla teamet '{details.display_team_name}' ({details.uniform_team_name}) trenger transfer service satt opp for seg.
+    Det nye dapla teamet '{details.display_team_name}' ({uniform_team_name}) trenger transfer service satt opp for seg.
     
     Teamets leder(e): {details.manager_email_list}
         AD-gruppe: {mgm_group}
