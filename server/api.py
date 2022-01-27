@@ -56,4 +56,3 @@ def create_issue(details: ProjectDetails):
     except (CalledProcessError, Exception) as error:
         logging.exception("Error occurred: %s", error)
         raise HTTPException(status_code=500, detail=f"Error occurred:\n\n{error}")
-

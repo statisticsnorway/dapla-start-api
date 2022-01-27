@@ -1,5 +1,6 @@
-from .project_details import ProjectDetails
 import yaml
+
+from .project_details import ProjectDetails
 
 
 def convert_display_name_to_uniform_team_name(display_team_name):

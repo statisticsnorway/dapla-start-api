@@ -1,11 +1,11 @@
 import json
 import logging
 import os
-from .project_details import ProjectDetails
 
 import requests
 
 from server.jira_issue_adf_template import get_issue_adf_dict
+from .project_details import ProjectDetails
 
 content_type_json = "application/json"
 
