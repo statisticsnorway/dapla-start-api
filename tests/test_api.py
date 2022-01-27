@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 
-from clients import JiraClient
+from server.clients import JiraClient
 from server.api import app, get_jira_client
 
 client = TestClient(app)
