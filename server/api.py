@@ -55,5 +55,4 @@ def create_issue(details: ProjectDetails):
         return json.loads(response_from_jira.text)
     except (CalledProcessError, Exception) as error:
         logging.exception("Error occurred: %s", error)
-        raise HTTPException(status_code=500, detail=f"Error occurred:\n\n{error.stdout.decode()}")
-
+        raise HTTPException(status_code=500, detail=f"Error occurred:\n\n{error}")
