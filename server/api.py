@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from prometheus_fastapi_instrumentator import Instrumentator
 
 from .create_jira_issue import ProjectDetails, create_issue_basic
+from .emneindeling import get_subject_areas_tree_select
 
 app = FastAPI()
 instrumentator = Instrumentator(excluded_handlers=["/health/.*", "/metrics"])
@@ -41,6 +42,21 @@ def health_readiness():
         "name": "dapla-start-api",
         "status": "UP"
     }
+
+
+@app.get("/subject_areas_tree")
+def subject_areas_tree():
+    """
+    Get a TreeSelect-compatible json containing the statistical subject areas of SSB
+    :return:
+    """
+    logging.info("Got an emneindeling-tree request")
+    try:
+        return get_subject_areas_tree_select()
+    except Exception as error:
+        error_text = f"Error occurred while getting statistical subjects tree: {error}"
+        logging.error(error_text)
+        raise HTTPException(status_code=500, detail=error_text)
 
 
 @app.post("/create_jira", status_code=201)
