@@ -1,6 +1,5 @@
-/build
 .DS_Store
 /.idea
-/public/__ENV.js
 
 __pycache__/
+/dapla-start-api.iml
