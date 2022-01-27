@@ -1,11 +1,18 @@
+from datetime import date
+
 import requests
 import json
 
 
+def get_items():
+    yyyy_mm_dd = date.today()
+    get_codes_today_url = f"https://data.ssb.no/api/klass/v1/classifications/15/codesAt?date={yyyy_mm_dd}"
+    response_dict = json.loads(requests.get(get_codes_today_url, headers={"Accept": "application/json"}).text)
+    return response_dict["codes"]
+
+
 def get_subject_areas_tree_select():
-    emneindeling_url = "https://data.ssb.no/api/klass/v1/versions/43.json"
-    emneindeling_klass_response_dict = json.loads(requests.get(emneindeling_url).text)
-    items = emneindeling_klass_response_dict["classificationItems"]
+    items = get_items()
     items_tree = [add_children(item, items) for item in items if item["level"] == "1"]
     tree_dict = {"root": list(map(reformat_node, items_tree))}
     json_dumps = json.dumps(tree_dict, indent=4, ensure_ascii=False)
@@ -30,4 +37,4 @@ def add_children(parent, items_list):
 
 
 if __name__ == "__main__":
-    print(get_emneindeling_tree_select())
+    print(get_subject_areas_tree_select())
