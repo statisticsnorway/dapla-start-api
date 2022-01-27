@@ -10,6 +10,11 @@ local-install: ## Installation steps for local development
 	pip3 install poetry
 	poetry env use python3.9
 
+.PHONY: test
+test: ## Run tests
+	poetry install
+	pytest
+
 .PHONY: local-build
 local-build: ## Build the app for local development
 	poetry install
