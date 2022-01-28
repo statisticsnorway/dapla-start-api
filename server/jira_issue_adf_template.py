@@ -43,7 +43,7 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": f"{yaml.dump(services_dict)}"
+                        "text": f"{yaml.dump(services_dict, allow_unicode=True)}"
                     }
                 ]
             },
