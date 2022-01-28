@@ -32,8 +32,7 @@ def get_subject_areas_tree_select():
     subject_area_list = get_klass_subject_areas()
     items_top_level_list = [add_children(item, subject_area_list) for item in subject_area_list if item["level"] == "1"]
     tree_select_dict = {"root": list(map(reformat_node, items_top_level_list))}
-    json_dumps = json.dumps(tree_select_dict, indent=4, ensure_ascii=False)
-    return json_dumps
+    return tree_select_dict
 
 
 if __name__ == "__main__":
