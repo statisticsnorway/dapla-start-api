@@ -70,6 +70,24 @@ def get_issue_adf_dict(details: ProjectDetails):
                 ]
             },
             {
+                "type": "paragraph",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": f"Reported by: '{details.reporter}'"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": f"Version: '{details.ui_version} (ui) {details.api_version} (api)'"
+                    }
+                ]
+            },
+            {
                 "type": "heading",
                 "attrs": {
                     "level": 2

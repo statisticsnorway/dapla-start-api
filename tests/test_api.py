@@ -37,7 +37,10 @@ def test_create_issue():
 
     response = client.post("/create_jira", json={
         "display_team_name": "My team",
-        "manager": "mymanager"
+        "manager": {
+            "name": "Magnus Manager",
+            "email": "mma@ssb.no"
+        }
     })
     assert response.status_code == 201
     assert response.json() == jira_response
