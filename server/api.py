@@ -1,4 +1,5 @@
 import logging
+import jwt
 from server import __version__
 from subprocess import CalledProcessError
 
@@ -61,7 +62,6 @@ def create_issue(details: ProjectDetails, authorization: Optional[str] = Header(
     try:
         logging.info(f"Got a jira issue creation request. Details:\n{details.json()}")
         if authorization is not None:
-            import jwt
             bearer, _, token = authorization.partition(' ')
             decoded = jwt.decode(token, options={
                 "verify_signature": False,
