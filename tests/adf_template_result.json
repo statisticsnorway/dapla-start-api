@@ -509,11 +509,16 @@
       ]
     },
     {
-      "type": "paragraph",
+      "type": "blockquote",
       "content": [
         {
-          "type": "text",
-          "text": "Hei Stratus, kan dere legge til 'dapla-team-stubbe' i Atlantis?"
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Hei Stratus, kan dere legge til 'dapla-team-stubbe' i Atlantis?"
+            }
+          ]
         }
       ]
     },
@@ -577,7 +582,7 @@
       "content": [
         {
           "type": "text",
-          "text": "Tjenester som er forespurt: None"
+          "text": "Tjenester som er forespurt: Ingen"
         }
       ]
     },
@@ -614,10 +619,6 @@
           "text": "Kundeservice må sette opp en Transfer Service agent og katalog på Linuxstammen."
         }
       ]
-    },
-    {
-      "type": "paragraph",
-      "content": []
     },
     {
       "type": "blockquote",
@@ -691,14 +692,17 @@
             {
               "type": "text",
               "text": "Vennlig hilsen,"
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "…"
             }
           ]
         }
       ]
-    },
-    {
-      "type": "paragraph",
-      "content": []
     },
     {
       "type": "paragraph",

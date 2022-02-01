@@ -380,11 +380,16 @@ def _description(details: ProjectDetails):
                 ]
             },
             {
-                "type": "paragraph",
+                "type": "blockquote",
                 "content": [
                     {
-                        "type": "text",
-                        "text": f"Hei Stratus, kan dere legge til '{iac_git_project_name}' i Atlantis?"
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": f"Hei Stratus, kan dere legge til '{iac_git_project_name}' i Atlantis?"
+                            }
+                        ]
                     }
                 ]
             },
@@ -448,7 +453,7 @@ def _description(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": f"Tjenester som er forespurt: {details.enabled_services}"
+                        "text": f"Tjenester som er forespurt: {details.enabled_services or 'Ingen'}"
                     }
                 ]
             },
@@ -485,10 +490,6 @@ def _description(details: ProjectDetails):
                         "text": "Kundeservice må sette opp en Transfer Service agent og katalog på Linuxstammen."
                     }
                 ]
-            },
-            {
-                "type": "paragraph",
-                "content": []
             },
             {
                 "type": "blockquote",
@@ -562,14 +563,17 @@ def _description(details: ProjectDetails):
                             {
                                 "type": "text",
                                 "text": "Vennlig hilsen,"
+                            },
+                            {
+                                "type": "hardBreak"
+                            },
+                            {
+                                "type": "text",
+                                "text": "…"
                             }
                         ]
                     }
                 ]
-            },
-            {
-                "type": "paragraph",
-                "content": []
             },
             {
                 "type": "paragraph",
