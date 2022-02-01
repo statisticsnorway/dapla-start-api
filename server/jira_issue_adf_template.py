@@ -1,6 +1,9 @@
-import yaml
+from typing import List
 
-from .project_details import ProjectDetails
+import yaml
+import datetime
+
+from .project_details import ProjectDetails, ProjectUser
 
 
 def convert_display_name_to_uniform_team_name(display_team_name):
@@ -11,6 +14,21 @@ def convert_display_name_to_uniform_team_name(display_team_name):
 
 def get_issue_adf_dict(details: ProjectDetails):
     summary = f"On-boarding: {details.display_team_name}"  # This is the "header" of the Jira issue
+    return {
+        "fields": {
+            "project": {
+                "key": "DS"  # DS is the 'key' for the Dapla Start project
+            },
+            "summary": summary,
+            "description": _description(details),
+            "issuetype": {
+                "name": "Task"
+            }
+        }
+    }
+
+
+def _description(details: ProjectDetails):
     uniform_team_name = convert_display_name_to_uniform_team_name(details.display_team_name)
     iac_git_project_name = f"dapla-team-{uniform_team_name}"
     domain = "@groups.ssb.no"
@@ -18,74 +36,91 @@ def get_issue_adf_dict(details: ProjectDetails):
     dpo_group = f"{uniform_team_name}-data-protection-officers{domain}"
     dev_group = f"{uniform_team_name}-developers{domain}"
     con_group = f"{uniform_team_name}-consumers{domain}"
-    services_dict = {"display_team_name": details.display_team_name}
+    technical_details = {
+        "display_team_name": details.display_team_name,
+        "uniform_team_name": uniform_team_name,
+        "github_project_name": iac_git_project_name
+    }
 
     if details.enabled_services and isinstance(details.enabled_services, list):
         for service in details.enabled_services:
-            services_dict[f"enable_{service}"] = "yes"
+            technical_details[f"enable_{service}"] = "yes"
 
     description = {
         "version": 1,
         "type": "doc",
         "content": [
             {
-                "type": "paragraph",
+                "type": "heading",
+                "attrs": {
+                    "level": 1
+                },
                 "content": [
                     {
                         "type": "text",
-                        "text": "YAML:"
+                        "text": f"{details.display_team_name}"
                     }
                 ]
             },
             {
-                "type": "codeBlock",
-                "attrs": {},
+                "type": "panel",
+                "attrs": {
+                    "panelType": "note"
+                },
                 "content": [
                     {
-                        "type": "text",
-                        "text": f"{yaml.dump(services_dict)}"
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": f"Innmeldt av {details.reporter.name if details.reporter else ''} ("
+                            },
+                            {
+                                "type": "text",
+                                "text": f"{details.reporter.email if details.reporter else ''}",
+                                "marks": [
+                                    {
+                                        "type": "link",
+                                        "attrs": {
+                                            "href": f"mailto:{details.reporter.email if details.reporter else ''}"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "text",
+                                "text": f") den {datetime.datetime.now().strftime('%d.%m.%Y')}"
+                            },
+                            {
+                                "type": "hardBreak"
+                            },
+                            {
+                                "type": "text",
+                                "text": f"GUI-versjon: {details.ui_version}, API-versjon {details.api_version}",
+                                "marks": [
+                                    {
+                                        "type": "subsup",
+                                        "attrs": {
+                                            "type": "sub"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             },
             {
                 "type": "paragraph",
-                "content": []
-            },
-            {
-                "type": "paragraph",
                 "content": [
                     {
                         "type": "text",
-                        "text": f"Uniform team name: '{uniform_team_name}'"
+                        "text": "Her følger en liste med manuelle steg som må utføres før teamet er klart på Dapla."
                     }
                 ]
             },
             {
-                "type": "paragraph",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": f"“Infrastructure as Code” GitHub project name: '{iac_git_project_name}'"
-                    }
-                ]
-            },
-            {
-                "type": "paragraph",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": f"Reported by: '{details.reporter}'"
-                    }
-                ]
-            },
-            {
-                "type": "paragraph",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": f"Version: '{details.ui_version} (ui) {details.api_version} (api)'"
-                    }
-                ]
+                "type": "rule"
             },
             {
                 "type": "heading",
@@ -95,7 +130,7 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": "1. AD group creation"
+                        "text": "1. Opprette tilgangsgrupper"
                     }
                 ]
             },
@@ -104,7 +139,7 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": "These AD groups should be created for the team. Send the request to "
+                        "text": "Følgende tilgangsgrupper må opprettes ved å sende en e-post til "
                     },
                     {
                         "type": "text",
@@ -125,137 +160,74 @@ def get_issue_adf_dict(details: ProjectDetails):
                 ]
             },
             {
-                "type": "paragraph",
+                "type": "table",
+                "attrs": {
+                    "isNumberColumnEnabled": False,
+                    "layout": "default",
+                    "localId": "72372212-4247-4646-818b-11f4681f924c"
+                },
                 "content": [
                     {
-                        "type": "text",
-                        "text": f"AD group: {mgm_group}"
-                    }
-                ]
-            },
-            {
-                "type": "bulletList",
-                "content": [
-                    {
-                        "type": "listItem",
+                        "type": "tableRow",
                         "content": [
                             {
-                                "type": "paragraph",
+                                "type": "tableHeader",
+                                "attrs": {},
                                 "content": [
                                     {
-                                        "type": "text",
-                                        "text": f"members: {details.manager}"
+                                        "type": "paragraph",
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "Gruppenavn",
+                                                "marks": [
+                                                    {
+                                                        "type": "strong"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "tableHeader",
+                                "attrs": {},
+                                "content": [
+                                    {
+                                        "type": "paragraph",
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "Medlemmer",
+                                                "marks": [
+                                                    {
+                                                        "type": "strong"
+                                                    }
+                                                ]
+                                            }
+                                        ]
                                     }
                                 ]
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                "type": "paragraph",
-                "content": []
-            },
-            {
-                "type": "paragraph",
-                "content": [
+                    },
                     {
-                        "type": "text",
-                        "text": f"AD group: {dpo_group}"
-                    }
-                ]
-            },
-            {
-                "type": "bulletList",
-                "content": [
+                        "type": "tableRow",
+                        "content": _table_group_cells(mgm_group, [details.manager])
+                    },
                     {
-                        "type": "listItem",
-                        "content": [
-                            {
-                                "type": "paragraph",
-                                "content": [
-                                    {
-                                        "type": "text",
-                                        "text": f"members: {details.data_protection_officers}"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "type": "paragraph",
-                "content": [
+                        "type": "tableRow",
+                        "content": _table_group_cells(dpo_group, details.data_protection_officers)
+                    },
                     {
-                        "type": "text",
-                        "text": "    "
-                    }
-                ]
-            },
-            {
-                "type": "paragraph",
-                "content": [
+                        "type": "tableRow",
+                        "content": _table_group_cells(dev_group, details.developers)
+                    },
                     {
-                        "type": "text",
-                        "text": f"AD group: {dev_group}"
-                    }
-                ]
-            },
-            {
-                "type": "bulletList",
-                "content": [
-                    {
-                        "type": "listItem",
-                        "content": [
-                            {
-                                "type": "paragraph",
-                                "content": [
-                                    {
-                                        "type": "text",
-                                        "text": f"members: {details.developers}"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "type": "paragraph",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": "    "
-                    }
-                ]
-            },
-            {
-                "type": "paragraph",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": f"AD group: {con_group}"
-                    }
-                ]
-            },
-            {
-                "type": "bulletList",
-                "content": [
-                    {
-                        "type": "listItem",
-                        "content": [
-                            {
-                                "type": "paragraph",
-                                "content": [
-                                    {
-                                        "type": "text",
-                                        "text": f"members: {details.consumers}"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
+                        "type": "tableRow",
+                        "content": _table_group_cells(con_group, details.consumers)
+                    },
                 ]
             },
             {
@@ -266,7 +238,7 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": "2. bip-gcp-base-config"
+                        "text": "2. Legge teamet til konfigurasjonsfil i Byråets IT-plattform (BIP)"
                     }
                 ]
             },
@@ -275,7 +247,7 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": "AFTER AD groups have been created, add the following line:"
+                        "text": "Etter at tilgangsgruppene er opprettet må man legge til følgende linje:"
                     }
                 ]
             },
@@ -285,7 +257,7 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": f"\"{uniform_team_name}\" : \"{mgm_group}\""
+                        "text": f"\"dapla-team\" : \"{mgm_group}\""
                     }
                 ]
             },
@@ -294,7 +266,7 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": "...to the dictionary in this file: "
+                        "text": "...til konfigurasjonen som ligger her:"
                     }
                 ]
             },
@@ -323,7 +295,7 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": "3. Create GCP Team IaC GitHub repository"
+                        "text": "3. Opprette GitHub prosjekt for plattformressurser"
                     }
                 ]
             },
@@ -332,7 +304,16 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": f"IaC GitHub project name: '{iac_git_project_name}'"
+                        "text": "Prosjektet vil ha følgende navn i GitHub: "
+                    },
+                    {
+                        "type": "text",
+                        "text": f"{iac_git_project_name}",
+                        "marks": [
+                            {
+                                "type": "strong"
+                            }
+                        ]
                     }
                 ]
             },
@@ -341,7 +322,23 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": "Use the dapla-start-toolkit for this."
+                        "text": "Bruk verktøyet "
+                    },
+                    {
+                        "type": "text",
+                        "text": "dapla-start-toolkit",
+                        "marks": [
+                            {
+                                "type": "link",
+                                "attrs": {
+                                    "href": "https://github.com/statisticsnorway/dapla-start-toolkit"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "text",
+                        "text": " til dette ."
                     }
                 ]
             },
@@ -353,7 +350,7 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": "4. Atlantis Whitelist"
+                        "text": "4. Sette opp automatisering av plattformressurser"
                     }
                 ]
             },
@@ -362,7 +359,7 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": "Once the IaC GitHub repository has been created, it needs to be whitelisted by BIP Atlantis. This request can be made to the "
+                        "text": "Etter at GitHub-prosjektet har blitt opprettet må det legges til i en automatiseringsløsning som heter Atlantis. Dette gjøres ved å sende en forespørsel til kanalen "
                     },
                     {
                         "type": "text",
@@ -378,21 +375,16 @@ def get_issue_adf_dict(details: ProjectDetails):
                     },
                     {
                         "type": "text",
-                        "text": " Slack channel"
+                        "text": " i Slack:"
                     }
                 ]
             },
             {
-                "type": "blockquote",
+                "type": "paragraph",
                 "content": [
                     {
-                        "type": "paragraph",
-                        "content": [
-                            {
-                                "type": "text",
-                                "text": f"Hei Stratus, kan dere whiteliste repoet '{iac_git_project_name}' i Atlantis?"
-                            }
-                        ]
+                        "type": "text",
+                        "text": f"Hei Stratus, kan dere legge til '{iac_git_project_name}' i Atlantis?"
                     }
                 ]
             },
@@ -404,7 +396,7 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": "5. Apply terraform with Atlantis"
+                        "text": "5. Opprette teamets infrastruktur"
                     }
                 ]
             },
@@ -413,7 +405,7 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": f"Create a pull request in '{iac_git_project_name}', get approval from Team Stratus"
+                        "text": f"Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request in '{iac_git_project_name}' og få en godkjenning av Team Stratus."
                     }
                 ]
             },
@@ -422,7 +414,7 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": "and then run the "
+                        "text": "Deretter kan man skrive kommandoen "
                     },
                     {
                         "type": "text",
@@ -435,16 +427,7 @@ def get_issue_adf_dict(details: ProjectDetails):
                     },
                     {
                         "type": "text",
-                        "text": " command in the pull request before you merge and delete the branch."
-                    }
-                ]
-            },
-            {
-                "type": "paragraph",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": "This will cause Atlantis to build our requested infrastructure in GCP."
+                        "text": " i pull requesten før man kjører merge og sletter branchen. Dette vil opprette teamets infrastruktur på Google Cloud Platform."
                     }
                 ]
             },
@@ -456,7 +439,7 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": "6. Additional Services"
+                        "text": "6. Flere tjenester"
                     }
                 ]
             },
@@ -465,7 +448,7 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": f"Requested services: {details.enabled_services}"
+                        "text": f"Tjenester som er forespurt: {details.enabled_services}"
                     }
                 ]
             },
@@ -474,7 +457,7 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": "If Transfer Service is requested, send a request to "
+                        "text": "Hvis Transfer Service er forespurt, send en epost til "
                     },
                     {
                         "type": "text",
@@ -490,7 +473,7 @@ def get_issue_adf_dict(details: ProjectDetails):
                     },
                     {
                         "type": "text",
-                        "text": ". "
+                        "text": "."
                     }
                 ]
             },
@@ -499,7 +482,7 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": "Kundeservice needs to set up the Transfer Service agent and directory in Linuxstammen."
+                        "text": "Kundeservice må sette opp en Transfer Service agent og katalog på Linuxstammen."
                     }
                 ]
             },
@@ -593,25 +576,11 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": "After Kundeservice has activated the agent and created the directory structure in Linuxstammen, "
-                    }
-                ]
-            },
-            {
-                "type": "paragraph",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": f"you can refer the managers ({details.manager}) and/or DPOs ({details.data_protection_officers}) to the docs"
-                    }
-                ]
-            },
-            {
-                "type": "paragraph",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": "for activating the transfer service on the GCP side:"
+                        "text": "Etter at Kundeservice har satt opp agenten og opprettet en katalogstruktur på "
+                                f"Linuxstammen kan du henvise til teamets Manager ({details.manager.name}) og/eller en "
+                                "Data Protection Officer "                            
+                                "til følgende dokument som beskriver hvordan man setter opp Transfer Service på "
+                                "Google Cloud Platform:"
                     }
                 ]
             },
@@ -640,7 +609,19 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": "Done!"
+                        "text": "Ferdig "
+                    },
+                    {
+                        "type": "emoji",
+                        "attrs": {
+                            "shortName": ":tada:",
+                            "id": "1f389",
+                            "text": "🎉"
+                        }
+                    },
+                    {
+                        "type": "text",
+                        "text": " "
                     }
                 ]
             },
@@ -649,23 +630,87 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "content": [
                     {
                         "type": "text",
-                        "text": "Congratulations, if everything went according to plan, you are now done!"
+                        "text": "Gratulerer! Hvis alt har gått etter planen er alt ferdig, og klar til bruk."
                     }
                 ]
+            },
+            {
+                "type": "paragraph",
+                "content": []
+            },
+            {
+                "type": "paragraph",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": "Teknisk informasjon:"
+                    }
+                ]
+            },
+            {
+                "type": "codeBlock",
+                "attrs": {
+                    "language": "yaml"
+                },
+                "content": [
+                    {
+                        "type": "text",
+                        "text": f"{yaml.dump(technical_details, sort_keys=False)}"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "content": []
+            },
+            {
+                "type": "paragraph",
+                "content": []
             }
         ]
     }
 
-    issue_dict = {
-        "fields": {
-            "project": {
-                "key": "DS"  # DS is the 'key' for the Dapla Start project
-            },
-            "summary": summary,
-            "description": description,
-            "issuetype": {
-                "name": "Task"
-            }
+    return description
+
+
+def _table_group_cells(group_name: str, users: List[ProjectUser]):
+    return [
+        {
+            "type": "tableCell",
+            "attrs": {},
+            "content": [
+                {
+                    "type": "paragraph",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": f"{group_name}"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "tableCell",
+            "attrs": {},
+            "content": [
+                {
+                    "type": "paragraph" if users is None else "bulletList",
+                    "content": list(map(lambda user: {
+                        "type": "listItem",
+                        "content": [
+                            {
+                                "type": "paragraph",
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": f"{user.name} ({user.email})"
+                                    }
+                                ]
+                            }
+                        ]
+                    }, users or []))
+                }
+            ]
         }
-    }
-    return issue_dict
+    ]

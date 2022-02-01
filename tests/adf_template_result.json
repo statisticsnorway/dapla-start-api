@@ -1,0 +1,796 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "heading",
+      "attrs": {
+        "level": 1
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Team Stubbe"
+        }
+      ]
+    },
+    {
+      "type": "panel",
+      "attrs": {
+        "panelType": "note"
+      },
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Innmeldt av Reidar Reporter ("
+            },
+            {
+              "type": "text",
+              "text": "rr@ssb.no",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "mailto:rr@ssb.no"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": ") den 01.02.2022"
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "GUI-versjon: None, API-versjon None",
+              "marks": [
+                {
+                  "type": "subsup",
+                  "attrs": {
+                    "type": "sub"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Her følger en liste med manuelle steg som må utføres før teamet er klart på Dapla."
+        }
+      ]
+    },
+    {
+      "type": "rule"
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "level": 2
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "1. Opprette tilgangsgrupper"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Følgende tilgangsgrupper må opprettes ved å sende en e-post til "
+        },
+        {
+          "type": "text",
+          "text": "kundeservice@ssb.no",
+          "marks": [
+            {
+              "type": "link",
+              "attrs": {
+                "href": "mailto:kundeservice@ssb.no"
+              }
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "attrs": {
+        "isNumberColumnEnabled": false,
+        "layout": "default",
+        "localId": "72372212-4247-4646-818b-11f4681f924c"
+      },
+      "content": [
+        {
+          "type": "tableRow",
+          "content": [
+            {
+              "type": "tableHeader",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Gruppenavn",
+                      "marks": [
+                        {
+                          "type": "strong"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableHeader",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Medlemmer",
+                      "marks": [
+                        {
+                          "type": "strong"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tableRow",
+          "content": [
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "stubbe-managers@groups.ssb.no"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Magnus Manager (mm@ssb.no)"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tableRow",
+          "content": [
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "stubbe-data-protection-officers@groups.ssb.no"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Pernille Pilot (ppi@ssb.no)"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Petter Andrepilot  (pap@ssb.no)"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tableRow",
+          "content": [
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "stubbe-developers@groups.ssb.no"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Dorte Developer (dd@ssb.no)"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Diana Developer (did@ssb.no)"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tableRow",
+          "content": [
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "stubbe-consumers@groups.ssb.no"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "level": 2
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "2. Legge teamet til konfigurasjonsfil i Byråets IT-plattform (BIP)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Etter at tilgangsgruppene er opprettet må man legge til følgende linje:"
+        }
+      ]
+    },
+    {
+      "type": "codeBlock",
+      "attrs": {},
+      "content": [
+        {
+          "type": "text",
+          "text": "\"dapla-team\" : \"stubbe-managers@groups.ssb.no\""
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "...til konfigurasjonen som ligger her:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "https://github.com/statisticsnorway/bip-gcp-base-config/blob/main/terraform.tfvars",
+          "marks": [
+            {
+              "type": "link",
+              "attrs": {
+                "href": "https://github.com/statisticsnorway/bip-gcp-base-config/blob/main/terraform.tfvars"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "level": 2
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "3. Opprette GitHub prosjekt for plattformressurser"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Prosjektet vil ha følgende navn i GitHub: "
+        },
+        {
+          "type": "text",
+          "text": "dapla-team-stubbe",
+          "marks": [
+            {
+              "type": "strong"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Bruk verktøyet "
+        },
+        {
+          "type": "text",
+          "text": "dapla-start-toolkit",
+          "marks": [
+            {
+              "type": "link",
+              "attrs": {
+                "href": "https://github.com/statisticsnorway/dapla-start-toolkit"
+              }
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " til dette ."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "level": 2
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "4. Sette opp automatisering av plattformressurser"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Etter at GitHub-prosjektet har blitt opprettet må det legges til i en automatiseringsløsning som heter Atlantis. Dette gjøres ved å sende en forespørsel til kanalen "
+        },
+        {
+          "type": "text",
+          "text": "#hjelp_bip",
+          "marks": [
+            {
+              "type": "link",
+              "attrs": {
+                "href": "https://ssb-norge.slack.com/archives/C915HHACX"
+              }
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " i Slack:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Hei Stratus, kan dere legge til 'dapla-team-stubbe' i Atlantis?"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "level": 2
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "5. Opprette teamets infrastruktur"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request in 'dapla-team-stubbe' og få en godkjenning av Team Stratus."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Deretter kan man skrive kommandoen "
+        },
+        {
+          "type": "text",
+          "text": "atlantis apply",
+          "marks": [
+            {
+              "type": "code"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " i pull requesten før man kjører merge og sletter branchen. Dette vil opprette teamets infrastruktur på Google Cloud Platform."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "level": 2
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "6. Flere tjenester"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Tjenester som er forespurt: None"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Hvis Transfer Service er forespurt, send en epost til "
+        },
+        {
+          "type": "text",
+          "text": "Kundeservice",
+          "marks": [
+            {
+              "type": "link",
+              "attrs": {
+                "href": "mailto:kundeservice@ssb.no"
+              }
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Kundeservice må sette opp en Transfer Service agent og katalog på Linuxstammen."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": []
+    },
+    {
+      "type": "blockquote",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Hei Kundeservice,"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Det nye dapla teamet 'Team Stubbe' trenger transfer service satt opp for seg."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "AD-gruppe som skal ha tilgang til synk område on-prem:"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "    stubbe-data-protection-officers@groups.ssb.no"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Prosjektnavn i GCP:"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "    stubbe-ts"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Fint om dere kan ordne det!"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Vennlig hilsen,"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": []
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Etter at Kundeservice har satt opp agenten og opprettet en katalogstruktur på Linuxstammen kan du henvise til teamets Manager (Magnus Manager) og/eller en Data Protection Officer til følgende dokument som beskriver hvordan man setter opp Transfer Service på Google Cloud Platform:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "https://docs.dapla.ssb.no/dapla-user/transfer/",
+          "marks": [
+            {
+              "type": "link",
+              "attrs": {
+                "href": "https://docs.dapla.ssb.no/dapla-user/transfer/"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "level": 2
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Ferdig "
+        },
+        {
+          "type": "emoji",
+          "attrs": {
+            "shortName": ":tada:",
+            "id": "1f389",
+            "text": "🎉"
+          }
+        },
+        {
+          "type": "text",
+          "text": " "
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Gratulerer! Hvis alt har gått etter planen er alt ferdig, og klar til bruk."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": []
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Teknisk informasjon:"
+        }
+      ]
+    },
+    {
+      "type": "codeBlock",
+      "attrs": {
+        "language": "yaml"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "display_team_name: Team Stubbe\nuniform_team_name: stubbe\ngithub_project_name: dapla-team-stubbe\n"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": []
+    },
+    {
+      "type": "paragraph",
+      "content": []
+    }
+  ]
+}
