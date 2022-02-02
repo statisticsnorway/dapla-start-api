@@ -39,7 +39,8 @@ def test_create_issue():
         "display_team_name": "My team",
         "manager": {
             "name": "Magnus Manager",
-            "email": "mma@ssb.no"
+            "email_short": "mma@ssb.no",
+            "email": "magnus.manager@ssb.no"
         }
     })
     assert response.status_code == 201
