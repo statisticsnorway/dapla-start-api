@@ -5,6 +5,7 @@ from pydantic import BaseModel
 
 class ProjectUser(BaseModel):
     name: str
+    email_short: str
     email: str
 
 

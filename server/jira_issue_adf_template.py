@@ -708,7 +708,7 @@ def _table_group_cells(group_name: str, users: List[ProjectUser]):
                                 "content": [
                                     {
                                         "type": "text",
-                                        "text": f"{user.name} ({user.email})"
+                                        "text": f"{user.name} ({user.email_short})"
                                     }
                                 ]
                             }
