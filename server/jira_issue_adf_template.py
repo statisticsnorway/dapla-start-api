@@ -113,6 +113,30 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                 ]
             },
             {
+                "type": "panel",
+                "attrs": {
+                    "panelType": "info"
+                },
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Annen informasjon"
+                            },
+                            {
+                                "type": "hardBreak"
+                            },
+                            {
+                                "type": "text",
+                                "text": f"{details.other_info or '-'}"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 "type": "paragraph",
                 "content": [
                     {

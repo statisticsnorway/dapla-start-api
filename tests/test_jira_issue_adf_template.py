@@ -15,7 +15,8 @@ def test_create_issue():
                                   ProjectUser(name="Petter Andrepilot ", email_short="pap@ssb.no", email="pap@ssb.no")],
         developers=[ProjectUser(name="Dorte Developer", email_short="dd@ssb.no", email="dd@ssb.no"),
                     ProjectUser(name="Diana Developer", email_short="did@ssb.no", email="did@ssb.no")],
-        reporter=ProjectUser(name="Reidar Reporter", email_short="rr@ssb.no", email="rr@ssb.no")
+        reporter=ProjectUser(name="Reidar Reporter", email_short="rr@ssb.no", email="rr@ssb.no"),
+        other_info="Some other info"
     )
     # Validate against Atlassian Document Format schema
     jsonschema = requests.get("http://go.atlassian.com/adf-json-schema").json()
