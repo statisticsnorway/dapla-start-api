@@ -1,4 +1,4 @@
-from project_details import project_user_from_jwt
+from server.project_details import project_user_from_jwt
 
 
 def test_project_user_from_jwt():
