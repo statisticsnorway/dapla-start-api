@@ -1,5 +1,5 @@
 from tests import resolve_filename
-from server.jira_issue_adf_template import _description, get_issue_adf_dict
+from server.jira_issue_adf_template import _description
 from server.project_details import ProjectDetails, ProjectUser
 import json
 from jsonschema import validate

@@ -1,7 +1,6 @@
 import logging
 import csv
 import os
-import jwt
 from server import __version__
 from subprocess import CalledProcessError
 
@@ -12,7 +11,7 @@ from requests import HTTPError
 from typing import Optional
 
 from .clients import JiraClient
-from .project_details import ProjectDetails, ProjectUser
+from .project_details import ProjectDetails, project_user_from_jwt
 from .create_jira_issue import create_issue_basic
 
 SSB_USERS_SOURCE = os.environ.get("SSB_USERS_SOURCE", "tests/test-users-export.csv")
@@ -67,15 +66,8 @@ def create_issue(details: ProjectDetails, authorization: Optional[str] = Header(
         logging.info(f"Got a jira issue creation request. Details:\n{details.json()}")
         if authorization is not None:
             bearer, _, token = authorization.partition(' ')
-            decoded = jwt.decode(token, options={
-                "verify_signature": False,
-                "verify_aud": False,
-                "verify_exp": False
-            }, algorithms=["HS256", "RS256"])
-            logging.info(f"Reported by: %s (%s)" % (decoded['name'], decoded['email']))
-            details.reporter = ProjectUser(name=decoded['name'],
-                                           email=decoded['email'],
-                                           email_short=decoded['preferred_username'])
+            details.reporter = project_user_from_jwt(token)
+            logging.info(f"Reported by: %s" % details.reporter)
 
         details.api_version = __version__
         return client.create_issue(create_issue_basic(details))
