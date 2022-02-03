@@ -20,7 +20,9 @@ def get_issue_adf_dict(details: ProjectDetails):
                 "key": "DS"  # DS is the 'key' for the Dapla Start project
             },
             "summary": summary,
-            "description": _description(details),
+            "description":
+                _description(details)
+            ,
             "issuetype": {
                 "name": "Task"
             }
@@ -28,7 +30,7 @@ def get_issue_adf_dict(details: ProjectDetails):
     }
 
 
-def _description(details: ProjectDetails):
+def _description(details: ProjectDetails, current_date: datetime.date = datetime.date.today()):
     uniform_team_name = convert_display_name_to_uniform_team_name(details.display_team_name)
     iac_git_project_name = f"dapla-team-{uniform_team_name}"
     domain = "@groups.ssb.no"
@@ -89,7 +91,7 @@ def _description(details: ProjectDetails):
                             },
                             {
                                 "type": "text",
-                                "text": f") den {datetime.datetime.now().strftime('%d.%m.%Y')}"
+                                "text": f") den {current_date.strftime('%d.%m.%Y')}"
                             },
                             {
                                 "type": "hardBreak"

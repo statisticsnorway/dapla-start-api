@@ -1,7 +1,10 @@
 from tests import resolve_filename
-from server.jira_issue_adf_template import _description
+from server.jira_issue_adf_template import _description, get_issue_adf_dict
 from server.project_details import ProjectDetails, ProjectUser
 import json
+from jsonschema import validate
+import requests
+from datetime import date
 
 
 def test_create_issue():
@@ -14,5 +17,10 @@ def test_create_issue():
                     ProjectUser(name="Diana Developer", email_short="did@ssb.no", email="did@ssb.no")],
         reporter=ProjectUser(name="Reidar Reporter", email_short="rr@ssb.no", email="rr@ssb.no")
     )
+    # Validate against Atlassian Document Format schema
+    jsonschema = requests.get("http://go.atlassian.com/adf-json-schema").json()
     with open(resolve_filename("adf_template_result.json"), encoding="utf-8") as file:
-        assert json.dumps(_description(project_details), indent=2, ensure_ascii=False) == file.read()
+        description = _description(project_details, date.fromisoformat('2022-02-01'))
+        validate(instance=description, schema=jsonschema)
+        result = json.dumps(description, indent=2, ensure_ascii=False)
+        assert result == file.read()

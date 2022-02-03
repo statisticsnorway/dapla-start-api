@@ -73,7 +73,9 @@ def create_issue(details: ProjectDetails, authorization: Optional[str] = Header(
                 "verify_exp": False
             }, algorithms=["HS256", "RS256"])
             logging.info(f"Reported by: %s (%s)" % (decoded['name'], decoded['email']))
-            details.reporter = ProjectUser(name=decoded['name'], email=decoded['email'])
+            details.reporter = ProjectUser(name=decoded['name'],
+                                           email=decoded['email'],
+                                           email_short=decoded['preferred_username'])
 
         details.api_version = __version__
         return client.create_issue(create_issue_basic(details))
