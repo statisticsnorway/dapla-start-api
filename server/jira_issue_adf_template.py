@@ -41,7 +41,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
     technical_details = {
         "display_team_name": details.display_team_name,
         "uniform_team_name": uniform_team_name,
-        "github_project_name": iac_git_project_name
+        "github_repo_name": iac_git_project_name
     }
 
     if details.enabled_services and isinstance(details.enabled_services, list):
@@ -685,7 +685,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                 "content": [
                     {
                         "type": "text",
-                        "text": f"{yaml.dump(technical_details, sort_keys=False)}"
+                        "text": f"{yaml.dump(technical_details, sort_keys=False, allow_unicode=True)}"
                     }
                 ]
             },
