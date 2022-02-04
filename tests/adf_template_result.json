@@ -661,7 +661,7 @@
           "content": [
             {
               "type": "text",
-              "text": "Det nye dapla teamet 'Team Stubbe' trenger transfer service satt opp for seg."
+              "text": "Det nye Dapla teamet 'Team Stubbe' trenger Transfer Service satt opp for seg."
             }
           ]
         },
@@ -808,7 +808,7 @@
       "content": [
         {
           "type": "text",
-          "text": "display_team_name: Team Stubbe\nuniform_team_name: stubbe\ngithub_project_name: dapla-team-stubbe\n"
+          "text": "display_team_name: Team Stubbe\nuniform_team_name: stubbe\ngithub_repo_name: dapla-team-stubbe\n"
         }
       ]
     },
