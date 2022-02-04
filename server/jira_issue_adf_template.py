@@ -35,7 +35,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
     iac_git_project_name = f"dapla-team-{uniform_team_name}"
     domain = "@groups.ssb.no"
     mgm_group = f"{uniform_team_name}-managers{domain}"
-    dpo_group = f"{uniform_team_name}-data-protection-officers{domain}"
+    dpo_group = f"{uniform_team_name}-data-admins{domain}"
     dev_group = f"{uniform_team_name}-developers{domain}"
     con_group = f"{uniform_team_name}-consumers{domain}"
     technical_details = {
@@ -534,7 +534,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                         "content": [
                             {
                                 "type": "text",
-                                "text": f"Det nye dapla teamet '{details.display_team_name}' trenger transfer service satt opp for seg."
+                                "text": f"Det nye Dapla teamet '{details.display_team_name}' trenger Transfer Service satt opp for seg."
                             }
                         ]
                     },
@@ -608,9 +608,8 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                         "type": "text",
                         "text": "Etter at Kundeservice har satt opp agenten og opprettet en katalogstruktur på "
                                 f"Linuxstammen kan du henvise til teamets Manager ({details.manager.name}) og/eller en "
-                                "Data Protection Officer "                            
-                                "til følgende dokument som beskriver hvordan man setter opp Transfer Service på "
-                                "Google Cloud Platform:"
+                                "Data Admin til følgende dokument som beskriver hvordan man setter opp Transfer Service "
+                                "på Google Cloud Platform:"
                     }
                 ]
             },
