@@ -35,13 +35,13 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
     iac_git_project_name = f"dapla-team-{uniform_team_name}"
     domain = "@groups.ssb.no"
     mgm_group = f"{uniform_team_name}-managers{domain}"
-    dpo_group = f"{uniform_team_name}-data-protection-officers{domain}"
+    dad_group = f"{uniform_team_name}-data-admins{domain}"
     dev_group = f"{uniform_team_name}-developers{domain}"
     con_group = f"{uniform_team_name}-consumers{domain}"
     technical_details = {
         "display_team_name": details.display_team_name,
         "uniform_team_name": uniform_team_name,
-        "github_project_name": iac_git_project_name
+        "github_repo_name": iac_git_project_name
     }
 
     if details.enabled_services and isinstance(details.enabled_services, list):
@@ -244,7 +244,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                     },
                     {
                         "type": "tableRow",
-                        "content": _table_group_cells(dpo_group, details.data_protection_officers)
+                        "content": _table_group_cells(dad_group, details.data_admins)
                     },
                     {
                         "type": "tableRow",
@@ -534,7 +534,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                         "content": [
                             {
                                 "type": "text",
-                                "text": f"Det nye dapla teamet '{details.display_team_name}' trenger transfer service satt opp for seg."
+                                "text": f"Det nye Dapla teamet '{details.display_team_name}' trenger Transfer Service satt opp for seg."
                             }
                         ]
                     },
@@ -552,7 +552,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                         "content": [
                             {
                                 "type": "text",
-                                "text": f"    {dpo_group}"
+                                "text": f"    {dad_group}"
                             }
                         ]
                     },
@@ -608,9 +608,8 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                         "type": "text",
                         "text": "Etter at Kundeservice har satt opp agenten og opprettet en katalogstruktur på "
                                 f"Linuxstammen kan du henvise til teamets Manager ({details.manager.name}) og/eller en "
-                                "Data Protection Officer "                            
-                                "til følgende dokument som beskriver hvordan man setter opp Transfer Service på "
-                                "Google Cloud Platform:"
+                                "Data Admin til følgende dokument som beskriver hvordan man setter opp Transfer Service "
+                                "på Google Cloud Platform:"
                     }
                 ]
             },
@@ -685,7 +684,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                 "content": [
                     {
                         "type": "text",
-                        "text": f"{yaml.dump(technical_details, sort_keys=False)}"
+                        "text": f"{yaml.dump(technical_details, sort_keys=False, allow_unicode=True)}"
                     }
                 ]
             },

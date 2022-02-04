@@ -12,7 +12,7 @@ class ProjectUser(BaseModel):
 class ProjectDetails(BaseModel):
     display_team_name: str
     manager: ProjectUser
-    data_protection_officers: Optional[List[ProjectUser]]
+    data_admins: Optional[List[ProjectUser]]
     developers: Optional[List[ProjectUser]]
     consumers: Optional[List[ProjectUser]]
     enabled_services: Optional[List[str]]

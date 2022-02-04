@@ -11,7 +11,7 @@ def test_create_issue():
     project_details = ProjectDetails(
         display_team_name="Team Stubbe",
         manager=ProjectUser(name="Magnus Manager", email_short="mm@ssb.no", email="magnus.manager@ssb.no"),
-        data_protection_officers=[ProjectUser(name="Pernille Pilot", email_short="ppi@ssb.no", email="ppi@ssb.no"),
+        data_admins=[ProjectUser(name="Pernille Pilot", email_short="ppi@ssb.no", email="ppi@ssb.no"),
                                   ProjectUser(name="Petter Andrepilot ", email_short="pap@ssb.no", email="pap@ssb.no")],
         developers=[ProjectUser(name="Dorte Developer", email_short="dd@ssb.no", email="dd@ssb.no"),
                     ProjectUser(name="Diana Developer", email_short="did@ssb.no", email="did@ssb.no")],
