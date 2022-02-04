@@ -134,7 +134,7 @@ if __name__ == "__main__":
     det_dict = {
         "display_team_name": "Team Domene Subdomene",
         "manager": xxx_mail,
-        "data_protection-officers": [xxx_mail],
+        "data_admin": [xxx_mail],
         "developers": [xxx_mail, xxx_mail],
         "consumers": [xxx_mail, xxx_mail],
         "enabled_services": ["transfer service"]

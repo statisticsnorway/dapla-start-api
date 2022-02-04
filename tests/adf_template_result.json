@@ -245,7 +245,7 @@
                   "content": [
                     {
                       "type": "text",
-                      "text": "stubbe-data-protection-officers@groups.ssb.no"
+                      "text": "stubbe-data-admins@groups.ssb.no"
                     }
                   ]
                 }
@@ -679,7 +679,7 @@
           "content": [
             {
               "type": "text",
-              "text": "    stubbe-data-protection-officers@groups.ssb.no"
+              "text": "    stubbe-data-admins@groups.ssb.no"
             }
           ]
         },
@@ -733,7 +733,7 @@
       "content": [
         {
           "type": "text",
-          "text": "Etter at Kundeservice har satt opp agenten og opprettet en katalogstruktur på Linuxstammen kan du henvise til teamets Manager (Magnus Manager) og/eller en Data Protection Officer til følgende dokument som beskriver hvordan man setter opp Transfer Service på Google Cloud Platform:"
+          "text": "Etter at Kundeservice har satt opp agenten og opprettet en katalogstruktur på Linuxstammen kan du henvise til teamets Manager (Magnus Manager) og/eller en Data Admin til følgende dokument som beskriver hvordan man setter opp Transfer Service på Google Cloud Platform:"
         }
       ]
     },

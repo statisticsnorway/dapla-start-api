@@ -35,7 +35,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
     iac_git_project_name = f"dapla-team-{uniform_team_name}"
     domain = "@groups.ssb.no"
     mgm_group = f"{uniform_team_name}-managers{domain}"
-    dpo_group = f"{uniform_team_name}-data-admins{domain}"
+    dad_group = f"{uniform_team_name}-data-admins{domain}"
     dev_group = f"{uniform_team_name}-developers{domain}"
     con_group = f"{uniform_team_name}-consumers{domain}"
     technical_details = {
@@ -244,7 +244,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                     },
                     {
                         "type": "tableRow",
-                        "content": _table_group_cells(dpo_group, details.data_protection_officers)
+                        "content": _table_group_cells(dad_group, details.data_admins)
                     },
                     {
                         "type": "tableRow",
@@ -552,7 +552,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                         "content": [
                             {
                                 "type": "text",
-                                "text": f"    {dpo_group}"
+                                "text": f"    {dad_group}"
                             }
                         ]
                     },
