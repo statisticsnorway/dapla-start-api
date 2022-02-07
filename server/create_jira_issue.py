@@ -15,23 +15,7 @@ def create_dapla_start_issue(details: ProjectDetails):
 
 
 def create_issue_basic(details: ProjectDetails):
-    # Retrieve the API key secret from the environment
-    basic = os.environ.get('JIRA_API_BASIC')
-
-    if basic is None or len(basic) == 0:
-        logging.error(
-            'ABORTING! The env variable JIRA_API_BASIC must be set to be your base64 encoded "email:APIkey" string.'
-        )
-        exit(1)
-
-    # Prepare the request
-    url = "https://statistics-norway.atlassian.net/rest/api/3/issue"
-    headers = {"Content-Type": content_type_json, "Authorization": f"Basic {basic}"}
-    issue_dict = get_issue_adf_dict(details)
-    # Send the issue creation request to Jira
-    r = requests.post(url, headers=headers, data=json.dumps(issue_dict))
-
-    return r
+    return get_issue_adf_dict(details)
 
 
 def get_authorization_url(state, client_id="3mvYlLJX466VodaubZTD0WcpOSHOnAqa"):
@@ -150,7 +134,7 @@ if __name__ == "__main__":
     det_dict = {
         "display_team_name": "Team Domene Subdomene",
         "manager": xxx_mail,
-        "data_protection-officers": [xxx_mail],
+        "data_admins": [xxx_mail],
         "developers": [xxx_mail, xxx_mail],
         "consumers": [xxx_mail, xxx_mail],
         "enabled_services": ["transfer service"]
