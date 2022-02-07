@@ -325,7 +325,7 @@
                           "content": [
                             {
                               "type": "text",
-                              "text": "Dorte Developer (dd@ssb.no)"
+                              "text": "Diana Developer (did@ssb.no)"
                             }
                           ]
                         }
@@ -339,7 +339,7 @@
                           "content": [
                             {
                               "type": "text",
-                              "text": "Diana Developer (did@ssb.no)"
+                              "text": "Dorte Developer (dd@ssb.no)"
                             }
                           ]
                         }
@@ -410,7 +410,7 @@
       "content": [
         {
           "type": "text",
-          "text": "\"dapla-team\" : \"stubbe-managers@groups.ssb.no\""
+          "text": "\"stubbe\" : \"stubbe-managers@groups.ssb.no\""
         }
       ]
     },
