@@ -15,6 +15,14 @@ test: ## Run tests
 	poetry install
 	pytest
 
+.PHONY: bump-version-patch
+bump-version-patch: ## Bump patch version, e.g. 0.0.1 -> 0.0.2.
+	bump2version patch
+
+.PHONY: bump-version-minor
+bump-version-minor: ## Bump minor version, e.g. 0.0.1 -> 0.1.0.
+	bump2version minor
+
 .PHONY: local-build
 local-build: ## Build the app for local development
 	poetry install
