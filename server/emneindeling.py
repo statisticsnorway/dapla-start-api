@@ -36,4 +36,4 @@ def get_subject_areas_tree_select():
 
 
 if __name__ == "__main__":
-    print(get_subject_areas_tree_select())
+    print(json.dumps(get_subject_areas_tree_select(), indent=4, ensure_ascii=False))  # Pretty print w Norwegian letters
