@@ -283,7 +283,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                 "content": [
                     {
                         "type": "text",
-                        "text": f"\"dapla-team\" : \"{mgm_group}\""
+                        "text": f"\"{uniform_team_name}\" : \"{mgm_group}\""
                     }
                 ]
             },
@@ -703,6 +703,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
 
 
 def _table_group_cells(group_name: str, users: List[ProjectUser]):
+    sorted_users = None if users is None else sorted(users, key=lambda user: user.name)
     return [
         {
             "type": "tableCell",
@@ -724,7 +725,7 @@ def _table_group_cells(group_name: str, users: List[ProjectUser]):
             "attrs": {},
             "content": [
                 {
-                    "type": "paragraph" if users is None else "bulletList",
+                    "type": "paragraph" if sorted_users is None else "bulletList",
                     "content": list(map(lambda user: {
                         "type": "listItem",
                         "content": [
@@ -738,7 +739,7 @@ def _table_group_cells(group_name: str, users: List[ProjectUser]):
                                 ]
                             }
                         ]
-                    }, users or []))
+                    }, sorted_users or []))
                 }
             ]
         }
