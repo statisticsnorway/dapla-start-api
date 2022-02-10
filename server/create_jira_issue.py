@@ -1,11 +1,11 @@
 import json
-import logging
 import os
 
 import requests
 
 from server.jira_issue_adf_template import get_issue_adf_dict
 from .project_details import ProjectDetails
+from .config import logger
 
 content_type_json = "application/json"
 
@@ -44,7 +44,7 @@ def get_access_token(authorization_code, client_id="3mvYlLJX466VodaubZTD0WcpOSHO
     if client_secret is None or client_secret == "":
         raise EnvironmentError("OAUTH_2_CLIENT_SECRET was not present in environment!")
     else:
-        logging.info("oauth2 client secret variable was present in env")
+        logger.info("oauth2 client secret variable was present in env")
 
     headers = {"Content-Type": content_type_json}
     data = {"grant_type": "authorization_code",
@@ -65,8 +65,8 @@ def get_cloud_id(access_token):
     headers = {"Authorization": f"Bearer {access_token}"}
     accessible_resources_response = requests.get(url=accessible_resources_url, headers=headers)
     data_dict = json.loads(accessible_resources_response.text)
-    logging.debug("accessible_resources_response as data dictionary")
-    logging.debug(data_dict)
+    logger.debug("accessible_resources_response as data dictionary")
+    logger.debug(data_dict)
     cloud_id = data_dict[0]["id"]
 
     return cloud_id
@@ -82,27 +82,27 @@ def create_jira_issue_3lo(details, client_id="3mvYlLJX466VodaubZTD0WcpOSHOnAqa",
     :return:
     """
 
-    logging.debug(f"jira issue creation 3LO method started...")
+    logger.debug(f"jira issue creation 3LO method started...")
     get_access_token_response = get_access_token(details.authorization_code, client_id, callback_url)
 
     if get_access_token_response.status_code != 200:
         raise Exception(f"Access token request returned non-200 status code. Response: {get_access_token_response}")
-    logging.debug("access token retrieved with status 200")
+    logger.debug("access token retrieved with status 200")
 
     response_dict = json.loads(get_access_token_response.text)
     access_token = response_dict["access_token"]
     response_dict["access_token"] = "REDACTED"
-    logging.debug(f"access token response dict: {response_dict}")
+    logger.debug(f"access token response dict: {response_dict}")
     cloud_id = get_cloud_id(access_token)  # id for statistics-norway should be bdafa676-276d-441e-a450-26547c4959cf
-    logging.debug(f"organization cloud id: {cloud_id}")
+    logger.debug(f"organization cloud id: {cloud_id}")
     final_jira_api_post_url = f"https://api.atlassian.com/ex/jira/{cloud_id}{api}"
-    logging.debug(f"final jira cloud oauth2 api post url: {final_jira_api_post_url}")
+    logger.debug(f"final jira cloud oauth2 api post url: {final_jira_api_post_url}")
     headers = {"Authorization": f"Bearer {access_token}", "Content-Type": content_type_json}
 
     issue_dict = get_issue_adf_dict(details)
 
-    logging.debug(f"issue dictionary: {issue_dict}")
-    logging.debug(f"posting issue json to jira")
+    logger.debug(f"issue dictionary: {issue_dict}")
+    logger.debug(f"posting issue json to jira")
     response = requests.post(url=final_jira_api_post_url, headers=headers, data=json.dumps(issue_dict))
 
     if response.status_code != 201:
@@ -125,7 +125,7 @@ if __name__ == "__main__":
         basic = os.environ.get(authentication_env_var)
 
         if basic is None or len(basic) == 0:
-            logging.error(
+            logger.error(
                 f'The env variable {authentication_env_var} must be set to be a base64 encoded "email:key" string')
             exit(1)
 
