@@ -1,5 +1,6 @@
 import os
 import logging
+from logging import config
 from ecs_logging import StdlibFormatter
 
 # Default logging (e.g. when run locally) with a colourful, readable output
@@ -70,9 +71,9 @@ ecs_log_config = {
 
 def configure_loggers():
     if 'LOG_FORMAT_ECS' in os.environ and os.environ['LOG_FORMAT_ECS']:
-        logging.config.dictConfig(ecs_log_config)
+        config.dictConfig(ecs_log_config)
     else:
-        logging.config.dictConfig(default_log_config)
+        config.dictConfig(default_log_config)
 
 
 logger = logging.getLogger("dapla-start")

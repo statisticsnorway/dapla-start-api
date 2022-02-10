@@ -13,7 +13,7 @@ from .clients import JiraClient
 from .project_details import ProjectDetails, project_user_from_jwt
 from .create_jira_issue import create_issue_basic
 from .emneindeling import get_subject_areas_tree_select
-from .logging import logger, configure_loggers
+from .config import logger, configure_loggers
 
 SSB_USERS_SOURCE = os.environ.get("SSB_USERS_SOURCE", "tests/test-users-export.csv")
 

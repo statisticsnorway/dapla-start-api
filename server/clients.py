@@ -1,6 +1,6 @@
 import requests
 import os
-from .logging import logger
+from .config import logger
 
 
 content_type_json = "application/json"

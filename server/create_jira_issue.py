@@ -5,7 +5,7 @@ import requests
 
 from server.jira_issue_adf_template import get_issue_adf_dict
 from .project_details import ProjectDetails
-from .logging import logger
+from .config import logger
 
 content_type_json = "application/json"
 
