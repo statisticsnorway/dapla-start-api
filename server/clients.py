@@ -1,6 +1,6 @@
 import requests
-import logging
 import os
+from .logging import logger
 
 
 content_type_json = "application/json"
@@ -18,7 +18,7 @@ class JiraClient(AbstractClient):
 
     def create_issue(self, json):
         url = self._base_url + "/issue"
-        logging.info(f"Calling endpoint:{url}")
+        logger.info(f"Calling endpoint:{url}")
         response = requests.post(url, headers=self.create_headers(), json=json)
         response.raise_for_status()
         return response.json()
@@ -28,7 +28,7 @@ class JiraClient(AbstractClient):
         basic = os.environ.get('JIRA_API_BASIC')
 
         if basic is None or len(basic) == 0:
-            logging.error(
+            logger.error(
                 'ABORTING! The env variable JIRA_API_BASIC must be set to be your base64 encoded "email:APIkey" string.'
             )
             raise Exception('Missing env variable JIRA_API_BASIC')

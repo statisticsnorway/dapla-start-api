@@ -1,4 +1,3 @@
-import logging
 import csv
 import os
 from server import __version__
@@ -14,10 +13,11 @@ from .clients import JiraClient
 from .project_details import ProjectDetails, project_user_from_jwt
 from .create_jira_issue import create_issue_basic
 from .emneindeling import get_subject_areas_tree_select
+from .logging import logger, configure_loggers
 
 SSB_USERS_SOURCE = os.environ.get("SSB_USERS_SOURCE", "tests/test-users-export.csv")
 
-
+configure_loggers()
 app = FastAPI()
 instrumentator = Instrumentator(excluded_handlers=["/health/.*", "/metrics"])
 instrumentator.instrument(app).expose(app)
@@ -64,12 +64,12 @@ def subject_areas_tree():
     Get a TreeSelect-compatible json containing the statistical subject areas of SSB
     :return:
     """
-    logging.info("Got an emneindeling-tree request")
+    logger.info("Got an emneindeling-tree request")
     try:
         return get_subject_areas_tree_select()
     except Exception as error:
         error_text = f"Error occurred while getting statistical subjects tree: {error}"
-        logging.error(error_text)
+        logger.error(error_text)
         raise HTTPException(status_code=500, detail=error_text)
 
 
@@ -80,22 +80,22 @@ def create_issue(details: ProjectDetails, authorization: Optional[str] = Header(
     Endpoint for Jira issue creation using basic auth
     """
     try:
-        logging.info(f"Got a jira issue creation request. Details:\n{details.json()}")
+        logger.info(f"Got a jira issue creation request. Details:\n{details.json(indent=2)}")
         if authorization is not None:
             bearer, _, token = authorization.partition(' ')
             details.reporter = project_user_from_jwt(token)
-            logging.info(f"Reported by: %s" % details.reporter)
+            logger.info(f"Reported by: %s" % details.reporter)
 
         details.api_version = __version__
         return client.create_issue(create_issue_basic(details))
     except CalledProcessError as error:
-        logging.exception("Error occurred: %s", error)
+        logger.exception("Error occurred: %s", error)
         raise HTTPException(status_code=500, detail=f"Error occurred:\n\n{error.stdout.decode()}")
     except HTTPError as error:
-        logging.exception("Error occurred: %s", error)
+        logger.exception("Error occurred: %s", error)
         raise HTTPException(status_code=500, detail=f"Error occurred:\n\n{error.response.text}")
     except Exception as error:
-        logging.exception("Error occurred: %s", error)
+        logger.exception("Error occurred: %s", error)
         raise HTTPException(status_code=500, detail=f"Error occurred:\n\n{error}")
 
 
