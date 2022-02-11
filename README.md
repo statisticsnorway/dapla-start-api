@@ -1,3 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=statisticsnorway_dapla-start-api&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=statisticsnorway_dapla-start-api)
+
 # dapla-start-api
 
 API used by https://start.dapla.ssb.no
