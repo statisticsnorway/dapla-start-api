@@ -181,7 +181,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                     },
                     {
                         "type": "text",
-                        "text": "."
+                        "text": ". Presiser gjerne at gruppene skal i OU=SSB/Grupper/Skytjenester/BIP."
                     }
                 ]
             },
