@@ -98,7 +98,7 @@ jobs:
         inputs:
           codeCoverageTool: Cobertura
           summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
-          reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
+          #reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
       # Build Docker image
       - task: Docker@2
         displayName: 'Docker build'
