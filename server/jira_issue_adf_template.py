@@ -34,10 +34,10 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
     uniform_team_name = convert_display_name_to_uniform_team_name(details.display_team_name)
     iac_git_project_name = f"dapla-team-{uniform_team_name}"
     domain = "@groups.ssb.no"
-    mgm_group = f"{uniform_team_name}-managers{domain}"
-    dad_group = f"{uniform_team_name}-data-admins{domain}"
-    dev_group = f"{uniform_team_name}-developers{domain}"
-    con_group = f"{uniform_team_name}-consumers{domain}"
+    mgm_group = f"{uniform_team_name}-managers"
+    dad_group = f"{uniform_team_name}-data-admins"
+    dev_group = f"{uniform_team_name}-developers"
+    con_group = f"{uniform_team_name}-consumers"
     technical_details = {
         "display_team_name": details.display_team_name,
         "uniform_team_name": uniform_team_name,
@@ -283,7 +283,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                 "content": [
                     {
                         "type": "text",
-                        "text": f"\"{uniform_team_name}\" : \"{mgm_group}\""
+                        "text": f"\"{uniform_team_name}\" : \"{mgm_group}{domain}\""
                     }
                 ]
             },
@@ -413,7 +413,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                         "content": [
                             {
                                 "type": "text",
-                                "text": f"Hei Stratus, kan dere legge til '{iac_git_project_name}' i Atlantis?"
+                                "text": f"Hei Stratus, kan dere legge til https://github.com/statisticsnorway/{iac_git_project_name} i Atlantis?"
                             }
                         ]
                     }
@@ -687,10 +687,6 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                         "text": f"{yaml.dump(technical_details, sort_keys=False, allow_unicode=True)}"
                     }
                 ]
-            },
-            {
-                "type": "paragraph",
-                "content": []
             },
             {
                 "type": "paragraph",
