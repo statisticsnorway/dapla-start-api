@@ -5,3 +5,6 @@ __pycache__/
 /dapla-start-api.iml
 /out/
 data/
+/coverage.xml
+/pytest-report.xml
+/.coverage
