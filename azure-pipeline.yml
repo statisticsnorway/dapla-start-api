@@ -80,9 +80,25 @@ jobs:
       -   script: |
             pip install poetry
             poetry install --no-interaction
-            poetry run pytest -v
+            poetry run pytest -v --cov --cov-report=xml
           displayName: Run tests
 
+      # Publish test results
+      - task: SonarCloudPrepare@1
+        inputs:
+          SonarCloud: 'bipSonarCloud-Dapla' #${{ parameters.sonarCloud }}
+          organization: 'statisticsnorway'
+          scannerMode: 'CLI'
+          configMode: 'file'
+      - task: SonarCloudAnalyze@1
+      - task: SonarCloudPublish@1
+        inputs:
+          pollingTimeoutSec: '300'
+      - task: PublishCodeCoverageResults@1
+        inputs:
+          codeCoverageTool: Cobertura
+          summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
+          reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
       # Build Docker image
       - task: Docker@2
         displayName: 'Docker build'
