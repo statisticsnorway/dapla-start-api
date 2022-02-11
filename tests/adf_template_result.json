@@ -131,7 +131,7 @@
         },
         {
           "type": "text",
-          "text": "."
+          "text": ". Presiser gjerne at gruppene skal i OU=SSB/Grupper/Skytjenester/BIP."
         }
       ]
     },
@@ -200,7 +200,7 @@
                   "content": [
                     {
                       "type": "text",
-                      "text": "stubbe-managers@groups.ssb.no"
+                      "text": "stubbe-managers"
                     }
                   ]
                 }
@@ -245,7 +245,7 @@
                   "content": [
                     {
                       "type": "text",
-                      "text": "stubbe-data-admins@groups.ssb.no"
+                      "text": "stubbe-data-admins"
                     }
                   ]
                 }
@@ -304,7 +304,7 @@
                   "content": [
                     {
                       "type": "text",
-                      "text": "stubbe-developers@groups.ssb.no"
+                      "text": "stubbe-developers"
                     }
                   ]
                 }
@@ -363,7 +363,7 @@
                   "content": [
                     {
                       "type": "text",
-                      "text": "stubbe-consumers@groups.ssb.no"
+                      "text": "stubbe-consumers"
                     }
                   ]
                 }
@@ -540,7 +540,7 @@
           "content": [
             {
               "type": "text",
-              "text": "Hei Stratus, kan dere legge til 'dapla-team-stubbe' i Atlantis?"
+              "text": "Hei Stratus, kan dere legge til https://github.com/statisticsnorway/dapla-team-stubbe i Atlantis?"
             }
           ]
         }
@@ -679,7 +679,7 @@
           "content": [
             {
               "type": "text",
-              "text": "    stubbe-data-admins@groups.ssb.no"
+              "text": "    stubbe-data-admins"
             }
           ]
         },
@@ -811,10 +811,6 @@
           "text": "display_team_name: Team Stubbe\nuniform_team_name: stubbe\ngithub_repo_name: dapla-team-stubbe\n"
         }
       ]
-    },
-    {
-      "type": "paragraph",
-      "content": []
     },
     {
       "type": "paragraph",
