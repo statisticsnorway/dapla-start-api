@@ -90,6 +90,7 @@ jobs:
           organization: 'statisticsnorway'
           scannerMode: 'CLI'
           configMode: 'file'
+      - task: SonarCloudAnalyze@1
       - task: SonarCloudPublish@1
         inputs:
           pollingTimeoutSec: '300'
