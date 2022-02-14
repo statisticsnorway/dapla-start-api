@@ -7,14 +7,11 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONFAULTHANDLER 1
 ENV PIP_DISABLE_PIP_VERSION_CHECK=on
 
-RUN apt update && \
-    apt-get -y clean all && \
-    apt-get -y update && \
-    apt-get -y upgrade && \
-    apt-get -y dist-upgrade && \
-    apt-get install -y --no-install-recommends gcc git curl
+RUN apk update && \
+    apk add gcc git curl linux-headers musl-dev libffi-dev
 
-RUN pip install poetry
+RUN pip install --upgrade pip && \
+    pip install poetry
 
 WORKDIR /app
 COPY . ./
