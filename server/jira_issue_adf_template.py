@@ -618,12 +618,12 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                 "content": [
                     {
                         "type": "text",
-                        "text": "https://docs.dapla.ssb.no/dapla-user/transfer/",
+                        "text": "https://docs.dapla.ssb.no/dapla-user/how-to/transfer-data/",
                         "marks": [
                             {
                                 "type": "link",
                                 "attrs": {
-                                    "href": "https://docs.dapla.ssb.no/dapla-user/transfer/"
+                                    "href": "https://docs.dapla.ssb.no/dapla-user/how-to/transfer-data/"
                                 }
                             }
                         ]
