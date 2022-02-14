@@ -126,14 +126,14 @@ jobs:
             $(imageTagBeforeVulnerabilityScan)
       # Wait for scan on image in GCR to complete and check for any vulnerabilities
       # with effective severity HIGH or CRITICAL
-      #- task: gcr-vulneralbility-check@1
-      #  displayName: 'Image vulnerability check'
-      #  inputs:
-      #    projectId: 'prod-bip'
-      #    imageHost: $(imageHost)
-      #    image: $(repoName)
-      #    imageTag: $(imageTagBeforeVulnerabilityScan)
-      #    timeBetweenRetries: '10000'
+      - task: gcr-vulneralbility-check@1
+        displayName: 'Image vulnerability check'
+        inputs:
+          projectId: 'prod-bip'
+          imageHost: $(imageHost)
+          image: $(repoName)
+          imageTag: $(imageTagBeforeVulnerabilityScan)
+          timeBetweenRetries: '10000'
 
       - script: |
           TAG=`git describe --tags`

@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.9.10-alpine
 
 # Setup env
 ENV LANG C.UTF-8
@@ -7,8 +7,11 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONFAULTHANDLER 1
 ENV PIP_DISABLE_PIP_VERSION_CHECK=on
 
-RUN pip install poetry
-RUN apt-get update && apt-get install -y --no-install-recommends gcc git curl
+RUN apk update && apk upgrade && \
+    apk add gcc git curl linux-headers musl-dev libffi-dev
+
+RUN pip install --upgrade pip && \
+    pip install poetry
 
 WORKDIR /app
 COPY . ./
