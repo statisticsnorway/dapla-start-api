@@ -8,7 +8,12 @@ ENV PYTHONFAULTHANDLER 1
 ENV PIP_DISABLE_PIP_VERSION_CHECK=on
 
 RUN pip install poetry
-RUN apt-get update && apt-get install -y --no-install-recommends gcc git curl
+RUN apt update && \
+    apt-get -y clean all && \
+    apt-get -y update && \
+    apt-get -y upgrade && \
+    apt-get -y dist-upgrade && \
+    apt-get install -y --no-install-recommends gcc git curl
 
 WORKDIR /app
 COPY . ./
