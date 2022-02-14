@@ -7,7 +7,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONFAULTHANDLER 1
 ENV PIP_DISABLE_PIP_VERSION_CHECK=on
 
-RUN apk update && \
+RUN apk update && apk upgrade \
     apk add gcc git curl linux-headers musl-dev libffi-dev
 
 RUN pip install --upgrade pip && \
