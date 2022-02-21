@@ -146,6 +146,26 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                 ]
             },
             {
+                "type": "paragraph",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": "Disse stegene utføres av Team Argus!",
+                        "marks": [
+                            {
+                                "type": "strong"
+                            },
+                            {
+                                "type": "textColor",
+                                "attrs": {
+                                    "color": "#bf2600"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 "type": "rule"
             },
             {
