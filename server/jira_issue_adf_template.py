@@ -586,7 +586,9 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                         "content": [
                             {
                                 "type": "text",
-                                "text": f"Det nye Dapla teamet '{details.display_team_name}' trenger Transfer Service satt opp for seg."
+                                "text": f"Det nye Dapla teamet '{details.display_team_name}' trenger Transfer "
+                                        f"Service satt opp for seg. Johnny Niklasson, Tore Vestbekken eller Stian "
+                                        f"Henriksen på Kundeservice kan utføre jobben."
                             }
                         ]
                     },
