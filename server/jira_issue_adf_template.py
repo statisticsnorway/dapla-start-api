@@ -309,6 +309,36 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                 ]
             },
             {
+                "type": "blockquote",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Fint om dere kan ordne det!"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Vennlig hilsen,"
+                            },
+                            {
+                                "type": "hardBreak"
+                            },
+                            {
+                                "type": "text",
+                                "text": "…"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 "type": "heading",
                 "attrs": {
                     "level": 2
