@@ -518,7 +518,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                 "content": [
                     {
                         "type": "text",
-                        "text": f"Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request in '{iac_git_project_name}' og få en godkjenning av Team Stratus."
+                        "text": f"Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request in '{iac_git_project_name}' og få en godkjenning av Team Argus."
                     }
                 ]
             },
