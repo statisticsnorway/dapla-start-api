@@ -206,6 +206,38 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                 ]
             },
             {
+                "type": "blockquote",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Hei Kundeservice,"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Det nye Dapla teamet 'Team Stubbe' trenger AD grupper satt opp for seg og synkronisert til Google i sky. Dette betyr at gruppene skal inn i OU=SSB/Grupper/Skytjenester/BIP og må synkroniseres fra Azure Cloud til Google."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Følgende grupper med medlemmer ønskes:"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 "type": "table",
                 "attrs": {
                     "isNumberColumnEnabled": False,
