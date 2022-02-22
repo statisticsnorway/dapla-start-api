@@ -146,6 +146,26 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                 ]
             },
             {
+                "type": "paragraph",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": "Disse stegene utføres av Team Argus!",
+                        "marks": [
+                            {
+                                "type": "strong"
+                            },
+                            {
+                                "type": "textColor",
+                                "attrs": {
+                                    "color": "#bf2600"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 "type": "rule"
             },
             {
@@ -182,6 +202,38 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                     {
                         "type": "text",
                         "text": ". Presiser gjerne at gruppene skal i OU=SSB/Grupper/Skytjenester/BIP."
+                    }
+                ]
+            },
+            {
+                "type": "blockquote",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Hei Kundeservice,"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Det nye Dapla teamet 'Team Stubbe' trenger AD grupper satt opp for seg og synkronisert til Google i sky. Dette betyr at gruppene skal inn i OU=SSB/Grupper/Skytjenester/BIP og må synkroniseres fra Azure Cloud til Google."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Følgende grupper med medlemmer ønskes:"
+                            }
+                        ]
                     }
                 ]
             },
@@ -254,6 +306,36 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                         "type": "tableRow",
                         "content": _table_group_cells(con_group, details.consumers)
                     },
+                ]
+            },
+            {
+                "type": "blockquote",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Fint om dere kan ordne det!"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Vennlig hilsen,"
+                            },
+                            {
+                                "type": "hardBreak"
+                            },
+                            {
+                                "type": "text",
+                                "text": "…"
+                            }
+                        ]
+                    }
                 ]
             },
             {
@@ -534,7 +616,9 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                         "content": [
                             {
                                 "type": "text",
-                                "text": f"Det nye Dapla teamet '{details.display_team_name}' trenger Transfer Service satt opp for seg."
+                                "text": f"Det nye Dapla teamet '{details.display_team_name}' trenger Transfer "
+                                        f"Service satt opp for seg. Johnny Niklasson, Tore Vestbekken eller Stian "
+                                        f"Henriksen på Kundeservice kan utføre jobben."
                             }
                         ]
                     },

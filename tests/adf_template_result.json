@@ -96,6 +96,26 @@
       ]
     },
     {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Disse stegene utføres av Team Argus!",
+          "marks": [
+            {
+              "type": "strong"
+            },
+            {
+              "type": "textColor",
+              "attrs": {
+                "color": "#bf2600"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "type": "rule"
     },
     {
@@ -132,6 +152,38 @@
         {
           "type": "text",
           "text": ". Presiser gjerne at gruppene skal i OU=SSB/Grupper/Skytjenester/BIP."
+        }
+      ]
+    },
+    {
+      "type": "blockquote",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Hei Kundeservice,"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Det nye Dapla teamet 'Team Stubbe' trenger AD grupper satt opp for seg og synkronisert til Google i sky. Dette betyr at gruppene skal inn i OU=SSB/Grupper/Skytjenester/BIP og må synkroniseres fra Azure Cloud til Google."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Følgende grupper med medlemmer ønskes:"
+            }
+          ]
         }
       ]
     },
@@ -378,6 +430,36 @@
                   "content": []
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "blockquote",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Fint om dere kan ordne det!"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Vennlig hilsen,"
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "…"
             }
           ]
         }
@@ -661,7 +743,7 @@
           "content": [
             {
               "type": "text",
-              "text": "Det nye Dapla teamet 'Team Stubbe' trenger Transfer Service satt opp for seg."
+              "text": "Det nye Dapla teamet 'Team Stubbe' trenger Transfer Service satt opp for seg. Johnny Niklasson, Tore Vestbekken eller Stian Henriksen på Kundeservice kan utføre jobben."
             }
           ]
         },
