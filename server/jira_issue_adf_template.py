@@ -222,7 +222,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                         "content": [
                             {
                                 "type": "text",
-                                "text": "Det nye Dapla teamet 'Team Stubbe' trenger AD grupper satt opp for seg og synkronisert til Google i sky. Dette betyr at gruppene skal inn i OU=SSB/Grupper/Skytjenester/BIP og må synkroniseres fra Azure Cloud til Google."
+                                "text": f"Det nye Dapla teamet '{details.display_team_name}' trenger AD grupper satt opp for seg og synkronisert til Google i sky. Dette betyr at gruppene skal inn i OU=SSB/Grupper/Skytjenester/BIP og må synkroniseres fra Azure Cloud til Google."
                             }
                         ]
                     },
