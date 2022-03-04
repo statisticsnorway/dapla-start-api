@@ -543,7 +543,7 @@
         },
         {
           "type": "text",
-          "text": "dapla-team-stubbe",
+          "text": "stubbe-iac",
           "marks": [
             {
               "type": "strong"
@@ -573,7 +573,7 @@
         },
         {
           "type": "text",
-          "text": " til dette ."
+          "text": " til dette."
         }
       ]
     },
@@ -622,7 +622,7 @@
           "content": [
             {
               "type": "text",
-              "text": "Hei Stratus, kan dere legge til https://github.com/statisticsnorway/dapla-team-stubbe i Atlantis?"
+              "text": "Hei Stratus, kan dere legge til https://github.com/statisticsnorway/stubbe-iac i Atlantis ALLOWLIST?"
             }
           ]
         }
@@ -645,7 +645,7 @@
       "content": [
         {
           "type": "text",
-          "text": "Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request in 'dapla-team-stubbe' og få en godkjenning av Team Argus."
+          "text": "Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request in 'stubbe-iac' og få en godkjenning av Team Argus."
         }
       ]
     },
@@ -890,7 +890,7 @@
       "content": [
         {
           "type": "text",
-          "text": "display_team_name: Team Stubbe\nuniform_team_name: stubbe\ngithub_repo_name: dapla-team-stubbe\n"
+          "text": "display_team_name: Team Stubbe\nuniform_team_name: stubbe\ngithub_repo_name: stubbe-iac\n"
         }
       ]
     },

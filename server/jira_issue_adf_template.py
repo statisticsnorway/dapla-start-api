@@ -32,7 +32,7 @@ def get_issue_adf_dict(details: ProjectDetails):
 
 def _description(details: ProjectDetails, current_date: datetime.date = datetime.date.today()):
     uniform_team_name = convert_display_name_to_uniform_team_name(details.display_team_name)
-    iac_git_project_name = f"dapla-team-{uniform_team_name}"
+    iac_git_project_name = f"{uniform_team_name}-iac"
     domain = "@groups.ssb.no"
     mgm_group = f"{uniform_team_name}-managers"
     dad_group = f"{uniform_team_name}-data-admins"
@@ -446,7 +446,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                     },
                     {
                         "type": "text",
-                        "text": " til dette ."
+                        "text": " til dette."
                     }
                 ]
             },
@@ -495,7 +495,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                         "content": [
                             {
                                 "type": "text",
-                                "text": f"Hei Stratus, kan dere legge til https://github.com/statisticsnorway/{iac_git_project_name} i Atlantis?"
+                                "text": f"Hei Stratus, kan dere legge til https://github.com/statisticsnorway/{iac_git_project_name} i Atlantis ALLOWLIST?"
                             }
                         ]
                     }
