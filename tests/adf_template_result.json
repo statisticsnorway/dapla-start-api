@@ -432,6 +432,36 @@
               ]
             }
           ]
+        },
+        {
+          "type": "tableRow",
+          "content": [
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "stubbe-support"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": []
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -594,37 +624,23 @@
       "content": [
         {
           "type": "text",
-          "text": "Etter at GitHub-prosjektet har blitt opprettet må det legges til i en automatiseringsløsning som heter Atlantis. Dette gjøres ved å sende en forespørsel til kanalen "
+          "text": "Etter at GitHub-prosjektet har blitt opprettet må det legges til i en automatiseringsløsning som heter Atlantis. Dette gjøres ved å følge instruksjonene i "
         },
         {
           "type": "text",
-          "text": "#hjelp_bip",
+          "text": "denne lenken",
           "marks": [
             {
               "type": "link",
               "attrs": {
-                "href": "https://ssb-norge.slack.com/archives/C915HHACX"
+                "href": "https://docs.bip.ssb.no/how-to/gitops"
               }
             }
           ]
         },
         {
           "type": "text",
-          "text": " i Slack:"
-        }
-      ]
-    },
-    {
-      "type": "blockquote",
-      "content": [
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "Hei Stratus, kan dere legge til https://github.com/statisticsnorway/stubbe-iac i Atlantis ALLOWLIST?"
-            }
-          ]
+          "text": ". <team_name> i kontekst av instruksjonene skal være dapla-felles."
         }
       ]
     },
@@ -815,7 +831,7 @@
       "content": [
         {
           "type": "text",
-          "text": "Etter at Kundeservice har satt opp agenten og opprettet en katalogstruktur på Linuxstammen kan du henvise til teamets Manager (Magnus Manager) og/eller en Data Admin til følgende dokument som beskriver hvordan man setter opp Transfer Service på Google Cloud Platform:"
+          "text": "Etter at Kundeservice har satt opp agenten og opprettet en katalogstruktur på Linuxstammen kan du henvise en Data Admin til følgende dokument som beskriver hvordan man setter opp Transfer Service på Google Cloud Platform:"
         }
       ]
     },

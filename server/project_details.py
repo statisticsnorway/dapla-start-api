@@ -15,6 +15,7 @@ class ProjectDetails(BaseModel):
     data_admins: Optional[List[ProjectUser]]
     developers: Optional[List[ProjectUser]]
     consumers: Optional[List[ProjectUser]]
+    support: Optional[List[ProjectUser]]
     enabled_services: Optional[List[str]]
     authorization_code: Optional[str]
     reporter: Optional[ProjectUser]

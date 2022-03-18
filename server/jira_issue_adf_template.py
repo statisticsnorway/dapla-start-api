@@ -38,6 +38,7 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
     dad_group = f"{uniform_team_name}-data-admins"
     dev_group = f"{uniform_team_name}-developers"
     con_group = f"{uniform_team_name}-consumers"
+    sup_group = f"{uniform_team_name}-support"
     technical_details = {
         "display_team_name": details.display_team_name,
         "uniform_team_name": uniform_team_name,
@@ -306,6 +307,10 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                         "type": "tableRow",
                         "content": _table_group_cells(con_group, details.consumers)
                     },
+                    {
+                        "type": "tableRow",
+                        "content": _table_group_cells(sup_group, details.support)
+                    },
                 ]
             },
             {
@@ -467,37 +472,23 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                 "content": [
                     {
                         "type": "text",
-                        "text": "Etter at GitHub-prosjektet har blitt opprettet må det legges til i en automatiseringsløsning som heter Atlantis. Dette gjøres ved å sende en forespørsel til kanalen "
+                        "text": "Etter at GitHub-prosjektet har blitt opprettet må det legges til i en automatiseringsløsning som heter Atlantis. Dette gjøres ved å følge instruksjonene i "
                     },
                     {
                         "type": "text",
-                        "text": "#hjelp_bip",
+                        "text": "denne lenken",
                         "marks": [
                             {
                                 "type": "link",
                                 "attrs": {
-                                    "href": "https://ssb-norge.slack.com/archives/C915HHACX"
+                                    "href": "https://docs.bip.ssb.no/how-to/gitops"
                                 }
                             }
                         ]
                     },
                     {
                         "type": "text",
-                        "text": " i Slack:"
-                    }
-                ]
-            },
-            {
-                "type": "blockquote",
-                "content": [
-                    {
-                        "type": "paragraph",
-                        "content": [
-                            {
-                                "type": "text",
-                                "text": f"Hei Stratus, kan dere legge til https://github.com/statisticsnorway/{iac_git_project_name} i Atlantis ALLOWLIST?"
-                            }
-                        ]
+                        "text": ". <team_name> i kontekst av instruksjonene skal være dapla-felles."
                     }
                 ]
             },
@@ -691,9 +682,8 @@ def _description(details: ProjectDetails, current_date: datetime.date = datetime
                     {
                         "type": "text",
                         "text": "Etter at Kundeservice har satt opp agenten og opprettet en katalogstruktur på "
-                                f"Linuxstammen kan du henvise til teamets Manager ({details.manager.name}) og/eller en "
-                                "Data Admin til følgende dokument som beskriver hvordan man setter opp Transfer Service "
-                                "på Google Cloud Platform:"
+                                "Linuxstammen kan du henvise en Data Admin til følgende dokument som beskriver hvordan "
+                                "man setter opp Transfer Service på Google Cloud Platform:"
                     }
                 ]
             },
