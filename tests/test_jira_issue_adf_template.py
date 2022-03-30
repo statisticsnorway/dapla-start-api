@@ -19,7 +19,7 @@ def test_create_issue():
         other_info="Some other info"
     )
     # Validate against Atlassian Document Format schema
-    jsonschema = requests.get("http://go.atlassian.com/adf-json-schema").json()
+    jsonschema = requests.get("https://unpkg.com/@atlaskit/adf-schema@latest/dist/json-schema/v1/full.json").json()
     with open(resolve_filename("adf_template_result.json"), encoding="utf-8") as file:
         description = _description(project_details, date.fromisoformat('2022-02-01'))
         validate(instance=description, schema=jsonschema)

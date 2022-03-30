@@ -1,7 +1,7 @@
 from typing import List
 
 import yaml
-import datetime
+from datetime import date
 
 from .project_details import ProjectDetails, ProjectUser
 
@@ -30,7 +30,7 @@ def get_issue_adf_dict(details: ProjectDetails):
     }
 
 
-def _description(details: ProjectDetails, current_date: datetime.date = datetime.date.today()):
+def _description(details: ProjectDetails, current_date=date.today()):
     uniform_team_name = convert_display_name_to_uniform_team_name(details.display_team_name)
     iac_git_project_name = f"{uniform_team_name}-iac"
     domain = "@groups.ssb.no"
