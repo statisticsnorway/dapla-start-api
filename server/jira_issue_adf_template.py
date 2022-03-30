@@ -30,7 +30,10 @@ def get_issue_adf_dict(details: ProjectDetails):
     }
 
 
-def _description(details: ProjectDetails, current_date=date.today()):
+def _description(details: ProjectDetails, current_date: date = None):
+    if current_date is None:
+        current_date = date.today()
+
     uniform_team_name = convert_display_name_to_uniform_team_name(details.display_team_name)
     iac_git_project_name = f"{uniform_team_name}-iac"
     domain = "@groups.ssb.no"
