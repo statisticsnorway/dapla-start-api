@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dapla-start-api"
-version = "0.3.6"
+version = "0.3.7"
 description = ""
 authors = ["Team Argus"]
 
