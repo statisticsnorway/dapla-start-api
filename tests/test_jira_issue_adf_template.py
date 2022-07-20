@@ -10,6 +10,7 @@ from datetime import date
 def test_create_issue():
     project_details = ProjectDetails(
         display_team_name="Team Stubbe",
+        uniform_team_name="stubbs",
         manager=ProjectUser(name="Magnus Manager", email_short="mm@ssb.no", email="magnus.manager@ssb.no"),
         data_admins=[ProjectUser(name="Pernille Pilot", email_short="ppi@ssb.no", email="ppi@ssb.no"),
                                   ProjectUser(name="Petter Andrepilot ", email_short="pap@ssb.no", email="pap@ssb.no")],

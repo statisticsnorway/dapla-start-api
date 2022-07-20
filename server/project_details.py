@@ -11,6 +11,7 @@ class ProjectUser(BaseModel):
 
 class ProjectDetails(BaseModel):
     display_team_name: str
+    uniform_team_name: Optional[str]
     manager: ProjectUser
     data_admins: Optional[List[ProjectUser]]
     developers: Optional[List[ProjectUser]]
