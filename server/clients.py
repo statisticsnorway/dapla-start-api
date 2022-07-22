@@ -42,11 +42,11 @@ class KlassClient(AbstractClient):
         response = requests.get(url, headers=headers)
         response.raise_for_status()
 
-        return response
+        return response.json()
 
     def get_latest_sectional_division_version(self, url):
         headers = {"Content-Type": content_type_json}
         response = requests.get(url, headers=headers)
         response.raise_for_status()
 
-        return response
+        return response.json()

@@ -108,7 +108,7 @@ def test_org_info():
         ]
     }
 
-    klass_client_mock.get_sectional_division_versions = lambda arg: klass_versions_response
+    klass_client_mock.get_sectional_division_versions = lambda: klass_versions_response
     klass_client_mock.get_latest_sectional_division_version = lambda arg: klass_latest_version_response
 
     client_response = [

@@ -4,7 +4,7 @@ from functools import reduce
 
 
 def get_klass_sectional_division(sectional_division_versions):
-    response_dict = json.loads(sectional_division_versions.text)
+    response_dict = sectional_division_versions
     versions_list = response_dict["versions"]
     newest_version = reduce((
         lambda a, b:
@@ -16,7 +16,7 @@ def get_klass_sectional_division(sectional_division_versions):
 
 
 def produce_org_info(newest_version_data):
-    response_dict = json.loads(newest_version_data.text)
+    response_dict = newest_version_data
     org_info_list = response_dict["classificationItems"]
     sections = list(filter(lambda s: s["level"] == '2', org_info_list))
     simplified_sections = list(map(simplify_sections, sections))
