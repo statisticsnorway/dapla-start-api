@@ -9,6 +9,7 @@ help:
 local-install: ## Installation steps for local development
 	pip3 install poetry
 	poetry env use python3.9
+	poetry update
 
 .PHONY: test
 test: ## Run tests

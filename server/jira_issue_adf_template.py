@@ -125,6 +125,38 @@ def _description(details: ProjectDetails, current_date: date = None):
             {
                 "type": "panel",
                 "attrs": {
+                    "panelType": "note"
+                },
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Hovedansvarlig seksjon:"
+                            },
+                            {
+                                "type": "hardBreak"
+                            },
+                            {
+                                "type": "text",
+                                "text": f"{details.org_info.name if details.org_info else '-'} ({details.org_info.code if details.org_info else '-'})",
+                                "marks": [
+                                    {
+                                        "type": "subsup",
+                                        "attrs": {
+                                            "type": "sub"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "panel",
+                "attrs": {
                     "panelType": "info"
                 },
                 "content": [
