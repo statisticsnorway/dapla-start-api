@@ -108,7 +108,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                             },
                             {
                                 "type": "text",
-                                "text": f"GUI-versjon: {details.ui_version}, API-versjon: {details.api_version}, teknisk teamnavn oversyrt: {'Ja' if uniform_team_name_overridden else 'Nei'}",
+                                "text": f"GUI-versjon: {details.ui_version}, API-versjon: {details.api_version}, teknisk teamnavn overstyrt: {'Ja' if uniform_team_name_overridden else 'Nei'}",
                                 "marks": [
                                     {
                                         "type": "subsup",
@@ -550,7 +550,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "content": [
                     {
                         "type": "text",
-                        "text": f"Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request in '{iac_git_project_name}' og få en godkjenning av Team Argus."
+                        "text": f"Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request i '{iac_git_project_name}' og få en godkjenning av Team Argus."
                     }
                 ]
             },

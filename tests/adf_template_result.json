@@ -48,7 +48,7 @@
             },
             {
               "type": "text",
-              "text": "GUI-versjon: None, API-versjon: None, teknisk teamnavn oversyrt: Ja",
+              "text": "GUI-versjon: None, API-versjon: None, teknisk teamnavn overstyrt: Ja",
               "marks": [
                 {
                   "type": "subsup",
@@ -693,7 +693,7 @@
       "content": [
         {
           "type": "text",
-          "text": "Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request in 'stubbs-iac' og få en godkjenning av Team Argus."
+          "text": "Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request i 'stubbs-iac' og få en godkjenning av Team Argus."
         }
       ]
     },
