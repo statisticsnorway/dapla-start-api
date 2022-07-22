@@ -9,10 +9,11 @@ from prometheus_fastapi_instrumentator import Instrumentator
 from requests import HTTPError
 from typing import Optional
 
-from .clients import JiraClient
+from .clients import JiraClient, KlassClient
 from .project_details import ProjectDetails, project_user_from_jwt
 from .create_jira_issue import create_issue_basic
 from .emneindeling import get_subject_areas_tree_select
+from .org_info import produce_org_info, get_klass_sectional_division
 from .config import logger, configure_loggers
 
 SSB_USERS_SOURCE = os.environ.get("SSB_USERS_SOURCE", "tests/test-users-export.csv")
@@ -25,6 +26,10 @@ instrumentator.instrument(app).expose(app)
 
 def get_jira_client():
     return JiraClient("https://statistics-norway.atlassian.net/rest/api/3")
+
+
+def get_klass_client():
+    return KlassClient("https://data.ssb.no/api/klass/v1")
 
 
 origins = ["*"]
@@ -151,3 +156,20 @@ def list_users(fields: str = None):
             line_count += 1
 
     return users
+
+
+@app.get("/org_info", status_code=200)
+def list_org_info(client: KlassClient = Depends(get_klass_client)):
+    """List organization information
+    """
+    try:
+        sectional_division_versions = client.get_sectional_division_versions()
+        newest_version_url = get_klass_sectional_division(sectional_division_versions)
+        newest_version_data = client.get_latest_sectional_division_version(newest_version_url)
+
+        return produce_org_info(newest_version_data)
+    except Exception as error:
+        error_text = f"Error occurred while getting organization information: {error}"
+        logger.error(error_text)
+
+        raise HTTPException(status_code=500, detail=error_text)

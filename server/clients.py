@@ -35,4 +35,18 @@ class JiraClient(AbstractClient):
         return {"Content-Type": content_type_json, "Authorization": f"Basic {basic}"}
 
 
+class KlassClient(AbstractClient):
+    def get_sectional_division_versions(self):
+        headers = {"Content-Type": content_type_json}
+        url = self._base_url + "/classifications/83"
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
 
+        return response.json()
+
+    def get_latest_sectional_division_version(self, url):
+        headers = {"Content-Type": content_type_json}
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
+
+        return response.json()
