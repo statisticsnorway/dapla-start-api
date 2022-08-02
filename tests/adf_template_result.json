@@ -10,7 +10,7 @@
       "content": [
         {
           "type": "text",
-          "text": "Team Stubbe"
+          "text": "Team Stubbe (stubbs)"
         }
       ]
     },
@@ -48,7 +48,39 @@
             },
             {
               "type": "text",
-              "text": "GUI-versjon: None, API-versjon None",
+              "text": "GUI-versjon: None, API-versjon: None, teknisk teamnavn overstyrt: Ja",
+              "marks": [
+                {
+                  "type": "subsup",
+                  "attrs": {
+                    "type": "sub"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "panel",
+      "attrs": {
+        "panelType": "note"
+      },
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Hovedansvarlig seksjon:"
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "Seksjon 11 (11)",
               "marks": [
                 {
                   "type": "subsup",
@@ -252,7 +284,7 @@
                   "content": [
                     {
                       "type": "text",
-                      "text": "stubbe-managers"
+                      "text": "stubbs-managers"
                     }
                   ]
                 }
@@ -297,7 +329,7 @@
                   "content": [
                     {
                       "type": "text",
-                      "text": "stubbe-data-admins"
+                      "text": "stubbs-data-admins"
                     }
                   ]
                 }
@@ -356,7 +388,7 @@
                   "content": [
                     {
                       "type": "text",
-                      "text": "stubbe-developers"
+                      "text": "stubbs-developers"
                     }
                   ]
                 }
@@ -415,7 +447,7 @@
                   "content": [
                     {
                       "type": "text",
-                      "text": "stubbe-consumers"
+                      "text": "stubbs-consumers"
                     }
                   ]
                 }
@@ -445,7 +477,7 @@
                   "content": [
                     {
                       "type": "text",
-                      "text": "stubbe-support"
+                      "text": "stubbs-support"
                     }
                   ]
                 }
@@ -522,7 +554,7 @@
       "content": [
         {
           "type": "text",
-          "text": "\"stubbe\" : \"stubbe-managers@groups.ssb.no\""
+          "text": "\"stubbs\" : \"stubbs-managers@groups.ssb.no\""
         }
       ]
     },
@@ -573,7 +605,7 @@
         },
         {
           "type": "text",
-          "text": "stubbe-iac",
+          "text": "stubbs-iac",
           "marks": [
             {
               "type": "strong"
@@ -661,7 +693,7 @@
       "content": [
         {
           "type": "text",
-          "text": "Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request in 'stubbe-iac' og få en godkjenning av Team Argus."
+          "text": "Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request i 'stubbs-iac' og få en godkjenning av Team Argus."
         }
       ]
     },
@@ -777,7 +809,7 @@
           "content": [
             {
               "type": "text",
-              "text": "    stubbe-data-admins"
+              "text": "    stubbs-data-admins"
             }
           ]
         },
@@ -795,7 +827,7 @@
           "content": [
             {
               "type": "text",
-              "text": "    stubbe-ts"
+              "text": "    stubbs-ts"
             }
           ]
         },
@@ -906,7 +938,7 @@
       "content": [
         {
           "type": "text",
-          "text": "display_team_name: Team Stubbe\nuniform_team_name: stubbe\ngithub_repo_name: stubbe-iac\n"
+          "text": "display_team_name: Team Stubbe\nuniform_team_name: stubbs\ngithub_repo_name: stubbs-iac\n"
         }
       ]
     },

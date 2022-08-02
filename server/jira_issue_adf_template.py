@@ -34,7 +34,13 @@ def _description(details: ProjectDetails, current_date: date = None):
     if current_date is None:
         current_date = date.today()
 
+    uniform_team_name_overridden = False
     uniform_team_name = convert_display_name_to_uniform_team_name(details.display_team_name)
+
+    if details.uniform_team_name and uniform_team_name != details.uniform_team_name:
+        uniform_team_name_overridden = True
+        uniform_team_name = convert_display_name_to_uniform_team_name(details.uniform_team_name)
+
     iac_git_project_name = f"{uniform_team_name}-iac"
     domain = "@groups.ssb.no"
     mgm_group = f"{uniform_team_name}-managers"
@@ -64,7 +70,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "content": [
                     {
                         "type": "text",
-                        "text": f"{details.display_team_name}"
+                        "text": f"{details.display_team_name} ({uniform_team_name})"
                     }
                 ]
             },
@@ -102,7 +108,39 @@ def _description(details: ProjectDetails, current_date: date = None):
                             },
                             {
                                 "type": "text",
-                                "text": f"GUI-versjon: {details.ui_version}, API-versjon {details.api_version}",
+                                "text": f"GUI-versjon: {details.ui_version}, API-versjon: {details.api_version}, teknisk teamnavn overstyrt: {'Ja' if uniform_team_name_overridden else 'Nei'}",
+                                "marks": [
+                                    {
+                                        "type": "subsup",
+                                        "attrs": {
+                                            "type": "sub"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "panel",
+                "attrs": {
+                    "panelType": "note"
+                },
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Hovedansvarlig seksjon:"
+                            },
+                            {
+                                "type": "hardBreak"
+                            },
+                            {
+                                "type": "text",
+                                "text": f"{details.org_info.name if details.org_info else '-'} ({details.org_info.code if details.org_info else '-'})",
                                 "marks": [
                                     {
                                         "type": "subsup",
@@ -512,7 +550,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "content": [
                     {
                         "type": "text",
-                        "text": f"Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request in '{iac_git_project_name}' og få en godkjenning av Team Argus."
+                        "text": f"Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request i '{iac_git_project_name}' og få en godkjenning av Team Argus."
                     }
                 ]
             },

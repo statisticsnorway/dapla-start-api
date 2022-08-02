@@ -9,13 +9,21 @@ class ProjectUser(BaseModel):
     email: str
 
 
+class OrganizationInfo(BaseModel):
+    code: str
+    name: str
+    parent_code: str
+
+
 class ProjectDetails(BaseModel):
     display_team_name: str
+    uniform_team_name: Optional[str]
     manager: ProjectUser
     data_admins: Optional[List[ProjectUser]]
     developers: Optional[List[ProjectUser]]
     consumers: Optional[List[ProjectUser]]
     support: Optional[List[ProjectUser]]
+    org_info: Optional[OrganizationInfo]
     enabled_services: Optional[List[str]]
     authorization_code: Optional[str]
     reporter: Optional[ProjectUser]
