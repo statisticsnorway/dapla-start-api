@@ -1,6 +1,6 @@
 from tests import resolve_filename
 from server.jira_issue_adf_template import _description
-from server.project_details import ProjectDetails, ProjectUser
+from server.project_details import ProjectDetails, ProjectUser, OrganizationInfo
 import json
 from jsonschema import validate
 import requests
@@ -16,6 +16,7 @@ def test_create_issue():
                                   ProjectUser(name="Petter Andrepilot ", email_short="pap@ssb.no", email="pap@ssb.no")],
         developers=[ProjectUser(name="Dorte Developer", email_short="dd@ssb.no", email="dd@ssb.no"),
                     ProjectUser(name="Diana Developer", email_short="did@ssb.no", email="did@ssb.no")],
+        org_info=OrganizationInfo(code="11", name="Seksjon 11", parent_code="1"),
         reporter=ProjectUser(name="Reidar Reporter", email_short="rr@ssb.no", email="rr@ssb.no"),
         other_info="Some other info"
     )

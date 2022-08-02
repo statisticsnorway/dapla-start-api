@@ -108,7 +108,39 @@ def _description(details: ProjectDetails, current_date: date = None):
                             },
                             {
                                 "type": "text",
-                                "text": f"GUI-versjon: {details.ui_version}, API-versjon: {details.api_version}, teknisk teamnavn oversyrt: {'Ja' if uniform_team_name_overridden else 'Nei'}",
+                                "text": f"GUI-versjon: {details.ui_version}, API-versjon: {details.api_version}, teknisk teamnavn overstyrt: {'Ja' if uniform_team_name_overridden else 'Nei'}",
+                                "marks": [
+                                    {
+                                        "type": "subsup",
+                                        "attrs": {
+                                            "type": "sub"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "panel",
+                "attrs": {
+                    "panelType": "note"
+                },
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Hovedansvarlig seksjon:"
+                            },
+                            {
+                                "type": "hardBreak"
+                            },
+                            {
+                                "type": "text",
+                                "text": f"{details.org_info.name if details.org_info else '-'} ({details.org_info.code if details.org_info else '-'})",
                                 "marks": [
                                     {
                                         "type": "subsup",
@@ -518,7 +550,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "content": [
                     {
                         "type": "text",
-                        "text": f"Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request in '{iac_git_project_name}' og få en godkjenning av Team Argus."
+                        "text": f"Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request i '{iac_git_project_name}' og få en godkjenning av Team Argus."
                     }
                 ]
             },
