@@ -20,8 +20,11 @@ SSB_USERS_SOURCE = os.environ.get("SSB_USERS_SOURCE", "tests/test-users-export.c
 
 configure_loggers()
 app = FastAPI()
-instrumentator = Instrumentator(excluded_handlers=["/health/.*", "/metrics"])
-instrumentator.instrument(app).expose(app)
+
+
+@app.on_event("startup")
+async def startup_event():
+    Instrumentator(excluded_handlers=["/health/.*", "/metrics"]).instrument(app).expose(app)
 
 
 def get_jira_client():
