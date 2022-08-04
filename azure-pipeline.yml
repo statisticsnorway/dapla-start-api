@@ -118,7 +118,7 @@ jobs:
         inputs:
           serviceConnectionEndpoint: 'Dapla-Snyk'
           testType: 'container'
-          dockerImageName: '$(imageName)'
+          dockerImageName: '$(repoName)'
           dockerfilePath: 'Dockerfile'
           monitorWhen: 'always'
           failOnIssues: false
