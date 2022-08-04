@@ -114,7 +114,7 @@ jobs:
           testType: 'container'
           dockerImageName: '$(imageName):$(imageTagBeforeVulnerabilityScan)'
           dockerfilePath: 'Dockerfile'
-          monitorWhen: 'onIssuesFound'
+          monitorWhen: 'noIssuesFound'
           failOnIssues: false
           projectName: 'Pipeline imagescan'
           organization: 'statisticsnorwayorg'
