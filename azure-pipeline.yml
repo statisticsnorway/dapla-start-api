@@ -114,9 +114,9 @@ jobs:
           testType: 'container'
           dockerImageName: '$(imageName):$(imageTagBeforeVulnerabilityScan)'
           dockerfilePath: 'Dockerfile'
-          monitorWhen: 'always'
+          monitorWhen: 'never'
           failOnIssues: false
-          projectName: 'statisticsnorway/$(appName)'
+          projectName: 'Pipeline imagescan'
           organization: 'statisticsnorwayorg'
       # Authenticate Docker to GCR using predefined service connection
       - task: Docker@2
