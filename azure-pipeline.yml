@@ -118,7 +118,7 @@ jobs:
         inputs:
           serviceConnectionEndpoint: 'Dapla-Snyk'
           testType: 'container'
-          dockerImageName: '$(repoName)'
+          dockerImageName: '$(imageName):$(imageTagBeforeVulnerabilityScan)'
           dockerfilePath: 'Dockerfile'
           monitorWhen: 'always'
           failOnIssues: false
