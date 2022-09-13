@@ -665,7 +665,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                                                 "content": [
                                                     {
                                                         "type": "text",
-                                                        "text": "Tilsette repo URL på enden av "
+                                                        "text": "Tilsette repo URL på slutten av "
                                                     },
                                                     {
                                                         "type": "text",
