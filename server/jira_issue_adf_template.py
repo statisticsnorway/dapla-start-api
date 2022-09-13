@@ -192,7 +192,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "content": [
                     {
                         "type": "text",
-                        "text": "Disse stegene utføres av Team Argus!",
+                        "text": "Disse stegene utføres av Team Statistikktjenester!",
                         "marks": [
                             {
                                 "type": "strong"
@@ -513,23 +513,329 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "content": [
                     {
                         "type": "text",
-                        "text": "Etter at GitHub-prosjektet har blitt opprettet må det legges til i en automatiseringsløsning som heter Atlantis. Dette gjøres ved å følge instruksjonene i "
-                    },
+                        "text": "Etter at GitHub repoet har blitt opprettet må det kobles til i en automatiseringsløsning som heter Atlantis. Det er tre hoved steg for å få dette til:"
+                    }
+                ]
+            },
+            {
+                "type": "orderedList",
+                "content": [
                     {
-                        "type": "text",
-                        "text": "denne lenken",
-                        "marks": [
+                        "type": "listItem",
+                        "content": [
                             {
-                                "type": "link",
-                                "attrs": {
-                                    "href": "https://docs.bip.ssb.no/how-to/gitops"
-                                }
+                                "type": "paragraph",
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "Legge repoet til listen i Github appen"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "orderedList",
+                                "content": [
+                                    {
+                                        "type": "listItem",
+                                        "content": [
+                                            {
+                                                "type": "paragraph",
+                                                "content": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "Åpne "
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": "https://github.com/apps/atlantis-dapla-felles-ssb-no",
+                                                        "marks": [
+                                                            {
+                                                                "type": "link",
+                                                                "attrs": {
+                                                                    "href": "https://github.com/apps/atlantis-dapla-felles-ssb-no"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "listItem",
+                                        "content": [
+                                            {
+                                                "type": "paragraph",
+                                                "content": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "Klikk "
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": "Configure",
+                                                        "marks": [
+                                                            {
+                                                                "type": "code"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "listItem",
+                                        "content": [
+                                            {
+                                                "type": "paragraph",
+                                                "content": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": f"Søke etter {iac_git_project_name} under "
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": "Select repository",
+                                                        "marks": [
+                                                            {
+                                                                "type": "code"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": " feltet"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "listItem",
+                                        "content": [
+                                            {
+                                                "type": "paragraph",
+                                                "content": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "Lagre endringen"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
+                        "type": "listItem",
+                        "content": [
+                            {
+                                "type": "paragraph",
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "Legge repoet til "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "allowlist",
+                                        "marks": [
+                                            {
+                                                "type": "code"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " på Atlantis konfigurasjonen"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "orderedList",
+                                "content": [
+                                    {
+                                        "type": "listItem",
+                                        "content": [
+                                            {
+                                                "type": "paragraph",
+                                                "content": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "Legge til repo URL på slutten av "
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": "denne linjen",
+                                                        "marks": [
+                                                            {
+                                                                "type": "link",
+                                                                "attrs": {
+                                                                    "href": "https://github.com/statisticsnorway/atlantis-team-config/blob/b4e018d5bf6944b73aa061aa07462a65f3d7d0d0/kubernetes-manifests/dapla-felles/atlantis-statefulset/atlantis-statefulset.yaml#L35"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "listItem",
+                                        "content": [
+                                            {
+                                                "type": "paragraph",
+                                                "content": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "Åpne og merge en PR med endringen"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "listItem",
+                        "content": [
+                            {
+                                "type": "paragraph",
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "Apply’e "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "allowlist",
+                                        "marks": [
+                                            {
+                                                "type": "code"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " endringene til Atlantis instansen"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "orderedList",
+                                "content": [
+                                    {
+                                        "type": "listItem",
+                                        "content": [
+                                            {
+                                                "type": "paragraph",
+                                                "content": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "Clone eller pulle endringene på main grenen"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "listItem",
+                                        "content": [
+                                            {
+                                                "type": "paragraph",
+                                                "content": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "Kjøre "
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": "gcloud container clusters get-credentials atlantis-prod --zone europe-north1 --project atlantis-prod-0073",
+                                                        "marks": [
+                                                            {
+                                                                "type": "code"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "listItem",
+                                        "content": [
+                                            {
+                                                "type": "paragraph",
+                                                "content": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "Kjøre "
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": "kubectl apply -f kubernetes-manifests/dapla-felles/atlantis-statefulset/atlantis-statefulset.yaml",
+                                                        "marks": [
+                                                            {
+                                                                "type": "code"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "listItem",
+                                        "content": [
+                                            {
+                                                "type": "paragraph",
+                                                "content": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "Verifisere at instansen er oppdatert ved å kjøre "
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": "kubectl describe statefulset atlantis-dapla-felles",
+                                                        "marks": [
+                                                            {
+                                                                "type": "code"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "content": [
+                    {
                         "type": "text",
-                        "text": ". <team_name> i kontekst av instruksjonene skal være dapla-felles."
+                        "text": "Se siden her for mer detaljer: "
+                    },
+                    {
+                        "type": "text",
+                        "text": "https://docs.bip.ssb.no/how-to/gitops/",
+                        "marks": [
+                            {
+                                "type": "link",
+                                "attrs": {
+                                    "href": "https://docs.bip.ssb.no/how-to/gitops/"
+                                }
+                            }
+                        ]
                     }
                 ]
             },
@@ -550,7 +856,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "content": [
                     {
                         "type": "text",
-                        "text": f"Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request i '{iac_git_project_name}' og få en godkjenning av Team Argus."
+                        "text": f"Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request i '{iac_git_project_name}' og få en godkjenning av Team Statistikktjenester."
                     }
                 ]
             },

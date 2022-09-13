@@ -25,5 +25,5 @@ def test_create_issue():
     with open(resolve_filename("adf_template_result.json"), encoding="utf-8") as file:
         description = _description(project_details, date.fromisoformat('2022-02-01'))
         validate(instance=description, schema=jsonschema)
-        result = json.dumps(description, indent=2, ensure_ascii=False)
+        result = json.dumps(description, indent=2, ensure_ascii=False) + "\n"
         assert result == file.read()
