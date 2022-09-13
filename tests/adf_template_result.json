@@ -808,7 +808,7 @@
                       "content": [
                         {
                           "type": "text",
-                          "text": "Tilsette repo URL på enden av "
+                          "text": "Tilsette repo URL på slutten av "
                         },
                         {
                           "type": "text",
