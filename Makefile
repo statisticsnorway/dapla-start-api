@@ -14,7 +14,7 @@ local-install: ## Installation steps for local development
 .PHONY: test
 test: ## Run tests
 	poetry install
-	pytest
+	poetry run pytest -vvv
 
 .PHONY: bump-version-patch
 bump-version-patch: ## Bump patch version, e.g. 0.0.1 -> 0.0.2.
