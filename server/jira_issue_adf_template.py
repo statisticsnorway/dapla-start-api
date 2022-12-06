@@ -7,13 +7,14 @@ from .project_details import ProjectDetails, ProjectUser
 
 
 def convert_display_name_to_uniform_team_name(display_team_name):
-    rm_prefix_and_spaces = (
-        display_team_name.lower().replace("team ", "").replace(" ", "-")
+    return (
+        display_team_name.lower()
+        .replace("team ", "")
+        .replace(" ", "-")
+        .replace("æ", "ae")
+        .replace("ø", "oe")
+        .replace("å", "aa")
     )
-    replace_norwegian_letters = (
-        rm_prefix_and_spaces.replace("æ", "ae").replace("ø", "oe").replace("å", "aa")
-    )
-    return replace_norwegian_letters
 
 
 def get_issue_adf_dict(details: ProjectDetails):
@@ -59,6 +60,29 @@ def _description(details: ProjectDetails, current_date: date = None):
     if details.enabled_services and isinstance(details.enabled_services, list):
         for service in details.enabled_services:
             technical_details[f"enable_{service}"] = "yes"
+
+    reporter_description = [
+        {
+            "type": "text",
+            "text": f"Innmeldt av {details.reporter.name if details.reporter else ''} (",
+        },
+        {
+            "type": "text",
+            "text": f"{details.reporter.email if details.reporter else ''}",
+            "marks": [
+                {
+                    "type": "link",
+                    "attrs": {
+                        "href": f"mailto:{details.reporter.email if details.reporter else ''}"
+                    },
+                }
+            ],
+        },
+        {
+            "type": "text",
+            "text": f") den {current_date.strftime('%d.%m.%Y')}",
+        },
+    ]
 
     access_groups = {
         "type": "table",
@@ -144,27 +168,8 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "content": [
                     {
                         "type": "paragraph",
-                        "content": [
-                            {
-                                "type": "text",
-                                "text": f"Innmeldt av {details.reporter.name if details.reporter else ''} (",
-                            },
-                            {
-                                "type": "text",
-                                "text": f"{details.reporter.email if details.reporter else ''}",
-                                "marks": [
-                                    {
-                                        "type": "link",
-                                        "attrs": {
-                                            "href": f"mailto:{details.reporter.email if details.reporter else ''}"
-                                        },
-                                    }
-                                ],
-                            },
-                            {
-                                "type": "text",
-                                "text": f") den {current_date.strftime('%d.%m.%Y')}",
-                            },
+                        "content": reporter_description
+                        + [
                             {"type": "hardBreak"},
                             {
                                 "type": "text",
@@ -233,7 +238,70 @@ def _description(details: ProjectDetails, current_date: date = None):
             {
                 "type": "heading",
                 "attrs": {"level": 2},
-                "content": [{"type": "text", "text": "1. Opprette tilgangsgrupper"}],
+                "content": [{"type": "text", "text": "1. Seksjonsleder godkjenner"}],
+            },
+            {
+                "type": "paragraph",
+                "content": [
+                    {"type": "text", "text": "Sende en epost til "},
+                    {
+                        "type": "text",
+                        "text": "seksjonslederen for bestilleren",
+                        "marks": [
+                            {
+                                "type": "link",
+                                "attrs": {
+                                    "href": f"https://ssbno.sharepoint.com/sites/byraanettet/_layouts/15/search.aspx/people?q=seksjonssjef%20{details.org_info.code if details.org_info else '-'}"
+                                },
+                            }
+                        ],
+                    },
+                    {"type": "text", "text": " med følgende tekst:"},
+                ],
+            },
+            {
+                "type": "blockquote",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [{"type": "text", "text": "Hei,"}],
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Vi har fått en forespørsel om oppretting av Dapla team fra noen i din seksjon. Trenger en godkjenning før vi kan gå videre.",
+                            }
+                        ],
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": f"Teamnavn: {details.display_team_name}",
+                            },
+                            {"type": "hardBreak"},
+                            {
+                                "type": "text",
+                                "text": f"Teknisk teamnavn: {uniform_team_name}",
+                            },
+                            {"type": "hardBreak"},
+                        ]
+                        + reporter_description,
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [{"type": "text", "text": "AD grupper:"}],
+                    },
+                ],
+            },
+            access_groups,
+            {
+                "type": "heading",
+                "attrs": {"level": 2},
+                "content": [{"type": "text", "text": "2. Opprette tilgangsgrupper"}],
             },
             {
                 "type": "paragraph",
@@ -311,7 +379,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "content": [
                     {
                         "type": "text",
-                        "text": "2. Legge teamet til konfigurasjonsfil i Byråets IT-plattform (BIP)",
+                        "text": "3. Legge teamet til konfigurasjonsfil i Byråets IT-plattform (BIP)",
                     }
                 ],
             },
@@ -363,7 +431,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "content": [
                     {
                         "type": "text",
-                        "text": "3. Opprette GitHub prosjekt for plattformressurser",
+                        "text": "4. Opprette GitHub prosjekt for plattformressurser",
                     }
                 ],
             },
@@ -406,7 +474,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "content": [
                     {
                         "type": "text",
-                        "text": "4. Sette opp automatisering av plattformressurser",
+                        "text": "5. Sette opp automatisering av plattformressurser",
                     }
                 ],
             },
@@ -693,7 +761,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "type": "heading",
                 "attrs": {"level": 2},
                 "content": [
-                    {"type": "text", "text": "5. Opprette teamets infrastruktur"}
+                    {"type": "text", "text": "6. Opprette teamets infrastruktur"}
                 ],
             },
             {
@@ -723,7 +791,7 @@ def _description(details: ProjectDetails, current_date: date = None):
             {
                 "type": "heading",
                 "attrs": {"level": 2},
-                "content": [{"type": "text", "text": "6. Flere tjenester"}],
+                "content": [{"type": "text", "text": "7. Flere tjenester"}],
             },
             {
                 "type": "paragraph",
@@ -846,6 +914,71 @@ def _description(details: ProjectDetails, current_date: date = None):
                             }
                         ],
                     }
+                ],
+            },
+            {
+                "type": "heading",
+                "attrs": {"level": 2},
+                "content": [
+                    {"type": "text", "text": "8. Opplyse bestilleren at teamet er klar"}
+                ],
+            },
+            {
+                "type": "paragraph",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": f"Sende en epost eller melding til {details.reporter.name if details.reporter else ''} (",
+                    },
+                    {
+                        "type": "text",
+                        "text": f"{details.reporter.email if details.reporter else ''}",
+                        "marks": [
+                            {
+                                "type": "link",
+                                "attrs": {
+                                    "href": f"mailto:{details.reporter.email if details.reporter else ''}"
+                                },
+                            }
+                        ],
+                    },
+                    {"type": "text", "text": ") med følgende tekst:"},
+                ],
+            },
+            {
+                "type": "blockquote",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [{"type": "text", "text": "Hei,"}],
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Opplyser at Dapla teamet du bestilt er nå klar. Informasjon over hva det betyr og hvordan å ta Dapla i bruk finnes her: ",
+                            },
+                            {
+                                "type": "text",
+                                "text": "https://manual.dapla.ssb.no/dapla-team.html",
+                                "marks": [
+                                    {
+                                        "type": "link",
+                                        "attrs": {
+                                            "href": "https://manual.dapla.ssb.no/dapla-team.html"
+                                        },
+                                    }
+                                ],
+                            },
+                        ],
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {"type": "text", "text": "Lykke til med reisen til skyen!"}
+                        ],
+                    },
                 ],
             },
             {

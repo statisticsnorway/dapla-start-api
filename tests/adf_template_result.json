@@ -158,7 +158,392 @@
       "content": [
         {
           "type": "text",
-          "text": "1. Opprette tilgangsgrupper"
+          "text": "1. Seksjonsleder godkjenner"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Sende en epost til "
+        },
+        {
+          "type": "text",
+          "text": "seksjonslederen for bestilleren",
+          "marks": [
+            {
+              "type": "link",
+              "attrs": {
+                "href": "https://ssbno.sharepoint.com/sites/byraanettet/_layouts/15/search.aspx/people?q=seksjonssjef%2011"
+              }
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " med følgende tekst:"
+        }
+      ]
+    },
+    {
+      "type": "blockquote",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Hei,"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Vi har fått en forespørsel om oppretting av Dapla team fra noen i din seksjon. Trenger en godkjenning før vi kan gå videre."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Teamnavn: Team Stubbe"
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "Teknisk teamnavn: stubbs"
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "Innmeldt av Reidar Reporter ("
+            },
+            {
+              "type": "text",
+              "text": "rr@ssb.no",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "mailto:rr@ssb.no"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": ") den 01.02.2022"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "AD grupper:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "attrs": {
+        "isNumberColumnEnabled": false,
+        "layout": "default"
+      },
+      "content": [
+        {
+          "type": "tableRow",
+          "content": [
+            {
+              "type": "tableHeader",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Gruppenavn",
+                      "marks": [
+                        {
+                          "type": "strong"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableHeader",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Medlemmer",
+                      "marks": [
+                        {
+                          "type": "strong"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tableRow",
+          "content": [
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "stubbs-managers"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Magnus Manager (mm@ssb.no)"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tableRow",
+          "content": [
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "stubbs-data-admins"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Pernille Pilot (ppi@ssb.no)"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Petter Andrepilot  (pap@ssb.no)"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tableRow",
+          "content": [
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "stubbs-developers"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Diana Developer (did@ssb.no)"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Dorte Developer (dd@ssb.no)"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tableRow",
+          "content": [
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "stubbs-consumers"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tableRow",
+          "content": [
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "stubbs-support"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableCell",
+              "attrs": {},
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "level": 2
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "2. Opprette tilgangsgrupper"
         }
       ]
     },
@@ -534,7 +919,7 @@
       "content": [
         {
           "type": "text",
-          "text": "2. Legge teamet til konfigurasjonsfil i Byråets IT-plattform (BIP)"
+          "text": "3. Legge teamet til konfigurasjonsfil i Byråets IT-plattform (BIP)"
         }
       ]
     },
@@ -591,7 +976,7 @@
       "content": [
         {
           "type": "text",
-          "text": "3. Opprette GitHub prosjekt for plattformressurser"
+          "text": "4. Opprette GitHub prosjekt for plattformressurser"
         }
       ]
     },
@@ -646,7 +1031,7 @@
       "content": [
         {
           "type": "text",
-          "text": "4. Sette opp automatisering av plattformressurser"
+          "text": "5. Sette opp automatisering av plattformressurser"
         }
       ]
     },
@@ -989,7 +1374,7 @@
       "content": [
         {
           "type": "text",
-          "text": "5. Opprette teamets infrastruktur"
+          "text": "6. Opprette teamets infrastruktur"
         }
       ]
     },
@@ -1032,7 +1417,7 @@
       "content": [
         {
           "type": "text",
-          "text": "6. Flere tjenester"
+          "text": "7. Flere tjenester"
         }
       ]
     },
@@ -1184,6 +1569,87 @@
               "attrs": {
                 "href": "https://docs.dapla.ssb.no/dapla-user/how-to/transfer-data/"
               }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "attrs": {
+        "level": 2
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "8. Opplyse bestilleren at teamet er klar"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Sende en epost eller melding til Reidar Reporter ("
+        },
+        {
+          "type": "text",
+          "text": "rr@ssb.no",
+          "marks": [
+            {
+              "type": "link",
+              "attrs": {
+                "href": "mailto:rr@ssb.no"
+              }
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ") med følgende tekst:"
+        }
+      ]
+    },
+    {
+      "type": "blockquote",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Hei,"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Opplyser at Dapla teamet du bestilt er nå klar. Informasjon over hva det betyr og hvordan å ta Dapla i bruk finnes her: "
+            },
+            {
+              "type": "text",
+              "text": "https://manual.dapla.ssb.no/dapla-team.html",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://manual.dapla.ssb.no/dapla-team.html"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Lykke til med reisen til skyen!"
             }
           ]
         }

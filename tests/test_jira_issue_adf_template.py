@@ -1,5 +1,8 @@
 from tests import resolve_filename
-from server.jira_issue_adf_template import _description
+from server.jira_issue_adf_template import (
+    _description,
+    convert_display_name_to_uniform_team_name,
+)
 from server.project_details import ProjectDetails, ProjectUser, OrganizationInfo
 import json
 import pytest
@@ -41,9 +44,11 @@ def project_details():
         other_info="Some other info",
     )
 
+
 @pytest.fixture()
 def description(project_details):
     return _description(project_details, date.fromisoformat("2022-02-01"))
+
 
 @pytest.fixture()
 def json_schema():
@@ -56,6 +61,7 @@ def test_create_issue_valid_json_schema(description, json_schema):
     # Validate against Atlassian Document Format schema
     validate(instance=description, schema=json_schema)
 
+
 def test_create_issue_generated_dict(description):
     with open(resolve_filename("adf_template_result.json"), encoding="utf-8") as file:
         expected = json.load(file)
@@ -63,7 +69,20 @@ def test_create_issue_generated_dict(description):
     for actual, expected in zip(description["content"], expected["content"]):
         assert actual == expected
 
+
 def test_create_issue_exact_file_text(description):
     with open(resolve_filename("adf_template_result.json"), encoding="utf-8") as file:
         result = json.dumps(description, indent=2, ensure_ascii=False) + "\n"
         assert result == file.read()
+
+
+@pytest.mark.parametrize(
+    "display,uniform",
+    [
+        ("Team Stubbe", "stubbe"),
+        ("æøå", "aeoeaa"),
+        ("ÆØÅ", "aeoeaa"),
+    ],
+)
+def test_convert_display_name_to_uniform_team_name(display, uniform):
+    assert uniform == convert_display_name_to_uniform_team_name(display)
