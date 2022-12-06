@@ -41,9 +41,11 @@ def project_details():
         other_info="Some other info",
     )
 
+
 @pytest.fixture()
 def description(project_details):
     return _description(project_details, date.fromisoformat("2022-02-01"))
+
 
 @pytest.fixture()
 def json_schema():
@@ -56,12 +58,14 @@ def test_create_issue_valid_json_schema(description, json_schema):
     # Validate against Atlassian Document Format schema
     validate(instance=description, schema=json_schema)
 
+
 def test_create_issue_generated_dict(description):
     with open(resolve_filename("adf_template_result.json"), encoding="utf-8") as file:
         expected = json.load(file)
     assert len(description["content"]) == len(expected["content"])
     for actual, expected in zip(description["content"], expected["content"]):
         assert actual == expected
+
 
 def test_create_issue_exact_file_text(description):
     with open(resolve_filename("adf_template_result.json"), encoding="utf-8") as file:
