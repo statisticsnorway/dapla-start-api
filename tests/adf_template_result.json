@@ -223,8 +223,7 @@
       "type": "table",
       "attrs": {
         "isNumberColumnEnabled": false,
-        "layout": "default",
-        "localId": "72372212-4247-4646-818b-11f4681f924c"
+        "layout": "default"
       },
       "content": [
         {
