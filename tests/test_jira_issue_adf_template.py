@@ -1,5 +1,8 @@
 from tests import resolve_filename
-from server.jira_issue_adf_template import _description
+from server.jira_issue_adf_template import (
+    _description,
+    convert_display_name_to_uniform_team_name,
+)
 from server.project_details import ProjectDetails, ProjectUser, OrganizationInfo
 import json
 import pytest
@@ -71,3 +74,15 @@ def test_create_issue_exact_file_text(description):
     with open(resolve_filename("adf_template_result.json"), encoding="utf-8") as file:
         result = json.dumps(description, indent=2, ensure_ascii=False) + "\n"
         assert result == file.read()
+
+
+@pytest.mark.parametrize(
+    "display,uniform",
+    [
+        ("Team Stubbe", "stubbe"),
+        ("æøå", "aeoeaa"),
+        ("ÆØÅ", "aeoeaa"),
+    ],
+)
+def test_convert_display_name_to_uniform_team_name(display, uniform):
+    assert uniform == convert_display_name_to_uniform_team_name(display)

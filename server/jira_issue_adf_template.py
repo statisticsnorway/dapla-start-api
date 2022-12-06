@@ -7,13 +7,14 @@ from .project_details import ProjectDetails, ProjectUser
 
 
 def convert_display_name_to_uniform_team_name(display_team_name):
-    rm_prefix_and_spaces = (
-        display_team_name.lower().replace("team ", "").replace(" ", "-")
+    return (
+        display_team_name.lower()
+        .replace("team ", "")
+        .replace(" ", "-")
+        .replace("æ", "ae")
+        .replace("ø", "oe")
+        .replace("å", "aa")
     )
-    replace_norwegian_letters = (
-        rm_prefix_and_spaces.replace("æ", "ae").replace("ø", "oe").replace("å", "aa")
-    )
-    return replace_norwegian_letters
 
 
 def get_issue_adf_dict(details: ProjectDetails):
