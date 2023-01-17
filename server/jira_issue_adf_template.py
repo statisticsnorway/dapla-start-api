@@ -431,7 +431,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "content": [
                     {
                         "type": "text",
-                        "text": "4. Opprette GitHub prosjekt for plattformressurser",
+                        "text": "4. Opprette GitHub prosjekt for plattformressurser og Github data-admins team",
                     }
                 ],
             },
@@ -468,6 +468,123 @@ def _description(details: ProjectDetails, current_date: date = None):
                     {"type": "text", "text": " til dette."},
                 ],
             },
+
+                {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Når repoet er opprettet, følg disse stegene for å opprette et data admins team på Github:"
+        }
+      ]
+    },
+    {
+      "type": "orderedList",
+      "attrs": {
+        "order": 1
+      },
+      "content": [
+
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Følg "
+                },
+                {
+                  "type": "text",
+                  "text": "denne lenken",
+                  "marks": [
+                    {
+                      "type": "link",
+                      "attrs": {
+                        "href": "https://github.com/orgs/statisticsnorway/new-team"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " for å starte opprettelsen av et nytt Github team"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "I “Identity Provider Groups” dropdown-menyen velg "
+                },
+                {
+                  "type": "text",
+                  "text": f"{uniform_team_name}-data-admins",
+                  "marks": [
+                    {
+                      "type": "strong"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": ". Under “Team Name” skriv "
+                },
+                {
+                  "type": "text",
+                  "text": f"{uniform_team_name}-data-admins",
+                  "marks": [
+                    {
+                      "type": "strong"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Gå til Github siden til repoet du opprettet med dapla-start-toolkit i begynnelsen av dette steget. Fra der, naviger til: Settings > Collaborators and Teams > Add Teams. "
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": f"I søkefeltet, søk etter teamet du nettopp opprettet ({uniform_team_name}-data-admins). Velg teamet og huk av for “Write” tilgang."
+                }
+              ]
+            }
+          ]
+        }
+       ]
+      },
             {
                 "type": "heading",
                 "attrs": {"level": 2},

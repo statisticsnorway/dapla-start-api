@@ -1,10 +1,11 @@
 import json
 import os
+import base64
 
 import requests
 
-from server.jira_issue_adf_template import get_issue_adf_dict
-from .project_details import ProjectDetails
+from .jira_issue_adf_template import get_issue_adf_dict
+from .project_details import ProjectDetails, ProjectUser
 from .config import logger
 
 content_type_json = "application/json"
@@ -116,9 +117,13 @@ if __name__ == "__main__":
     """
     This main is for the purposes of testing the jira issue creation functionality.
     """
+    
     # Basic auth
     authentication_env_var = 'JIRA_API_BASIC'
     basic = os.environ.get(authentication_env_var)
+
+    encoded_string = base64.b64encode("xxx@ssb.no:abcdefghij".encode()).decode()
+    os.environ['JIRA_API_BASIC'] = encoded_string
 
     if basic is None or len(basic) == 0:
         os.environ[authentication_env_var] = ""  # insert base64 encoded "email:key" here
@@ -130,20 +135,26 @@ if __name__ == "__main__":
             exit(1)
 
     # Team info
-    xxx_mail = "xxx@ssb.no"
+    xxx_mail_1 = "xxx@ssb.no"
+    xxx_mail_2 = "xxx@ssb.no"
+
+    xxx_user_1 = ProjectUser(name="Testbruker 1", email_short=xxx_mail_1, email="xx1@ssb.no")
+    xxx_user_2 = ProjectUser(name="Testbruker 2", email_short=xxx_mail_2, email="xx2@ssb.no")
+
+
     det_dict = {
         "display_team_name": "Team Domene Subdomene",
-        "manager": xxx_mail,
-        "data_admins": [xxx_mail],
-        "developers": [xxx_mail, xxx_mail],
-        "consumers": [xxx_mail, xxx_mail],
+        "manager": xxx_user_1,
+        "data_admins": [xxx_user_1, xxx_user_2],
+        "developers": [xxx_user_1, xxx_user_2],
+        "consumers": [xxx_user_1, xxx_user_2],
         "enabled_services": ["transfer service"]
     }
     project_details = ProjectDetails.parse_obj(det_dict)
 
     minimal_det_dict = {
         "display_team_name": "Team Minimal",
-        "manager": xxx_mail
+        "manager": xxx_user_1
     }
     min_project_details = ProjectDetails.parse_obj(minimal_det_dict)
 
