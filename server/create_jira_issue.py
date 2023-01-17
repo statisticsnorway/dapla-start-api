@@ -1,10 +1,9 @@
 import json
 import os
-import base64
 
 import requests
 
-from .jira_issue_adf_template import get_issue_adf_dict
+from server.jira_issue_adf_template import get_issue_adf_dict
 from .project_details import ProjectDetails, ProjectUser
 from .config import logger
 
