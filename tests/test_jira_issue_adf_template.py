@@ -65,6 +65,7 @@ def test_create_issue_valid_json_schema(description, json_schema):
 def test_create_issue_generated_dict(description):
     with open(resolve_filename("adf_template_result.json"), encoding="utf-8") as file:
         expected = json.load(file)
+
     assert len(description["content"]) == len(expected["content"])
     for actual, expected in zip(description["content"], expected["content"]):
         assert actual == expected
