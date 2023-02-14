@@ -29,3 +29,7 @@ The default configuration will use a colourful, human-readable output which is w
 
 However, by setting the environment variable `LOG_FORMAT_ECS`, one can switch to the Elastic Common Schema (ECS) format
 which is more suitable for log visualization tools like Kibana.
+
+## Update user list
+
+https://github.com/statisticsnorway/dapla-start-toolkit#update-ssb-users-list-served-by-dapla-start-api
