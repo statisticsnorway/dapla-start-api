@@ -1130,7 +1130,7 @@
               "content": [
                 {
                   "type": "text",
-                  "text": "I søkefeltet, søk etter teamet du nettopp opprettet (stubbs-data-admins). Velg teamet og huk av for “Write” tilgang."
+                  "text": "I søkefeltet, søk etter teamet du nettopp opprettet (stubbs-data-admins). Velg teamet og huk av for “Admin” tilgang."
                 }
               ]
             }

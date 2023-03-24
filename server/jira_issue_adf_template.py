@@ -701,7 +701,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                             "type":
                             "text",
                             "text":
-                            f"I søkefeltet, søk etter teamet du nettopp opprettet ({uniform_team_name}-data-admins). Velg teamet og huk av for “Write” tilgang."
+                            f"I søkefeltet, søk etter teamet du nettopp opprettet ({uniform_team_name}-data-admins). Velg teamet og huk av for “Admin” tilgang."
                         }]
                     }]
                 }]
