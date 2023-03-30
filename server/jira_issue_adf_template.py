@@ -440,7 +440,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                             "type":
                             "text",
                             "text":
-                            f"Det nye Dapla teamet '{details.display_team_name}' trenger AD grupper satt opp for seg og synkronisert til Google i sky. Dette betyr at gruppene skal inn i OU=SSB/Grupper/Skytjenester/BIP og må synkroniseres fra Azure Cloud til Google.",
+                            f"Det nye Dapla teamet '{details.display_team_name}' trenger AD grupper satt opp for seg og synkronisert til Google i sky. Dette betyr at gruppene skal inn i OU=SSB/Grupper/Skytjenester/BIP og må synkroniseres fra Azure Cloud til Google. Teamet tilhører seksjon: {details.org_info.name if details.org_info else '-'} ({details.org_info.code if details.org_info else '-'})",
                         }],
                     },
                     {
@@ -1185,7 +1185,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                             "text":
                             f"Det nye Dapla teamet '{details.display_team_name}' trenger Transfer "
                             f"Service satt opp for seg. Johnny Niklasson, Tore Vestbekken eller Stian "
-                            f"Henriksen på Kundeservice kan utføre jobben.",
+                            f"Henriksen på Kundeservice kan utføre jobben. Teamet tilhører seksjon: {details.org_info.name if details.org_info else '-'} ({details.org_info.code if details.org_info else '-'})",
                         }],
                     },
                     {

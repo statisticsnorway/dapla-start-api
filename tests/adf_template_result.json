@@ -589,7 +589,7 @@
           "content": [
             {
               "type": "text",
-              "text": "Det nye Dapla teamet 'Team Stubbe' trenger AD grupper satt opp for seg og synkronisert til Google i sky. Dette betyr at gruppene skal inn i OU=SSB/Grupper/Skytjenester/BIP og må synkroniseres fra Azure Cloud til Google."
+              "text": "Det nye Dapla teamet 'Team Stubbe' trenger AD grupper satt opp for seg og synkronisert til Google i sky. Dette betyr at gruppene skal inn i OU=SSB/Grupper/Skytjenester/BIP og må synkroniseres fra Azure Cloud til Google. Teamet tilhører seksjon: Seksjon 11 (11)"
             }
           ]
         },
@@ -1596,7 +1596,7 @@
           "content": [
             {
               "type": "text",
-              "text": "Det nye Dapla teamet 'Team Stubbe' trenger Transfer Service satt opp for seg. Johnny Niklasson, Tore Vestbekken eller Stian Henriksen på Kundeservice kan utføre jobben."
+              "text": "Det nye Dapla teamet 'Team Stubbe' trenger Transfer Service satt opp for seg. Johnny Niklasson, Tore Vestbekken eller Stian Henriksen på Kundeservice kan utføre jobben. Teamet tilhører seksjon: Seksjon 11 (11)"
             }
           ]
         },
