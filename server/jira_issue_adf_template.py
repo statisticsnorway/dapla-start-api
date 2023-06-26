@@ -416,7 +416,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                             "type":
                             "text",
                             "text":
-                            f"Lage alle gruppene for teamet: dpteam groups create {details.uniform_team_name}",
+                            f"Lage alle gruppene for teamet: dpteam groups create {uniform_team_name}",
                         }],
                     },
                     {
@@ -1099,7 +1099,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                         "type": "paragraph",
                         "content": [{
                             "type": "text",
-                            "text": f"dpteam ts add {details.uniform_team_name}"
+                            "text": f"dpteam ts add {uniform_team_name}"
                         }],
                     },
                     {
