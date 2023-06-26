@@ -51,6 +51,7 @@ def _description(details: ProjectDetails, current_date: date = None):
         "display_team_name": details.display_team_name,
         "uniform_team_name": uniform_team_name,
         "github_repo_name": iac_git_project_name,
+        "enable_source_data_automation": "yes"
     }
 
     if details.enabled_services and isinstance(details.enabled_services, list):
@@ -400,26 +401,8 @@ def _description(details: ProjectDetails, current_date: date = None):
                         "type":
                         "text",
                         "text":
-                        "Følgende tilgangsgrupper må opprettes ved å sende en e-post til ",
-                    },
-                    {
-                        "type":
-                        "text",
-                        "text":
-                        "kundeservice@ssb.no",
-                        "marks": [{
-                            "type": "link",
-                            "attrs": {
-                                "href": "mailto:kundeservice@ssb.no"
-                            },
-                        }],
-                    },
-                    {
-                        "type":
-                        "text",
-                        "text":
-                        ". Presiser gjerne at gruppene skal i OU=SSB/Grupper/Skytjenester/BIP.",
-                    },
+                        "Følgende tilgangsgrupper må opprettes, dette kan gjøres via dpteam ",
+                    }
                 ],
             },
             {
@@ -427,10 +410,13 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "blockquote",
                 "content": [
                     {
-                        "type": "paragraph",
+                        "type":
+                        "paragraph",
                         "content": [{
-                            "type": "text",
-                            "text": "Hei Kundeservice,"
+                            "type":
+                            "text",
+                            "text":
+                            f"Lage alle gruppene for teamet: dpteam groups create {details.uniform_team_name}",
                         }],
                     },
                     {
@@ -440,53 +426,12 @@ def _description(details: ProjectDetails, current_date: date = None):
                             "type":
                             "text",
                             "text":
-                            f"Det nye Dapla teamet '{details.display_team_name}' trenger AD grupper satt opp for seg og synkronisert til Google i sky. Dette betyr at gruppene skal inn i OU=SSB/Grupper/Skytjenester/BIP og må synkroniseres fra Azure Cloud til Google. Teamet tilhører seksjon: {details.org_info.name if details.org_info else '-'} ({details.org_info.code if details.org_info else '-'})",
-                        }],
-                    },
-                    {
-                        "type":
-                        "paragraph",
-                        "content": [{
-                            "type":
-                            "text",
-                            "text":
-                            "Følgende grupper med medlemmer ønskes:",
+                            "Legge medlemmer til følgende grupper, bruker du: 'dpteam groups members add', se 'dpteam groups members add --help'",
                         }],
                     },
                 ],
             },
             access_groups,
-            {
-                "type":
-                "blockquote",
-                "content": [
-                    {
-                        "type":
-                        "paragraph",
-                        "content": [{
-                            "type": "text",
-                            "text": "Fint om dere kan ordne det!"
-                        }],
-                    },
-                    {
-                        "type":
-                        "paragraph",
-                        "content": [
-                            {
-                                "type": "text",
-                                "text": "Vennlig hilsen,"
-                            },
-                            {
-                                "type": "hardBreak"
-                            },
-                            {
-                                "type": "text",
-                                "text": "…"
-                            },
-                        ],
-                    },
-                ],
-            },
             {
                 "type":
                 "heading",
@@ -730,8 +675,10 @@ def _description(details: ProjectDetails, current_date: date = None):
                 }],
             },
             {
-                "type":
-                "orderedList",
+                "type": "orderedList",
+                "attrs": {
+                    "order": 1
+                },
                 "content": [
                     {
                         "type":
@@ -748,8 +695,10 @@ def _description(details: ProjectDetails, current_date: date = None):
                                 }],
                             },
                             {
-                                "type":
-                                "orderedList",
+                                "type": "orderedList",
+                                "attrs": {
+                                    "order": 1
+                                },
                                 "content": [
                                     {
                                         "type":
@@ -951,6 +900,9 @@ def _description(details: ProjectDetails, current_date: date = None):
                             {
                                 "type":
                                 "orderedList",
+                                "attrs": {
+                                    "order": 1
+                                },
                                 "content": [
                                     {
                                         "type":
@@ -1135,35 +1087,9 @@ def _description(details: ProjectDetails, current_date: date = None):
                         "type":
                         "text",
                         "text":
-                        "Hvis Transfer Service er forespurt, send en epost til ",
-                    },
-                    {
-                        "type":
-                        "text",
-                        "text":
-                        "Kundeservice",
-                        "marks": [{
-                            "type": "link",
-                            "attrs": {
-                                "href": "mailto:kundeservice@ssb.no"
-                            },
-                        }],
-                    },
-                    {
-                        "type": "text",
-                        "text": "."
+                        "Hvis Transfer Service er forespurt, kjør det følgende. ",
                     },
                 ],
-            },
-            {
-                "type":
-                "paragraph",
-                "content": [{
-                    "type":
-                    "text",
-                    "text":
-                    "Kundeservice må sette opp en Transfer Service agent og katalog på Linuxstammen.",
-                }],
             },
             {
                 "type":
@@ -1173,36 +1099,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                         "type": "paragraph",
                         "content": [{
                             "type": "text",
-                            "text": "Hei Kundeservice,"
-                        }],
-                    },
-                    {
-                        "type":
-                        "paragraph",
-                        "content": [{
-                            "type":
-                            "text",
-                            "text":
-                            f"Det nye Dapla teamet '{details.display_team_name}' trenger Transfer "
-                            f"Service satt opp for seg. Johnny Niklasson, Tore Vestbekken eller Stian "
-                            f"Henriksen på Kundeservice kan utføre jobben. Teamet tilhører seksjon: {details.org_info.name if details.org_info else '-'} ({details.org_info.code if details.org_info else '-'})",
-                        }],
-                    },
-                    {
-                        "type":
-                        "paragraph",
-                        "content": [{
-                            "type":
-                            "text",
-                            "text":
-                            "AD-gruppe som skal ha tilgang til synk område on-prem:",
-                        }],
-                    },
-                    {
-                        "type": "paragraph",
-                        "content": [{
-                            "type": "text",
-                            "text": f"    {dad_group}"
+                            "text": f"dpteam ts add {details.uniform_team_name}"
                         }],
                     },
                     {
@@ -1221,31 +1118,6 @@ def _description(details: ProjectDetails, current_date: date = None):
                             "text": f"    {uniform_team_name}-ts"
                         }],
                     },
-                    {
-                        "type":
-                        "paragraph",
-                        "content": [{
-                            "type": "text",
-                            "text": "Fint om dere kan ordne det!"
-                        }],
-                    },
-                    {
-                        "type":
-                        "paragraph",
-                        "content": [
-                            {
-                                "type": "text",
-                                "text": "Vennlig hilsen,"
-                            },
-                            {
-                                "type": "hardBreak"
-                            },
-                            {
-                                "type": "text",
-                                "text": "…"
-                            },
-                        ],
-                    },
                 ],
             },
             {
@@ -1255,8 +1127,8 @@ def _description(details: ProjectDetails, current_date: date = None):
                     "type":
                     "text",
                     "text":
-                    "Etter at Kundeservice har satt opp agenten og opprettet en katalogstruktur på "
-                    "Linuxstammen kan du henvise en Data Admin til følgende dokument som beskriver hvordan "
+                    "Etter at dpteam har satt opp transfer-service "
+                    "kan du henvise en Data Admin til følgende dokument som beskriver hvordan "
                     "man setter opp Transfer Service på Google Cloud Platform:",
                 }],
             },

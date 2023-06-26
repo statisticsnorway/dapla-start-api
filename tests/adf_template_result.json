@@ -552,23 +552,7 @@
       "content": [
         {
           "type": "text",
-          "text": "Følgende tilgangsgrupper må opprettes ved å sende en e-post til "
-        },
-        {
-          "type": "text",
-          "text": "kundeservice@ssb.no",
-          "marks": [
-            {
-              "type": "link",
-              "attrs": {
-                "href": "mailto:kundeservice@ssb.no"
-              }
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "text": ". Presiser gjerne at gruppene skal i OU=SSB/Grupper/Skytjenester/BIP."
+          "text": "Følgende tilgangsgrupper må opprettes, dette kan gjøres via dpteam "
         }
       ]
     },
@@ -580,7 +564,7 @@
           "content": [
             {
               "type": "text",
-              "text": "Hei Kundeservice,"
+              "text": "Lage alle gruppene for teamet: dpteam groups create stubbs"
             }
           ]
         },
@@ -589,16 +573,7 @@
           "content": [
             {
               "type": "text",
-              "text": "Det nye Dapla teamet 'Team Stubbe' trenger AD grupper satt opp for seg og synkronisert til Google i sky. Dette betyr at gruppene skal inn i OU=SSB/Grupper/Skytjenester/BIP og må synkroniseres fra Azure Cloud til Google. Teamet tilhører seksjon: Seksjon 11 (11)"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "Følgende grupper med medlemmer ønskes:"
+              "text": "Legge medlemmer til følgende grupper, bruker du: 'dpteam groups members add', se 'dpteam groups members add --help'"
             }
           ]
         }
@@ -882,36 +857,6 @@
       ]
     },
     {
-      "type": "blockquote",
-      "content": [
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "Fint om dere kan ordne det!"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "Vennlig hilsen,"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "…"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "type": "heading",
       "attrs": {
         "level": 2
@@ -1161,6 +1106,9 @@
     },
     {
       "type": "orderedList",
+      "attrs": {
+        "order": 1
+      },
       "content": [
         {
           "type": "listItem",
@@ -1176,6 +1124,9 @@
             },
             {
               "type": "orderedList",
+              "attrs": {
+                "order": 1
+              },
               "content": [
                 {
                   "type": "listItem",
@@ -1370,6 +1321,9 @@
             },
             {
               "type": "orderedList",
+              "attrs": {
+                "order": 1
+              },
               "content": [
                 {
                   "type": "listItem",
@@ -1550,32 +1504,7 @@
       "content": [
         {
           "type": "text",
-          "text": "Hvis Transfer Service er forespurt, send en epost til "
-        },
-        {
-          "type": "text",
-          "text": "Kundeservice",
-          "marks": [
-            {
-              "type": "link",
-              "attrs": {
-                "href": "mailto:kundeservice@ssb.no"
-              }
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "text": "."
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "content": [
-        {
-          "type": "text",
-          "text": "Kundeservice må sette opp en Transfer Service agent og katalog på Linuxstammen."
+          "text": "Hvis Transfer Service er forespurt, kjør det følgende. "
         }
       ]
     },
@@ -1587,34 +1516,7 @@
           "content": [
             {
               "type": "text",
-              "text": "Hei Kundeservice,"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "Det nye Dapla teamet 'Team Stubbe' trenger Transfer Service satt opp for seg. Johnny Niklasson, Tore Vestbekken eller Stian Henriksen på Kundeservice kan utføre jobben. Teamet tilhører seksjon: Seksjon 11 (11)"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "AD-gruppe som skal ha tilgang til synk område on-prem:"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "    stubbs-data-admins"
+              "text": "dpteam ts add stubbs"
             }
           ]
         },
@@ -1635,31 +1537,6 @@
               "text": "    stubbs-ts"
             }
           ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "Fint om dere kan ordne det!"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "Vennlig hilsen,"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "…"
-            }
-          ]
         }
       ]
     },
@@ -1668,7 +1545,7 @@
       "content": [
         {
           "type": "text",
-          "text": "Etter at Kundeservice har satt opp agenten og opprettet en katalogstruktur på Linuxstammen kan du henvise en Data Admin til følgende dokument som beskriver hvordan man setter opp Transfer Service på Google Cloud Platform:"
+          "text": "Etter at dpteam har satt opp transfer-service kan du henvise en Data Admin til følgende dokument som beskriver hvordan man setter opp Transfer Service på Google Cloud Platform:"
         }
       ]
     },
@@ -1824,7 +1701,7 @@
       "content": [
         {
           "type": "text",
-          "text": "display_team_name: Team Stubbe\nuniform_team_name: stubbs\ngithub_repo_name: stubbs-iac\n"
+          "text": "display_team_name: Team Stubbe\nuniform_team_name: stubbs\ngithub_repo_name: stubbs-iac\nenable_source_data_automation: 'yes'\n"
         }
       ]
     },
