@@ -1120,7 +1120,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                     "type":
                     "text",
                     "text":
-                    "Etter at dpteam har satt op transfer-service "
+                    "Etter at dpteam har satt opp transfer-service "
                     "kan du henvise en Data Admin til følgende dokument som beskriver hvordan "
                     "man setter opp Transfer Service på Google Cloud Platform:",
                 }],
