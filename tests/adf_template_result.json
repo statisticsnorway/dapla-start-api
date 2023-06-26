@@ -553,7 +553,9 @@
         {
           "type": "text",
           "text": "Følgende tilgangsgrupper må opprettes, dette kan gjøres via dpteam "
-        }]},
+        }
+      ]
+    },
     {
       "type": "blockquote",
       "content": [
@@ -562,7 +564,7 @@
           "content": [
             {
               "type": "text",
-              "text": "Lage alle gruppene for teamet: dpteam groups create team-stubbe"
+              "text": "Lage alle gruppene for teamet: dpteam groups create stubbs"
             }
           ]
         },
@@ -855,36 +857,6 @@
       ]
     },
     {
-      "type": "blockquote",
-      "content": [
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "Fint om dere kan ordne det!"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "Vennlig hilsen,"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "…"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "type": "heading",
       "attrs": {
         "level": 2
@@ -1134,6 +1106,9 @@
     },
     {
       "type": "orderedList",
+      "attrs": {
+        "order": 1
+      },
       "content": [
         {
           "type": "listItem",
@@ -1149,6 +1124,9 @@
             },
             {
               "type": "orderedList",
+              "attrs": {
+                "order": 1
+              },
               "content": [
                 {
                   "type": "listItem",
@@ -1343,6 +1321,9 @@
             },
             {
               "type": "orderedList",
+              "attrs": {
+                "order": 1
+              },
               "content": [
                 {
                   "type": "listItem",
@@ -1524,7 +1505,8 @@
         {
           "type": "text",
           "text": "Hvis Transfer Service er forespurt, kjør det følgende. "
-        }]
+        }
+      ]
     },
     {
       "type": "blockquote",
@@ -1534,7 +1516,7 @@
           "content": [
             {
               "type": "text",
-              "text": "dpteam ts add team-stubbe"
+              "text": "dpteam ts add stubbs"
             }
           ]
         },
@@ -1553,31 +1535,6 @@
             {
               "type": "text",
               "text": "    stubbs-ts"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "Fint om dere kan ordne det!"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "Vennlig hilsen,"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "…"
             }
           ]
         }
@@ -1744,7 +1701,7 @@
       "content": [
         {
           "type": "text",
-          "text": "display_team_name: Team Stubbe\nuniform_team_name: stubbs\ngithub_repo_name: stubbs-iac\n"
+          "text": "display_team_name: Team Stubbe\nuniform_team_name: stubbs\ngithub_repo_name: stubbs-iac\nenable_source_data_automation: 'yes'\n"
         }
       ]
     },

@@ -675,8 +675,10 @@ def _description(details: ProjectDetails, current_date: date = None):
                 }],
             },
             {
-                "type":
-                "orderedList",
+                "type": "orderedList",
+                "attrs": {
+                    "order": 1
+                },
                 "content": [
                     {
                         "type":
@@ -693,8 +695,10 @@ def _description(details: ProjectDetails, current_date: date = None):
                                 }],
                             },
                             {
-                                "type":
-                                "orderedList",
+                                "type": "orderedList",
+                                "attrs": {
+                                    "order": 1
+                                },
                                 "content": [
                                     {
                                         "type":
@@ -896,6 +900,9 @@ def _description(details: ProjectDetails, current_date: date = None):
                             {
                                 "type":
                                 "orderedList",
+                                "attrs": {
+                                    "order": 1
+                                },
                                 "content": [
                                     {
                                         "type":
