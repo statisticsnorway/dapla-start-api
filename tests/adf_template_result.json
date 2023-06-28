@@ -590,7 +590,7 @@
       "content": [
         {
           "type": "text",
-          "text": "dpteam groups members add --team-name stubbs --members 'magnus.manager@ssb.no'"
+          "text": "dpteam groups members add --team-name stubbs --members 'mm@ssb.no'"
         }
       ]
     },
