@@ -439,7 +439,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "content": [
                     {
                         "type": "text",
-                        "text": f"dpteam groups members add --team-name {uniform_team_name} --members '{details.manager.email if details.manager is not None else ''}'"
+                        "text": f"dpteam groups members add --team-name {uniform_team_name} --members '{details.manager.email_short if details.manager is not None else ''}'"
                     }
                 ]
             },
@@ -458,7 +458,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "content": [
                     {
                         "type": "text",
-                        "text": f"dpteam groups members add --team-name {uniform_team_name} --members '{' '.join([project_user.email for project_user in details.data_admins]) if details.data_admins is not None and len(details.data_admins) > 0 else ''}'"
+                        "text": f"dpteam groups members add --team-name {uniform_team_name} --members '{' '.join([project_user.email_short for project_user in details.data_admins]) if details.data_admins is not None and len(details.data_admins) > 0 else ''}'"
                     }
                 ]
             },
@@ -477,7 +477,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "content": [
                     {
                         "type": "text",
-                        "text": f"dpteam groups members add --team-name {uniform_team_name} --members '{' '.join([project_user.email for project_user in details.developers]) if details.developers is not None and len(details.developers) > 0 else ''}'"
+                        "text": f"dpteam groups members add --team-name {uniform_team_name} --members '{' '.join([project_user.email_short for project_user in details.developers]) if details.developers is not None and len(details.developers) > 0 else ''}'"
                     }
                 ]
             },
@@ -496,7 +496,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "content": [
                     {
                         "type": "text",
-                        "text": f"dpteam groups members add --team-name {uniform_team_name} --members '{' '.join([project_user.email for project_user in details.consumers]) if details.consumers is not None and len(details.consumers) > 0 else ''}'"
+                        "text": f"dpteam groups members add --team-name {uniform_team_name} --members '{' '.join([project_user.email_short for project_user in details.consumers]) if details.consumers is not None and len(details.consumers) > 0 else ''}'"
                     }
                 ]
             },
@@ -515,7 +515,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "content": [
                     {
                         "type": "text",
-                        "text": f"dpteam groups members add --team-name {uniform_team_name} --members '{' '.join([project_user.email for project_user in details.support]) if details.support is not None and len(details.support) > 0 else ''}'"
+                        "text": f"dpteam groups members add --team-name {uniform_team_name} --members '{' '.join([project_user.email_short for project_user in details.support]) if details.support is not None and len(details.support) > 0 else ''}'"
                     }
                 ]
             },
