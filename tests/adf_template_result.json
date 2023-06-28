@@ -552,30 +552,121 @@
       "content": [
         {
           "type": "text",
-          "text": "Følgende tilgangsgrupper må opprettes, dette kan gjøres via dpteam "
+          "text": "Følgende tilgangsgrupper må opprettes, dette kan gjøres via dpteam"
         }
       ]
     },
     {
-      "type": "blockquote",
+      "type": "paragraph",
       "content": [
         {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "Lage alle gruppene for teamet: dpteam groups create stubbs"
-            }
-          ]
-        },
+          "type": "text",
+          "text": "Kjør for å lage team-gruppene"
+        }
+      ]
+    },
+    {
+      "type": "codeBlock",
+      "attrs": {},
+      "content": [
         {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "Legge medlemmer til følgende grupper, bruker du: 'dpteam groups members add', se 'dpteam groups members add --help'"
-            }
-          ]
+          "type": "text",
+          "text": "dpteam groups create stubbs"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Kjør for å legge til medlemmer i stubbs-managers, velg stubbs-managers når promptet"
+        }
+      ]
+    },
+    {
+      "type": "codeBlock",
+      "attrs": {},
+      "content": [
+        {
+          "type": "text",
+          "text": "dpteam groups members add --team-name stubbs --members 'magnus.manager@ssb.no'"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Kjør for å legge til medlemmer i stubbs-data-admins, velg stubbs-data-admins når promptet"
+        }
+      ]
+    },
+    {
+      "type": "codeBlock",
+      "attrs": {},
+      "content": [
+        {
+          "type": "text",
+          "text": "dpteam groups members add --team-name stubbs --members 'ppi@ssb.no pap@ssb.no'"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Kjør for å legge til medlemmer i stubbs-developers, velg stubbs-developers når promptet"
+        }
+      ]
+    },
+    {
+      "type": "codeBlock",
+      "attrs": {},
+      "content": [
+        {
+          "type": "text",
+          "text": "dpteam groups members add --team-name stubbs --members 'dd@ssb.no did@ssb.no'"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Kjør for å legge til medlemmer i stubbs-consumers, velg stubbs-consumers når promptet"
+        }
+      ]
+    },
+    {
+      "type": "codeBlock",
+      "attrs": {},
+      "content": [
+        {
+          "type": "text",
+          "text": "dpteam groups members add --team-name stubbs --members ''"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Kjør for å legge til medlemmer i stubbs-support, velg stubbs-support når promptet"
+        }
+      ]
+    },
+    {
+      "type": "codeBlock",
+      "attrs": {},
+      "content": [
+        {
+          "type": "text",
+          "text": "dpteam groups members add --team-name stubbs --members ''"
         }
       ]
     },
@@ -1249,6 +1340,9 @@
             },
             {
               "type": "orderedList",
+              "attrs": {
+                "order": 1
+              },
               "content": [
                 {
                   "type": "listItem",

@@ -61,20 +61,20 @@ def _description(details: ProjectDetails, current_date: date = None):
     reporter_description = [
         {
             "type":
-            "text",
+                "text",
             "text":
-            f"Innmeldt av {details.reporter.name if details.reporter else ''} (",
+                f"Innmeldt av {details.reporter.name if details.reporter else ''} (",
         },
         {
             "type":
-            "text",
+                "text",
             "text":
-            f"{details.reporter.email if details.reporter else ''}",
+                f"{details.reporter.email if details.reporter else ''}",
             "marks": [{
                 "type": "link",
                 "attrs": {
                     "href":
-                    f"mailto:{details.reporter.email if details.reporter else ''}"
+                        f"mailto:{details.reporter.email if details.reporter else ''}"
                 },
             }],
         },
@@ -86,7 +86,7 @@ def _description(details: ProjectDetails, current_date: date = None):
 
     access_groups = {
         "type":
-        "table",
+            "table",
         "attrs": {
             "isNumberColumnEnabled": False,
             "layout": "default"
@@ -94,15 +94,15 @@ def _description(details: ProjectDetails, current_date: date = None):
         "content": [
             {
                 "type":
-                "tableRow",
+                    "tableRow",
                 "content": [
                     {
                         "type":
-                        "tableHeader",
+                            "tableHeader",
                         "attrs": {},
                         "content": [{
                             "type":
-                            "paragraph",
+                                "paragraph",
                             "content": [{
                                 "type": "text",
                                 "text": "Gruppenavn",
@@ -114,11 +114,11 @@ def _description(details: ProjectDetails, current_date: date = None):
                     },
                     {
                         "type":
-                        "tableHeader",
+                            "tableHeader",
                         "attrs": {},
                         "content": [{
                             "type":
-                            "paragraph",
+                                "paragraph",
                             "content": [{
                                 "type": "text",
                                 "text": "Medlemmer",
@@ -155,61 +155,61 @@ def _description(details: ProjectDetails, current_date: date = None):
 
     description = {
         "version":
-        1,
+            1,
         "type":
-        "doc",
+            "doc",
         "content": [
             {
                 "type":
-                "heading",
+                    "heading",
                 "attrs": {
                     "level": 1
                 },
                 "content": [{
                     "type":
-                    "text",
+                        "text",
                     "text":
-                    f"{details.display_team_name} ({uniform_team_name})",
+                        f"{details.display_team_name} ({uniform_team_name})",
                 }],
             },
             {
                 "type":
-                "panel",
+                    "panel",
                 "attrs": {
                     "panelType": "note"
                 },
                 "content": [{
                     "type":
-                    "paragraph",
+                        "paragraph",
                     "content":
-                    reporter_description + [
-                        {
-                            "type": "hardBreak"
-                        },
-                        {
-                            "type":
-                            "text",
-                            "text":
-                            f"GUI-versjon: {details.ui_version}, API-versjon: {details.api_version}, teknisk teamnavn overstyrt: {'Ja' if uniform_team_name_overridden else 'Nei'}",
-                            "marks": [{
-                                "type": "subsup",
-                                "attrs": {
-                                    "type": "sub"
-                                }
-                            }],
-                        },
-                    ],
+                        reporter_description + [
+                            {
+                                "type": "hardBreak"
+                            },
+                            {
+                                "type":
+                                    "text",
+                                "text":
+                                    f"GUI-versjon: {details.ui_version}, API-versjon: {details.api_version}, teknisk teamnavn overstyrt: {'Ja' if uniform_team_name_overridden else 'Nei'}",
+                                "marks": [{
+                                    "type": "subsup",
+                                    "attrs": {
+                                        "type": "sub"
+                                    }
+                                }],
+                            },
+                        ],
                 }],
             },
             {
                 "type":
-                "panel",
+                    "panel",
                 "attrs": {
                     "panelType": "note"
                 },
                 "content": [{
                     "type":
-                    "paragraph",
+                        "paragraph",
                     "content": [
                         {
                             "type": "text",
@@ -220,9 +220,9 @@ def _description(details: ProjectDetails, current_date: date = None):
                         },
                         {
                             "type":
-                            "text",
+                                "text",
                             "text":
-                            f"{details.org_info.name if details.org_info else '-'} ({details.org_info.code if details.org_info else '-'})",
+                                f"{details.org_info.name if details.org_info else '-'} ({details.org_info.code if details.org_info else '-'})",
                             "marks": [{
                                 "type": "subsup",
                                 "attrs": {
@@ -235,13 +235,13 @@ def _description(details: ProjectDetails, current_date: date = None):
             },
             {
                 "type":
-                "panel",
+                    "panel",
                 "attrs": {
                     "panelType": "info"
                 },
                 "content": [{
                     "type":
-                    "paragraph",
+                        "paragraph",
                     "content": [
                         {
                             "type": "text",
@@ -259,22 +259,22 @@ def _description(details: ProjectDetails, current_date: date = None):
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [{
                     "type":
-                    "text",
+                        "text",
                     "text":
-                    "Her følger en liste med manuelle steg som må utføres før teamet er klart på Dapla.",
+                        "Her følger en liste med manuelle steg som må utføres før teamet er klart på Dapla.",
                 }],
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [{
                     "type":
-                    "text",
+                        "text",
                     "text":
-                    "Disse stegene utføres av Team Statistikktjenester!",
+                        "Disse stegene utføres av Team Statistikktjenester!",
                     "marks": [
                         {
                             "type": "strong"
@@ -293,7 +293,7 @@ def _description(details: ProjectDetails, current_date: date = None):
             },
             {
                 "type":
-                "heading",
+                    "heading",
                 "attrs": {
                     "level": 2
                 },
@@ -304,7 +304,7 @@ def _description(details: ProjectDetails, current_date: date = None):
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [
                     {
                         "type": "text",
@@ -312,14 +312,14 @@ def _description(details: ProjectDetails, current_date: date = None):
                     },
                     {
                         "type":
-                        "text",
+                            "text",
                         "text":
-                        "seksjonslederen for bestilleren",
+                            "seksjonslederen for bestilleren",
                         "marks": [{
                             "type": "link",
                             "attrs": {
                                 "href":
-                                f"https://ssbno.sharepoint.com/sites/byraanettet/_layouts/15/search.aspx/people?q=seksjonssjef%20{details.org_info.code if details.org_info else '-'}"
+                                    f"https://ssbno.sharepoint.com/sites/byraanettet/_layouts/15/search.aspx/people?q=seksjonssjef%20{details.org_info.code if details.org_info else '-'}"
                             },
                         }],
                     },
@@ -331,7 +331,7 @@ def _description(details: ProjectDetails, current_date: date = None):
             },
             {
                 "type":
-                "blockquote",
+                    "blockquote",
                 "content": [
                     {
                         "type": "paragraph",
@@ -342,35 +342,35 @@ def _description(details: ProjectDetails, current_date: date = None):
                     },
                     {
                         "type":
-                        "paragraph",
+                            "paragraph",
                         "content": [{
                             "type":
-                            "text",
+                                "text",
                             "text":
-                            "Vi har fått en forespørsel om oppretting av Dapla team fra noen i din seksjon. Trenger en godkjenning før vi kan gå videre.",
+                                "Vi har fått en forespørsel om oppretting av Dapla team fra noen i din seksjon. Trenger en godkjenning før vi kan gå videre.",
                         }],
                     },
                     {
                         "type":
-                        "paragraph",
+                            "paragraph",
                         "content": [
-                            {
-                                "type": "text",
-                                "text":
-                                f"Teamnavn: {details.display_team_name}",
-                            },
-                            {
-                                "type": "hardBreak"
-                            },
-                            {
-                                "type": "text",
-                                "text":
-                                f"Teknisk teamnavn: {uniform_team_name}",
-                            },
-                            {
-                                "type": "hardBreak"
-                            },
-                        ] + reporter_description,
+                                       {
+                                           "type": "text",
+                                           "text":
+                                               f"Teamnavn: {details.display_team_name}",
+                                       },
+                                       {
+                                           "type": "hardBreak"
+                                       },
+                                       {
+                                           "type": "text",
+                                           "text":
+                                               f"Teknisk teamnavn: {uniform_team_name}",
+                                       },
+                                       {
+                                           "type": "hardBreak"
+                                       },
+                                   ] + reporter_description,
                     },
                     {
                         "type": "paragraph",
@@ -384,7 +384,7 @@ def _description(details: ProjectDetails, current_date: date = None):
             access_groups,
             {
                 "type":
-                "heading",
+                    "heading",
                 "attrs": {
                     "level": 2
                 },
@@ -395,80 +395,168 @@ def _description(details: ProjectDetails, current_date: date = None):
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [
                     {
                         "type":
-                        "text",
+                            "text",
                         "text":
-                        "Følgende tilgangsgrupper må opprettes, dette kan gjøres via dpteam ",
+                            "Følgende tilgangsgrupper må opprettes, dette kan gjøres via dpteam",
                     }
                 ],
             },
             {
-                "type":
-                "blockquote",
+                "type": "paragraph",
                 "content": [
                     {
-                        "type":
-                        "paragraph",
-                        "content": [{
-                            "type":
-                            "text",
-                            "text":
-                            f"Lage alle gruppene for teamet: dpteam groups create {uniform_team_name}",
-                        }],
-                    },
+                        "type": "text",
+                        "text": "Kjør for å lage team-gruppene"
+                    }
+                ]
+            },
+            {
+                "type": "codeBlock",
+                "attrs": {},
+                "content": [
                     {
-                        "type":
-                        "paragraph",
-                        "content": [{
-                            "type":
-                            "text",
-                            "text":
-                            "Legge medlemmer til følgende grupper, bruker du: 'dpteam groups members add', se 'dpteam groups members add --help'",
-                        }],
-                    },
-                ],
+                        "type": "text",
+                        "text": f"dpteam groups create {uniform_team_name}"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": f"Kjør for å legge til medlemmer i {mgm_group}, velg {mgm_group} når promptet"
+                    }
+                ]
+            },
+            {
+                "type": "codeBlock",
+                "attrs": {},
+                "content": [
+                    {
+                        "type": "text",
+                        "text": f"dpteam groups members add --team-name {uniform_team_name} --members '{details.manager.email if details.manager is not None else ''}'"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": f"Kjør for å legge til medlemmer i {dad_group}, velg {dad_group} når promptet"
+                    }
+                ]
+            },
+            {
+                "type": "codeBlock",
+                "attrs": {},
+                "content": [
+                    {
+                        "type": "text",
+                        "text": f"dpteam groups members add --team-name {uniform_team_name} --members '{' '.join([project_user.email for project_user in details.data_admins]) if details.data_admins is not None and len(details.data_admins) > 0 else ''}'"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": f"Kjør for å legge til medlemmer i {dev_group}, velg {dev_group} når promptet"
+                    }
+                ]
+            },
+            {
+                "type": "codeBlock",
+                "attrs": {},
+                "content": [
+                    {
+                        "type": "text",
+                        "text": f"dpteam groups members add --team-name {uniform_team_name} --members '{' '.join([project_user.email for project_user in details.developers]) if details.developers is not None and len(details.developers) > 0 else ''}'"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": f"Kjør for å legge til medlemmer i {con_group}, velg {con_group} når promptet"
+                    }
+                ]
+            },
+            {
+                "type": "codeBlock",
+                "attrs": {},
+                "content": [
+                    {
+                        "type": "text",
+                        "text": f"dpteam groups members add --team-name {uniform_team_name} --members '{' '.join([project_user.email for project_user in details.consumers]) if details.consumers is not None and len(details.consumers) > 0 else ''}'"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": f"Kjør for å legge til medlemmer i {sup_group}, velg {sup_group} når promptet"
+                    }
+                ]
+            },
+            {
+                "type": "codeBlock",
+                "attrs": {},
+                "content": [
+                    {
+                        "type": "text",
+                        "text": f"dpteam groups members add --team-name {uniform_team_name} --members '{' '.join([project_user.email for project_user in details.support]) if details.support is not None and len(details.support) > 0 else ''}'"
+                    }
+                ]
             },
             access_groups,
             {
                 "type":
-                "heading",
+                    "heading",
                 "attrs": {
                     "level": 2
                 },
                 "content": [{
                     "type":
-                    "text",
+                        "text",
                     "text":
-                    "3. Legge teamet til konfigurasjonsfil i Byråets IT-plattform (BIP)",
+                        "3. Legge teamet til konfigurasjonsfil i Byråets IT-plattform (BIP)",
                 }],
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [{
                     "type":
-                    "text",
+                        "text",
                     "text":
-                    "Etter at tilgangsgruppene er opprettet må man legge til følgende linje:",
+                        "Etter at tilgangsgruppene er opprettet må man legge til følgende linje:",
                 }],
             },
             {
                 "type":
-                "codeBlock",
+                    "codeBlock",
                 "attrs": {},
                 "content": [{
                     "type":
-                    "text",
+                        "text",
                     "text":
-                    f'"{uniform_team_name}" : "{mgm_group}{domain}"',
+                        f'"{uniform_team_name}" : "{mgm_group}{domain}"',
                 }],
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [{
                     "type": "text",
                     "text": "...til konfigurasjonen som ligger her:"
@@ -476,37 +564,37 @@ def _description(details: ProjectDetails, current_date: date = None):
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [{
                     "type":
-                    "text",
+                        "text",
                     "text":
-                    "https://github.com/statisticsnorway/bip-gcp-base-config/blob/main/terraform.tfvars",
+                        "https://github.com/statisticsnorway/bip-gcp-base-config/blob/main/terraform.tfvars",
                     "marks": [{
                         "type": "link",
                         "attrs": {
                             "href":
-                            "https://github.com/statisticsnorway/bip-gcp-base-config/blob/main/terraform.tfvars"
+                                "https://github.com/statisticsnorway/bip-gcp-base-config/blob/main/terraform.tfvars"
                         },
                     }],
                 }],
             },
             {
                 "type":
-                "heading",
+                    "heading",
                 "attrs": {
                     "level": 2
                 },
                 "content": [{
                     "type":
-                    "text",
+                        "text",
                     "text":
-                    "4. Opprette GitHub prosjekt for plattformressurser og Github data-admins team",
+                        "4. Opprette GitHub prosjekt for plattformressurser og Github data-admins team",
                 }],
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [
                     {
                         "type": "text",
@@ -523,7 +611,7 @@ def _description(details: ProjectDetails, current_date: date = None):
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [
                     {
                         "type": "text",
@@ -531,14 +619,14 @@ def _description(details: ProjectDetails, current_date: date = None):
                     },
                     {
                         "type":
-                        "text",
+                            "text",
                         "text":
-                        "dapla-start-toolkit",
+                            "dapla-start-toolkit",
                         "marks": [{
                             "type": "link",
                             "attrs": {
                                 "href":
-                                "https://github.com/statisticsnorway/dapla-start-toolkit"
+                                    "https://github.com/statisticsnorway/dapla-start-toolkit"
                             },
                         }],
                     },
@@ -550,59 +638,59 @@ def _description(details: ProjectDetails, current_date: date = None):
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [{
                     "type":
-                    "text",
+                        "text",
                     "text":
-                    "Når repoet er opprettet, følg disse stegene for å opprette et data admins team på Github:"
+                        "Når repoet er opprettet, følg disse stegene for å opprette et data admins team på Github:"
                 }]
             },
             {
                 "type":
-                "orderedList",
+                    "orderedList",
                 "attrs": {
                     "order": 1
                 },
                 "content": [{
                     "type":
-                    "listItem",
+                        "listItem",
                     "content": [{
                         "type":
-                        "paragraph",
+                            "paragraph",
                         "content": [{
                             "type": "text",
                             "text": "Følg "
                         }, {
                             "type":
-                            "text",
+                                "text",
                             "text":
-                            "denne lenken",
+                                "denne lenken",
                             "marks": [{
                                 "type": "link",
                                 "attrs": {
                                     "href":
-                                    "https://github.com/orgs/statisticsnorway/new-team"
+                                        "https://github.com/orgs/statisticsnorway/new-team"
                                 }
                             }]
                         }, {
                             "type":
-                            "text",
+                                "text",
                             "text":
-                            " for å starte opprettelsen av et nytt Github team"
+                                " for å starte opprettelsen av et nytt Github team"
                         }]
                     }]
                 }, {
                     "type":
-                    "listItem",
+                        "listItem",
                     "content": [{
                         "type":
-                        "paragraph",
+                            "paragraph",
                         "content": [{
                             "type":
-                            "text",
+                                "text",
                             "text":
-                            "I “Identity Provider Groups” dropdown-menyen velg "
+                                "I “Identity Provider Groups” dropdown-menyen velg "
                         }, {
                             "type": "text",
                             "text": f"{uniform_team_name}-data-admins",
@@ -625,53 +713,53 @@ def _description(details: ProjectDetails, current_date: date = None):
                     }]
                 }, {
                     "type":
-                    "listItem",
+                        "listItem",
                     "content": [{
                         "type":
-                        "paragraph",
+                            "paragraph",
                         "content": [{
                             "type":
-                            "text",
+                                "text",
                             "text":
-                            "Gå til Github siden til repoet du opprettet med dapla-start-toolkit i begynnelsen av dette steget. Fra der, naviger til: Settings > Collaborators and Teams > Add Teams. "
+                                "Gå til Github siden til repoet du opprettet med dapla-start-toolkit i begynnelsen av dette steget. Fra der, naviger til: Settings > Collaborators and Teams > Add Teams. "
                         }]
                     }]
                 }, {
                     "type":
-                    "listItem",
+                        "listItem",
                     "content": [{
                         "type":
-                        "paragraph",
+                            "paragraph",
                         "content": [{
                             "type":
-                            "text",
+                                "text",
                             "text":
-                            f"I søkefeltet, søk etter teamet du nettopp opprettet ({uniform_team_name}-data-admins). Velg teamet og huk av for “Admin” tilgang."
+                                f"I søkefeltet, søk etter teamet du nettopp opprettet ({uniform_team_name}-data-admins). Velg teamet og huk av for “Admin” tilgang."
                         }]
                     }]
                 }]
             },
             {
                 "type":
-                "heading",
+                    "heading",
                 "attrs": {
                     "level": 2
                 },
                 "content": [{
                     "type":
-                    "text",
+                        "text",
                     "text":
-                    "5. Sette opp automatisering av plattformressurser",
+                        "5. Sette opp automatisering av plattformressurser",
                 }],
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [{
                     "type":
-                    "text",
+                        "text",
                     "text":
-                    "Etter at GitHub repoet har blitt opprettet må det kobles til i en automatiseringsløsning som heter Atlantis. Det er tre hoved steg for å få dette til:",
+                        "Etter at GitHub repoet har blitt opprettet må det kobles til i en automatiseringsløsning som heter Atlantis. Det er tre hoved steg for å få dette til:",
                 }],
             },
             {
@@ -682,16 +770,16 @@ def _description(details: ProjectDetails, current_date: date = None):
                 "content": [
                     {
                         "type":
-                        "listItem",
+                            "listItem",
                         "content": [
                             {
                                 "type":
-                                "paragraph",
+                                    "paragraph",
                                 "content": [{
                                     "type":
-                                    "text",
+                                        "text",
                                     "text":
-                                    "Legge repoet til listen i Github appen",
+                                        "Legge repoet til listen i Github appen",
                                 }],
                             },
                             {
@@ -702,10 +790,10 @@ def _description(details: ProjectDetails, current_date: date = None):
                                 "content": [
                                     {
                                         "type":
-                                        "listItem",
+                                            "listItem",
                                         "content": [{
                                             "type":
-                                            "paragraph",
+                                                "paragraph",
                                             "content": [
                                                 {
                                                     "type": "text",
@@ -713,14 +801,14 @@ def _description(details: ProjectDetails, current_date: date = None):
                                                 },
                                                 {
                                                     "type":
-                                                    "text",
+                                                        "text",
                                                     "text":
-                                                    "https://github.com/apps/atlantis-dapla-felles-ssb-no",
+                                                        "https://github.com/apps/atlantis-dapla-felles-ssb-no",
                                                     "marks": [{
                                                         "type": "link",
                                                         "attrs": {
                                                             "href":
-                                                            "https://github.com/apps/atlantis-dapla-felles-ssb-no"
+                                                                "https://github.com/apps/atlantis-dapla-felles-ssb-no"
                                                         },
                                                     }],
                                                 },
@@ -729,10 +817,10 @@ def _description(details: ProjectDetails, current_date: date = None):
                                     },
                                     {
                                         "type":
-                                        "listItem",
+                                            "listItem",
                                         "content": [{
                                             "type":
-                                            "paragraph",
+                                                "paragraph",
                                             "content": [
                                                 {
                                                     "type": "text",
@@ -750,21 +838,21 @@ def _description(details: ProjectDetails, current_date: date = None):
                                     },
                                     {
                                         "type":
-                                        "listItem",
+                                            "listItem",
                                         "content": [{
                                             "type":
-                                            "paragraph",
+                                                "paragraph",
                                             "content": [
                                                 {
                                                     "type":
-                                                    "text",
+                                                        "text",
                                                     "text":
-                                                    f"Søke etter {iac_git_project_name} under ",
+                                                        f"Søke etter {iac_git_project_name} under ",
                                                 },
                                                 {
                                                     "type": "text",
                                                     "text":
-                                                    "Select repository",
+                                                        "Select repository",
                                                     "marks": [{
                                                         "type": "code"
                                                     }],
@@ -778,15 +866,15 @@ def _description(details: ProjectDetails, current_date: date = None):
                                     },
                                     {
                                         "type":
-                                        "listItem",
+                                            "listItem",
                                         "content": [{
                                             "type":
-                                            "paragraph",
+                                                "paragraph",
                                             "content": [{
                                                 "type":
-                                                "text",
+                                                    "text",
                                                 "text":
-                                                "Lagre endringen",
+                                                    "Lagre endringen",
                                             }],
                                         }],
                                     },
@@ -796,11 +884,11 @@ def _description(details: ProjectDetails, current_date: date = None):
                     },
                     {
                         "type":
-                        "listItem",
+                            "listItem",
                         "content": [
                             {
                                 "type":
-                                "paragraph",
+                                    "paragraph",
                                 "content": [
                                     {
                                         "type": "text",
@@ -821,31 +909,34 @@ def _description(details: ProjectDetails, current_date: date = None):
                             },
                             {
                                 "type":
-                                "orderedList",
+                                    "orderedList",
+                                "attrs": {
+                                    "order": 1
+                                },
                                 "content": [
                                     {
                                         "type":
-                                        "listItem",
+                                            "listItem",
                                         "content": [{
                                             "type":
-                                            "paragraph",
+                                                "paragraph",
                                             "content": [
                                                 {
                                                     "type":
-                                                    "text",
+                                                        "text",
                                                     "text":
-                                                    "Legge til repo URL på slutten av ",
+                                                        "Legge til repo URL på slutten av ",
                                                 },
                                                 {
                                                     "type":
-                                                    "text",
+                                                        "text",
                                                     "text":
-                                                    "denne linjen",
+                                                        "denne linjen",
                                                     "marks": [{
                                                         "type": "link",
                                                         "attrs": {
                                                             "href":
-                                                            "https://github.com/statisticsnorway/atlantis-team-config/blob/b4e018d5bf6944b73aa061aa07462a65f3d7d0d0/kubernetes-manifests/dapla-felles/atlantis-statefulset/atlantis-statefulset.yaml#L35"
+                                                                "https://github.com/statisticsnorway/atlantis-team-config/blob/b4e018d5bf6944b73aa061aa07462a65f3d7d0d0/kubernetes-manifests/dapla-felles/atlantis-statefulset/atlantis-statefulset.yaml#L35"
                                                         },
                                                     }],
                                                 },
@@ -854,15 +945,15 @@ def _description(details: ProjectDetails, current_date: date = None):
                                     },
                                     {
                                         "type":
-                                        "listItem",
+                                            "listItem",
                                         "content": [{
                                             "type":
-                                            "paragraph",
+                                                "paragraph",
                                             "content": [{
                                                 "type":
-                                                "text",
+                                                    "text",
                                                 "text":
-                                                "Åpne og merge en PR med endringen",
+                                                    "Åpne og merge en PR med endringen",
                                             }],
                                         }],
                                     },
@@ -872,11 +963,11 @@ def _description(details: ProjectDetails, current_date: date = None):
                     },
                     {
                         "type":
-                        "listItem",
+                            "listItem",
                         "content": [
                             {
                                 "type":
-                                "paragraph",
+                                    "paragraph",
                                 "content": [
                                     {
                                         "type": "text",
@@ -891,39 +982,39 @@ def _description(details: ProjectDetails, current_date: date = None):
                                     },
                                     {
                                         "type":
-                                        "text",
+                                            "text",
                                         "text":
-                                        " endringene til Atlantis instansen",
+                                            " endringene til Atlantis instansen",
                                     },
                                 ],
                             },
                             {
                                 "type":
-                                "orderedList",
+                                    "orderedList",
                                 "attrs": {
                                     "order": 1
                                 },
                                 "content": [
                                     {
                                         "type":
-                                        "listItem",
+                                            "listItem",
                                         "content": [{
                                             "type":
-                                            "paragraph",
+                                                "paragraph",
                                             "content": [{
                                                 "type":
-                                                "text",
+                                                    "text",
                                                 "text":
-                                                "Clone eller pulle endringene på main grenen",
+                                                    "Clone eller pulle endringene på main grenen",
                                             }],
                                         }],
                                     },
                                     {
                                         "type":
-                                        "listItem",
+                                            "listItem",
                                         "content": [{
                                             "type":
-                                            "paragraph",
+                                                "paragraph",
                                             "content": [
                                                 {
                                                     "type": "text",
@@ -932,7 +1023,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                                                 {
                                                     "type": "text",
                                                     "text":
-                                                    "gcloud container clusters get-credentials atlantis-prod --zone europe-north1 --project atlantis-prod-0073",
+                                                        "gcloud container clusters get-credentials atlantis-prod --zone europe-north1 --project atlantis-prod-0073",
                                                     "marks": [{
                                                         "type": "code"
                                                     }],
@@ -942,10 +1033,10 @@ def _description(details: ProjectDetails, current_date: date = None):
                                     },
                                     {
                                         "type":
-                                        "listItem",
+                                            "listItem",
                                         "content": [{
                                             "type":
-                                            "paragraph",
+                                                "paragraph",
                                             "content": [
                                                 {
                                                     "type": "text",
@@ -954,7 +1045,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                                                 {
                                                     "type": "text",
                                                     "text":
-                                                    "kubectl apply -f kubernetes-manifests/dapla-felles/atlantis-statefulset/atlantis-statefulset.yaml",
+                                                        "kubectl apply -f kubernetes-manifests/dapla-felles/atlantis-statefulset/atlantis-statefulset.yaml",
                                                     "marks": [{
                                                         "type": "code"
                                                     }],
@@ -964,21 +1055,21 @@ def _description(details: ProjectDetails, current_date: date = None):
                                     },
                                     {
                                         "type":
-                                        "listItem",
+                                            "listItem",
                                         "content": [{
                                             "type":
-                                            "paragraph",
+                                                "paragraph",
                                             "content": [
                                                 {
                                                     "type":
-                                                    "text",
+                                                        "text",
                                                     "text":
-                                                    "Verifisere at instansen er oppdatert ved å kjøre ",
+                                                        "Verifisere at instansen er oppdatert ved å kjøre ",
                                                 },
                                                 {
                                                     "type": "text",
                                                     "text":
-                                                    "kubectl describe statefulset atlantis-dapla-felles",
+                                                        "kubectl describe statefulset atlantis-dapla-felles",
                                                     "marks": [{
                                                         "type": "code"
                                                     }],
@@ -994,7 +1085,7 @@ def _description(details: ProjectDetails, current_date: date = None):
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [
                     {
                         "type": "text",
@@ -1002,14 +1093,14 @@ def _description(details: ProjectDetails, current_date: date = None):
                     },
                     {
                         "type":
-                        "text",
+                            "text",
                         "text":
-                        "https://docs.bip.ssb.no/how-to/gitops/",
+                            "https://docs.bip.ssb.no/how-to/gitops/",
                         "marks": [{
                             "type": "link",
                             "attrs": {
                                 "href":
-                                "https://docs.bip.ssb.no/how-to/gitops/"
+                                    "https://docs.bip.ssb.no/how-to/gitops/"
                             },
                         }],
                     },
@@ -1017,7 +1108,7 @@ def _description(details: ProjectDetails, current_date: date = None):
             },
             {
                 "type":
-                "heading",
+                    "heading",
                 "attrs": {
                     "level": 2
                 },
@@ -1028,17 +1119,17 @@ def _description(details: ProjectDetails, current_date: date = None):
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [{
                     "type":
-                    "text",
+                        "text",
                     "text":
-                    f"Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request i '{iac_git_project_name}' og få en godkjenning av Team Statistikktjenester.",
+                        f"Nå er teamets infrastruktur klar til å opprettes fra Atlantis. Opprett en pull request i '{iac_git_project_name}' og få en godkjenning av Team Statistikktjenester.",
                 }],
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [
                     {
                         "type": "text",
@@ -1053,9 +1144,9 @@ def _description(details: ProjectDetails, current_date: date = None):
                     },
                     {
                         "type":
-                        "text",
+                            "text",
                         "text":
-                        " i pull requesten før man kjører merge og sletter branchen. Dette vil opprette teamets infrastruktur på Google Cloud Platform.",
+                            " i pull requesten før man kjører merge og sletter branchen. Dette vil opprette teamets infrastruktur på Google Cloud Platform.",
                     },
                 ],
             },
@@ -1071,29 +1162,29 @@ def _description(details: ProjectDetails, current_date: date = None):
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [{
                     "type":
-                    "text",
+                        "text",
                     "text":
-                    f"Tjenester som er forespurt: {details.enabled_services or 'Ingen'}",
+                        f"Tjenester som er forespurt: {details.enabled_services or 'Ingen'}",
                 }],
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [
                     {
                         "type":
-                        "text",
+                            "text",
                         "text":
-                        "Hvis Transfer Service er forespurt, kjør det følgende. ",
+                            "Hvis Transfer Service er forespurt, kjør det følgende. ",
                     },
                 ],
             },
             {
                 "type":
-                "blockquote",
+                    "blockquote",
                 "content": [
                     {
                         "type": "paragraph",
@@ -1104,7 +1195,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                     },
                     {
                         "type":
-                        "paragraph",
+                            "paragraph",
                         "content": [{
                             "type": "text",
                             "text": "Prosjektnavn i GCP:"
@@ -1112,7 +1203,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                     },
                     {
                         "type":
-                        "paragraph",
+                            "paragraph",
                         "content": [{
                             "type": "text",
                             "text": f"    {uniform_team_name}-ts"
@@ -1122,36 +1213,36 @@ def _description(details: ProjectDetails, current_date: date = None):
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [{
                     "type":
-                    "text",
+                        "text",
                     "text":
-                    "Etter at dpteam har satt opp transfer-service "
-                    "kan du henvise en Data Admin til følgende dokument som beskriver hvordan "
-                    "man setter opp Transfer Service på Google Cloud Platform:",
+                        "Etter at dpteam har satt opp transfer-service "
+                        "kan du henvise en Data Admin til følgende dokument som beskriver hvordan "
+                        "man setter opp Transfer Service på Google Cloud Platform:",
                 }],
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [{
                     "type":
-                    "text",
+                        "text",
                     "text":
-                    "https://docs.dapla.ssb.no/dapla-user/how-to/transfer-data/",
+                        "https://docs.dapla.ssb.no/dapla-user/how-to/transfer-data/",
                     "marks": [{
                         "type": "link",
                         "attrs": {
                             "href":
-                            "https://docs.dapla.ssb.no/dapla-user/how-to/transfer-data/"
+                                "https://docs.dapla.ssb.no/dapla-user/how-to/transfer-data/"
                         },
                     }],
                 }],
             },
             {
                 "type":
-                "heading",
+                    "heading",
                 "attrs": {
                     "level": 2
                 },
@@ -1162,24 +1253,24 @@ def _description(details: ProjectDetails, current_date: date = None):
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [
                     {
                         "type":
-                        "text",
+                            "text",
                         "text":
-                        f"Sende en epost eller melding til {details.reporter.name if details.reporter else ''} (",
+                            f"Sende en epost eller melding til {details.reporter.name if details.reporter else ''} (",
                     },
                     {
                         "type":
-                        "text",
+                            "text",
                         "text":
-                        f"{details.reporter.email if details.reporter else ''}",
+                            f"{details.reporter.email if details.reporter else ''}",
                         "marks": [{
                             "type": "link",
                             "attrs": {
                                 "href":
-                                f"mailto:{details.reporter.email if details.reporter else ''}"
+                                    f"mailto:{details.reporter.email if details.reporter else ''}"
                             },
                         }],
                     },
@@ -1191,7 +1282,7 @@ def _description(details: ProjectDetails, current_date: date = None):
             },
             {
                 "type":
-                "blockquote",
+                    "blockquote",
                 "content": [
                     {
                         "type": "paragraph",
@@ -1202,24 +1293,24 @@ def _description(details: ProjectDetails, current_date: date = None):
                     },
                     {
                         "type":
-                        "paragraph",
+                            "paragraph",
                         "content": [
                             {
                                 "type":
-                                "text",
+                                    "text",
                                 "text":
-                                "Opplyser at Dapla teamet du bestilt er nå klar. Informasjon over hva det betyr og hvordan å ta Dapla i bruk finnes her: ",
+                                    "Opplyser at Dapla teamet du bestilt er nå klar. Informasjon over hva det betyr og hvordan å ta Dapla i bruk finnes her: ",
                             },
                             {
                                 "type":
-                                "text",
+                                    "text",
                                 "text":
-                                "https://manual.dapla.ssb.no/dapla-team.html",
+                                    "https://manual.dapla.ssb.no/dapla-team.html",
                                 "marks": [{
                                     "type": "link",
                                     "attrs": {
                                         "href":
-                                        "https://manual.dapla.ssb.no/dapla-team.html"
+                                            "https://manual.dapla.ssb.no/dapla-team.html"
                                     },
                                 }],
                             },
@@ -1227,7 +1318,7 @@ def _description(details: ProjectDetails, current_date: date = None):
                     },
                     {
                         "type":
-                        "paragraph",
+                            "paragraph",
                         "content": [{
                             "type": "text",
                             "text": "Lykke til med reisen til skyen!"
@@ -1237,7 +1328,7 @@ def _description(details: ProjectDetails, current_date: date = None):
             },
             {
                 "type":
-                "heading",
+                    "heading",
                 "attrs": {
                     "level": 2
                 },
@@ -1262,12 +1353,12 @@ def _description(details: ProjectDetails, current_date: date = None):
             },
             {
                 "type":
-                "paragraph",
+                    "paragraph",
                 "content": [{
                     "type":
-                    "text",
+                        "text",
                     "text":
-                    "Gratulerer! Hvis alt har gått etter planen er alt ferdig, og klar til bruk.",
+                        "Gratulerer! Hvis alt har gått etter planen er alt ferdig, og klar til bruk.",
                 }],
             },
             {
@@ -1283,15 +1374,15 @@ def _description(details: ProjectDetails, current_date: date = None):
             },
             {
                 "type":
-                "codeBlock",
+                    "codeBlock",
                 "attrs": {
                     "language": "yaml"
                 },
                 "content": [{
                     "type":
-                    "text",
+                        "text",
                     "text":
-                    f"{yaml.dump(technical_details, sort_keys=False, allow_unicode=True)}",
+                        f"{yaml.dump(technical_details, sort_keys=False, allow_unicode=True)}",
                 }],
             },
             {
@@ -1310,7 +1401,7 @@ def _table_group_cells(group_name: str, users: List[ProjectUser]):
     return [
         {
             "type":
-            "tableCell",
+                "tableCell",
             "attrs": {},
             "content": [{
                 "type": "paragraph",
@@ -1322,30 +1413,30 @@ def _table_group_cells(group_name: str, users: List[ProjectUser]):
         },
         {
             "type":
-            "tableCell",
+                "tableCell",
             "attrs": {},
             "content": [{
                 "type":
-                "paragraph" if sorted_users is None else "bulletList",
+                    "paragraph" if sorted_users is None else "bulletList",
                 "content":
-                list(
-                    map(
-                        lambda user: {
-                            "type":
-                            "listItem",
-                            "content": [{
+                    list(
+                        map(
+                            lambda user: {
                                 "type":
-                                "paragraph",
+                                    "listItem",
                                 "content": [{
                                     "type":
-                                    "text",
-                                    "text":
-                                    f"{user.name} ({user.email_short})",
+                                        "paragraph",
+                                    "content": [{
+                                        "type":
+                                            "text",
+                                        "text":
+                                            f"{user.name} ({user.email_short})",
+                                    }],
                                 }],
-                            }],
-                        },
-                        sorted_users or [],
-                    )),
+                            },
+                            sorted_users or [],
+                        )),
             }],
         },
     ]
