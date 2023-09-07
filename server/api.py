@@ -19,13 +19,9 @@ SSB_USERS_SOURCE = os.environ.get("SSB_USERS_SOURCE", "tests/test-users-export.c
 
 configure_loggers()
 app = FastAPI()
-
-
-@app.on_event("startup")
-async def startup_event():
-    Instrumentator(excluded_handlers=["/health/.*", "/metrics"]).instrument(app).expose(
-        app
-    )
+instrumentator = Instrumentator(
+    excluded_handlers=["/health/.*", "/metrics"]
+).instrument(app)
 
 
 def get_jira_client():
@@ -36,15 +32,18 @@ def get_klass_client():
     return KlassClient("https://data.ssb.no/api/klass/v1")
 
 
-origins = ["*"]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.on_event("startup")
+async def startup_event():
+    instrumentator.expose(app)
 
 
 @app.get("/health/liveness")
