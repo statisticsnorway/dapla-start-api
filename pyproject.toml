@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dapla-start-api"
-version = "0.4.2"
+version = "0.4.7"
 description = ""
 authors = ["Dapla <dapla@ssb.no>"]
 
